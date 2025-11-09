@@ -1,0 +1,24 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="aptGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2c3e50;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#34495e;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#aptGrad)"/>
+  <rect x="50" y="50" width="700" height="500" fill="rgba(255,255,255,0.1)" rx="10"/>
+  <text x="400" y="140" font-family="Arial, sans-serif" font-size="40" font-weight="bold" fill="white" text-anchor="middle">Apartment for Rent</text>
+  <text x="400" y="200" font-family="Arial, sans-serif" font-size="32" fill="#3498db" text-anchor="middle">Analysis</text>
+  <g transform="translate(400, 320)">
+    <rect x="-80" y="-50" width="160" height="100" fill="rgba(52,152,219,0.3)" rx="5" stroke="#3498db" stroke-width="2"/>
+    <rect x="-60" y="-30" width="30" height="20" fill="#3498db" opacity="0.5"/>
+    <rect x="-20" y="-30" width="30" height="20" fill="#3498db" opacity="0.5"/>
+    <rect x="20" y="-30" width="30" height="20" fill="#3498db" opacity="0.5"/>
+    <rect x="-60" y="0" width="30" height="20" fill="#3498db" opacity="0.5"/>
+    <rect x="-20" y="0" width="30" height="20" fill="#3498db" opacity="0.5"/>
+    <rect x="20" y="0" width="30" height="20" fill="#3498db" opacity="0.5"/>
+  </g>
+  <text x="400" y="420" font-family="Arial, sans-serif" font-size="18" fill="rgba(255,255,255,0.8)" text-anchor="middle">USA Rental Market Analysis</text>
+  <text x="400" y="460" font-family="Arial, sans-serif" font-size="16" fill="rgba(255,255,255,0.6)" text-anchor="middle">Python • Pandas • Jupyter Notebook</text>
+</svg>
+

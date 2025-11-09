@@ -1,0 +1,18 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="covidGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#c0392b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8e2419;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#covidGrad)"/>
+  <rect x="50" y="50" width="700" height="500" fill="rgba(255,255,255,0.1)" rx="10"/>
+  <text x="400" y="150" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="white" text-anchor="middle">COVID-19</text>
+  <text x="400" y="220" font-family="Arial, sans-serif" font-size="36" fill="#ecf0f1" text-anchor="middle">SQL Project</text>
+  <g transform="translate(400, 330)">
+    <circle cx="0" cy="0" r="50" fill="none" stroke="#ecf0f1" stroke-width="4"/>
+    <circle cx="-15" cy="-15" r="5" fill="#ecf0f1"/>
+    <circle cx="15" cy="-15" r="5" fill="#ecf0f1"/>
+  </g>
+  <text x="400" y="430" font-family="Arial, sans-serif" font-size="18" fill="rgba(255,255,255,0.8)" text-anchor="middle">Data Analysis • SQL Server</text>
+</svg>
