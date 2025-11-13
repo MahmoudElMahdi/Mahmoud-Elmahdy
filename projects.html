@@ -208,10 +208,41 @@
             cursor: pointer;
             transition: background 0.2s, box-shadow 0.2s;
         }
-        .floating-theme-toggle:hover {
+        .floating-action-buttons {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            z-index: 1200;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .floating-btn {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 50%;
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            box-shadow: 0 4px 16px var(--shadow-medium);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .floating-btn:hover {
             background: var(--accent-primary);
             color: #fff;
             box-shadow: 0 8px 32px var(--shadow-medium);
+            transform: translateY(-4px);
+        }
+
+        #scrollTopBtn {
+            display: none; /* Hidden by default */
         }
         /* Modernize tech-tag icons */
         .tech-tag {
@@ -808,11 +839,19 @@
             </div>
         </div>
     </nav>
-    <button class="floating-theme-toggle" onclick="toggleTheme()">
-        <span id="theme-icon">
-            <svg id="theme-svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-        </span>
-    </button>
+    <div class="floating-action-buttons">
+        <button class="floating-btn" id="scrollTopBtn" title="Go to top">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+        </button>
+        <a href="index.html#contact" class="floating-btn" title="Contact Me">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </a>
+        <button class="floating-btn" onclick="toggleTheme()" title="Toggle Theme">
+            <span id="theme-icon">
+                <svg id="theme-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+            </span>
+        </button>
+    </div>
 
     <section id="all-projects" class="section">
         <div class="projects-header">
@@ -1174,6 +1213,21 @@
             } else {
                 themeSvg.innerHTML = '<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>';
             }
+        });
+
+        // Scroll to top button functionality
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                scrollTopBtn.style.display = "flex";
+            } else {
+                scrollTopBtn.style.display = "none";
+            }
+        };
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({top: 0, behavior: 'smooth'});
         });
 
         // Nav open/close logic for all screens
