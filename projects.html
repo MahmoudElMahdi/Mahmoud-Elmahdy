@@ -829,13 +829,13 @@
                 <button class="filter-btn" data-filter="csharp">C#</button>
                 <button class="filter-btn" data-filter="excel">Excel</button>
                 <button class="filter-btn" data-filter="sql">SQL</button>
-                <button class="filter-btn" data-filter="powerbi">Power BI</button>
+                <button class="filter-btn" data-filter="power bi">Power BI</button>
                 <button class="filter-btn" data-filter="tableau">Tableau</button>
             </div>
         </div>
         <div class="projects-grid">
             <!-- Project 1 -->
-            <div class="project-card" onclick="openGallery('project1')" data-project="project1" data-images="Assets/Images/Projects/Sales Analytics Dashboard/1.jpg,Assets/Images/Projects/Sales Analytics Dashboard/2.png,Assets/Images/Projects/Sales Analytics Dashboard/3.png" data-tech="powerbi">
+            <div class="project-card" onclick="openGallery('project1')" data-project="project1" data-images="Assets/Images/Projects/Sales Analytics Dashboard/1.jpg,Assets/Images/Projects/Sales Analytics Dashboard/2.png,Assets/Images/Projects/Sales Analytics Dashboard/3.png" data-tech="power bi">
                 <div class="project-image">
                     <img src="Assets/Images/Projects/Sales Analytics Dashboard/1.jpg" alt="Sales Analytics Dashboard" onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=Project+1';">
                 </div>
@@ -854,7 +854,7 @@
             </div>
 
             <!-- Project 2 -->
-            <div class="project-card" onclick="openGallery('project2')" data-project="project2" data-images="Assets\Images\Projects\Big Mart Sales Dashboard\1.jpeg,Assets\Images\Projects\Big Mart Sales Dashboard\2.jpeg" data-tech="powerbi">
+            <div class="project-card" onclick="openGallery('project2')" data-project="project2" data-images="Assets\Images\Projects\Big Mart Sales Dashboard\1.jpeg,Assets\Images\Projects\Big Mart Sales Dashboard\2.jpeg" data-tech="power bi">
                 <div class="project-image">
                     <img src="Assets\Images\Projects\Big Mart Sales Dashboard\1.jpeg" alt="Customer Segmentation ML" onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=Project+2';">
                 </div>
@@ -1309,33 +1309,50 @@
         document.addEventListener('DOMContentLoaded', function() {
             const filterButtons = document.querySelectorAll('.filter-btn');
             const projectCards = document.querySelectorAll('.project-card');
+            const allProjectsButton = document.querySelector('.filter-btn[data-filter="all"]');
+
+            function filterProjects(filterValue) {
+                projectCards.forEach(card => {
+                    const cardTech = card.getAttribute('data-tech') || '';
+                    if (filterValue === 'all' || cardTech.toLowerCase().includes(filterValue.toLowerCase())) {
+                        card.style.display = 'block';
+                        card.classList.remove('hidden');
+                    } else {
+                        card.style.display = 'none';
+                        card.classList.add('hidden');
+                    }
+                });
+
+                // Update active button
+                filterButtons.forEach(btn => {
+                    if (btn.getAttribute('data-filter').toLowerCase() === filterValue.toLowerCase()) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+            }
 
             filterButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    // Remove active class from all buttons
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    // Add active class to clicked button
-                    this.classList.add('active');
-
                     const filterValue = this.getAttribute('data-filter');
-
-                    projectCards.forEach(card => {
-                        if (filterValue === 'all') {
-                            card.style.display = 'block';
-                            card.classList.remove('hidden');
-                        } else {
-                            const cardTech = card.getAttribute('data-tech');
-                            if (cardTech && cardTech.includes(filterValue)) {
-                                card.style.display = 'block';
-                                card.classList.remove('hidden');
-                            } else {
-                                card.style.display = 'none';
-                                card.classList.add('hidden');
-                            }
-                        }
-                    });
+                    filterProjects(filterValue);
                 });
             });
+
+            allProjectsButton.addEventListener('click', function() {
+                filterProjects('all');
+            });
+
+            // Filter based on URL parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const skill = urlParams.get('skill');
+            if (skill) {
+                filterProjects(skill.toLowerCase());
+            } else {
+                // Show all projects by default if no skill is specified
+                filterProjects('all');
+            }
 
             // Add click event to modal background to close when clicking outside content
             const modal = document.getElementById('imageModal');
@@ -1348,5 +1365,6 @@
             }
         });
     </script>
+
 </body>
 </html>
