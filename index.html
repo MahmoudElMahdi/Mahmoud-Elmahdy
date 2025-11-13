@@ -590,14 +590,20 @@
             margin-top: 30px;
         }
         
-        @media (max-width: 768px) {
-    .profiles-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
 
-    .about-content {
-        flex-direction: column;
-    }
+            .about-left {
+                grid-row: 1; /* Move image to the top */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .profiles-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
 
     .about-text {
         order: 2;
