@@ -5,6 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="Assets/Images/Logo/tap-icon.png">
     <title>Mahmoud Elmahdy - Data Analyst</title>
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Q9YGJ4HZL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-3Q9YGJ4HZL', {
+            'anonymize_ip': true, // Privacy-friendly: anonymizes IP addresses
+            'cookie_flags': 'SameSite=None;Secure'
+        });
+        
+        // Custom event tracking function
+        function trackEvent(eventName, eventCategory, eventLabel, eventValue) {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', eventName, {
+                    'event_category': eventCategory,
+                    'event_label': eventLabel,
+                    'value': eventValue
+                });
+            }
+        }
+        
+        // Track page views
+        window.addEventListener('load', function() {
+            trackEvent('page_view', 'engagement', window.location.pathname);
+        });
+    </script>
     <style>
         :root {
             --bg-primary: #ffffff;
@@ -3159,11 +3187,13 @@ optimizing decision-making frameworks.
                 // Sun icon
                 themeSvg.innerHTML = '<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>';
                 localStorage.setItem('theme', 'light');
+                trackEvent('theme_toggle', 'preference', 'light', 1);
             } else {
                 body.setAttribute('data-theme', 'dark');
                 // Moon icon
                 themeSvg.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/>';
                 localStorage.setItem('theme', 'dark');
+                trackEvent('theme_toggle', 'preference', 'dark', 1);
             }
         }
         
@@ -3310,6 +3340,9 @@ optimizing decision-making frameworks.
             updateThumbnails();
             modal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
+            
+            // Track gallery open event
+            trackEvent('gallery_open', 'engagement', projectId, 1);
         }
         
         function closeGallery() {
@@ -3379,7 +3412,61 @@ optimizing decision-making frameworks.
 
         scrollTopBtn.addEventListener('click', () => {
             window.scrollTo({top: 0, behavior: 'smooth'});
+            trackEvent('scroll_to_top', 'navigation', 'scroll_top_button', 1);
         });
+        
+        // Track external link clicks
+        document.querySelectorAll('a[href^="http"], a[target="_blank"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const url = this.getAttribute('href');
+                if (url && (url.startsWith('http') || this.getAttribute('target') === '_blank')) {
+                    trackEvent('external_link_click', 'outbound', url, 1);
+                }
+            });
+        });
+        
+        // Track project link clicks (GitHub, Reports, etc.)
+        document.querySelectorAll('.project-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const url = this.getAttribute('href');
+                const projectCard = this.closest('.project-card');
+                const projectName = projectCard ? projectCard.querySelector('h3')?.textContent || 'Unknown' : 'Unknown';
+                trackEvent('project_link_click', 'project', `${projectName} - ${url}`, 1);
+            });
+        });
+        
+        // Track profile card clicks
+        document.querySelectorAll('.profile-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                const profileName = this.querySelector('.profile-name')?.textContent || 'Unknown';
+                trackEvent('profile_card_click', 'social', profileName, 1);
+            });
+        });
+        
+        // Track resume download/view
+        document.querySelectorAll('.resume-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                trackEvent('resume_view', 'download', 'resume', 1);
+            });
+        });
+        
+        // Track section views (when user scrolls to a section)
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+                    const sectionId = entry.target.id || entry.target.className;
+                    trackEvent('section_view', 'engagement', sectionId, 1);
+                    // Unobserve after first view to avoid duplicate events
+                    sectionObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        // Observe all main sections
+        document.querySelectorAll('section[id]').forEach(section => {
+            sectionObserver.observe(section);
+        });
+        
     </script>
 
     <!-- Image Gallery Modal -->
