@@ -860,6 +860,176 @@
             display: block;
         }
 
+        /* Confidential Projects Card */
+        .confidential-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+            border: 2px dashed var(--accent-primary);
+            backdrop-filter: blur(20px);
+            position: relative;
+            box-shadow: 0 10px 30px var(--shadow-light);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            cursor: default;
+        }
+
+        .confidential-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 30px 60px rgba(0, 188, 212, 0.15), 0 15px 25px var(--shadow-medium);
+            border-color: var(--accent-primary);
+        }
+
+        .confidential-image {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        [data-theme="dark"] .confidential-image {
+            background: linear-gradient(135deg, #0a0f1a, #0d1b2a, #1b2838);
+        }
+
+        .confidential-image::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 20px,
+                rgba(255,255,255,0.02) 20px,
+                rgba(255,255,255,0.02) 40px
+            );
+            animation: patternShift 20s linear infinite;
+        }
+
+        @keyframes patternShift {
+            0% { transform: translateX(0) translateY(0); }
+            100% { transform: translateX(40px) translateY(40px); }
+        }
+
+        .confidential-lock {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .lock-icon-wrapper {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            animation: lockPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes lockPulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(38, 166, 154, 0.2); }
+            50% { box-shadow: 0 0 40px rgba(38, 166, 154, 0.4); }
+        }
+
+        .lock-icon-wrapper svg {
+            width: 36px;
+            height: 36px;
+            color: rgba(255, 255, 255, 0.85);
+            stroke: rgba(255, 255, 255, 0.85);
+        }
+
+        .confidential-counter {
+            font-size: 2.8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+        }
+
+        .confidential-label {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 600;
+        }
+
+        .confidential-content {
+            padding: 25px 30px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .confidential-content h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+            color: var(--accent-primary);
+        }
+
+        .confidential-content p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        .confidential-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            background: var(--accent-primary)12;
+            border: 1px solid var(--accent-primary)30;
+            border-radius: 25px;
+            color: var(--accent-primary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: auto;
+            width: fit-content;
+        }
+
+        .confidential-badge svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .confidential-image {
+                height: 180px !important;
+            }
+            .lock-icon-wrapper {
+                width: 60px;
+                height: 60px;
+            }
+            .lock-icon-wrapper svg {
+                width: 28px;
+                height: 28px;
+            }
+            .confidential-counter {
+                font-size: 2rem;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -933,6 +1103,51 @@
             </div>
         </div>
         <div class="projects-grid">
+            <!-- Confidential Excel Client Projects -->
+            <div class="confidential-card" data-tech="excel">
+                <div class="confidential-image">
+                    <div class="confidential-lock">
+                        <div class="lock-icon-wrapper">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                            </svg>
+                        </div>
+                        <span class="confidential-counter">50+</span>
+                        <span class="confidential-label">Client Projects</span>
+                    </div>
+                </div>
+                <div class="confidential-content">
+                    <h3>Confidential Client Excel Projects</h3>
+                    <p>Over 50 professional Excel dashboards, reports, and data models delivered to clients across HR, Finance, Marketing, and Operations — protected under strict NDAs and confidentiality agreements.</p>
+                    <div class="confidential-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                        Protected by NDA &amp; Privacy Agreements
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mega-Event Operations & Hiring Automated Report (Hajj Season) -->
+            <div class="project-card" onclick="openGallery('project_hajj')" data-project="project_hajj" data-images="Assets/Images/Projects/Mega-Event Operations & Hiring Automated Report (Hajj Season)/1.png,Assets/Images/Projects/Mega-Event Operations & Hiring Automated Report (Hajj Season)/2.png,Assets/Images/Projects/Mega-Event Operations & Hiring Automated Report (Hajj Season)/3.png,Assets/Images/Projects/Mega-Event Operations & Hiring Automated Report (Hajj Season)/4.png" data-tech="excel">
+                <div class="project-image">
+                    <img src="Assets/Images/Projects/Mega-Event Operations & Hiring Automated Report (Hajj Season)/1.png" alt="Mega-Event Operations & Hiring Automated Report" onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=Hajj+Operations+Report';">
+                </div>
+                <div class="project-content">
+                    <h3>Mega-Event Operations & Hiring Automated Report (Hajj Season)</h3>
+                    <p>A centralized Excel data model aggregating massive volumes of operational and hiring data for the Hajj season, with automated PowerPoint integration for real-time executive reporting of charts, hiring progress, and budget KPIs.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Advanced Excel</span>
+                        <span class="tech-tag">Data Aggregation</span>
+                        <span class="tech-tag">PowerPoint Automation</span>
+                        <span class="tech-tag">Dynamic Linking</span>
+                    </div>
+                    <div class="project-links">
+                    </div>
+                </div>
+            </div>
+
             <!-- Project 1 -->
             <div class="project-card" onclick="openGallery('project1')" data-project="project1" data-images="Assets/Images/Projects/Sales Analytics Dashboard/1.jpg,Assets/Images/Projects/Sales Analytics Dashboard/2.png,Assets/Images/Projects/Sales Analytics Dashboard/3.png" data-tech="power bi">
                 <div class="project-image">
@@ -946,6 +1161,63 @@
                         <span class="tech-tag">ETL</span>
                         <span class="tech-tag">Dax</span>
                         <span class="tech-tag">Data Modeling</span>
+                    </div>
+                    <div class="project-links">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enterprise HR Analytics & Workforce Planning Dashboard -->
+            <div class="project-card" onclick="openGallery('project_hr_analytics')" data-project="project_hr_analytics" data-images="Assets/Images/Projects/Enterprise HR Analytics & Workforce Planning Dashboard/1.png" data-tech="excel">
+                <div class="project-image">
+                    <img src="Assets/Images/Projects/Enterprise HR Analytics & Workforce Planning Dashboard/1.png" alt="Enterprise HR Analytics & Workforce Planning Dashboard" onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=HR+Analytics+Dashboard';">
+                </div>
+                <div class="project-content">
+                    <h3>Enterprise HR Analytics & Workforce Planning Dashboard</h3>
+                    <p>A fully interactive Excel dashboard consolidating HR records with dynamic visualizations to track age dominance, nationality distribution, and geographic base. Includes a forecasting model to visualize expected retirees up to 2045.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Advanced Excel</span>
+                        <span class="tech-tag">Pivot Tables</span>
+                        <span class="tech-tag">Data Modeling</span>
+                        <span class="tech-tag">Forecasting</span>
+                    </div>
+                    <div class="project-links">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Omnichannel Digital Marketing & Paid Ads Dashboard -->
+            <div class="project-card" onclick="openGallery('project_omnichannel')" data-project="project_omnichannel" data-images="Assets/Images/Projects/Omnichannel Digital Marketing & Paid Ads Dashboard (Travel & Tourism)/1.png,Assets/Images/Projects/Omnichannel Digital Marketing & Paid Ads Dashboard (Travel & Tourism)/2.png,Assets/Images/Projects/Omnichannel Digital Marketing & Paid Ads Dashboard (Travel & Tourism)/3.png,Assets/Images/Projects/Omnichannel Digital Marketing & Paid Ads Dashboard (Travel & Tourism)/4.png" data-tech="excel">
+                <div class="project-image">
+                    <img src="Assets/Images/Projects/Omnichannel Digital Marketing & Paid Ads Dashboard (Travel & Tourism)/1.png" alt="Omnichannel Digital Marketing & Paid Ads Dashboard" onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=Marketing+Dashboard';">
+                </div>
+                <div class="project-content">
+                    <h3>Omnichannel Digital Marketing & Paid Ads Dashboard (Travel & Tourism)</h3>
+                    <p>A comprehensive, multi-tab Excel dashboard consolidating fragmented marketing data (Google Ads, Social Media, SEO, and Blog) for a travel agency (Tourzable), with a cohesive dark mode UI for premium executive experience.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Advanced Excel</span>
+                        <span class="tech-tag">Data Consolidation</span>
+                        <span class="tech-tag">Complex Data Modeling</span>
+                        <span class="tech-tag">UI/UX Design</span>
+                    </div>
+                    <div class="project-links">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Automated Executive HR Reporting System -->
+            <div class="project-card" onclick="openGallery('project_hr_reporting')" data-project="project_hr_reporting" data-images="Assets/Images/Projects/Automated Executive HR Reporting System (Excel to PowerPoint Integration)/1.png,Assets/Images/Projects/Automated Executive HR Reporting System (Excel to PowerPoint Integration)/2.png" data-tech="excel">
+                <div class="project-image">
+                    <img src="Assets/Images/Projects/Automated Executive HR Reporting System (Excel to PowerPoint Integration)/1.png" alt="Automated Executive HR Reporting System" onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=HR+Reporting+System';">
+                </div>
+                <div class="project-content">
+                    <h3>Automated Executive HR Reporting System (Excel to PowerPoint Integration)</h3>
+                    <p>A robust backend data model in Excel processing monthly HR metrics (Turnover, Localization, Payroll, Joiners/Leavers across 15+ divisions) with seamless, automated integration to PowerPoint for one-click executive reporting.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Advanced Excel</span>
+                        <span class="tech-tag">Data Modeling</span>
+                        <span class="tech-tag">PowerPoint Automation</span>
+                        <span class="tech-tag">Dynamic Linking/OLE</span>
                     </div>
                     <div class="project-links">
                     </div>
@@ -1283,6 +1555,44 @@
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                             GitHub
                         </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comprehensive Sales & Profitability Tracker -->
+            <div class="project-card" onclick="openGallery('project_sales_tracker')" data-project="project_sales_tracker" data-images="Assets/Images/Projects/Comprehensive Sales & Profitability Tracker/1.PNG" data-tech="excel">
+                <div class="project-image">
+                    <img src="Assets/Images/Projects/Comprehensive Sales & Profitability Tracker/1.PNG" alt="Comprehensive Sales & Profitability Tracker" onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=Sales+Tracker';">
+                </div>
+                <div class="project-content">
+                    <h3>Comprehensive Sales & Profitability Tracker</h3>
+                    <p>An enterprise-grade Excel dashboard tracking nearly $1M in sales across multiple US states, categories, and salespersons. Features interactive slicers, Excel Map Charts for geographical sales density, and a modern dark-themed UI rivaling standalone BI tools.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Advanced Excel</span>
+                        <span class="tech-tag">Map Charts</span>
+                        <span class="tech-tag">Complex Aggregations</span>
+                        <span class="tech-tag">UI/UX Design</span>
+                    </div>
+                    <div class="project-links">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Personal Finance & Budget Tracker (Bilingual) -->
+            <div class="project-card" onclick="openGallery('project_finance_tracker')" data-project="project_finance_tracker" data-images="Assets/Images/Projects/Interactive Personal Finance & Budget Tracker (Bilingual)/1.png" data-tech="excel">
+                <div class="project-image">
+                    <img src="Assets/Images/Projects/Interactive Personal Finance & Budget Tracker (Bilingual)/1.png" alt="Interactive Personal Finance & Budget Tracker" onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=Finance+Tracker';">
+                </div>
+                <div class="project-content">
+                    <h3>Interactive Personal Finance & Budget Tracker (Bilingual)</h3>
+                    <p>A fully customized, bilingual (French/English) personal finance management tool in Excel for an Algerian client. Features automated transaction categorization, dynamic dashboards for spending habits and budget limits, and alerts when expenses exceed predefined thresholds.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Advanced Excel</span>
+                        <span class="tech-tag">Data Validation</span>
+                        <span class="tech-tag">Interactive Dashboards</span>
+                        <span class="tech-tag">UI/UX Design</span>
+                    </div>
+                    <div class="project-links">
                     </div>
                 </div>
             </div>
