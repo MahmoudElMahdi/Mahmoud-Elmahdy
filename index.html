@@ -1362,35 +1362,38 @@
         }
 
         .language-items {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 12px;
         }
 
         .language-item {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 12px;
+            text-align: center;
+            gap: 8px;
             background: var(--card-bg);
-            padding: 12px 15px;
+            padding: 15px 10px;
             border-radius: 10px;
             border: 1px solid var(--border-color);
             transition: all 0.3s ease;
         }
 
         .language-item:hover {
-            transform: translateX(5px);
+            transform: translateY(-5px);
             border-color: var(--accent-primary);
         }
 
         .language-icon {
-            font-size: 1.5rem;
-            width: 40px;
-            text-align: center;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-bottom: 5px;
         }
 
         .language-details {
-            flex: 1;
+            width: 100%;
         }
 
         .language-name {
@@ -2377,9 +2380,8 @@
 
             .language-item {
                 padding: 10px;
-                gap: 10px;
+                gap: 8px;
                 border-radius: 10px;
-                margin-bottom: 8px;
             }
 
             .language-icon {
