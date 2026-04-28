@@ -129,93 +129,246 @@
             left: 0;
             width: 100vw;
             background: var(--bg-secondary);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             z-index: 1000;
-            box-shadow: 0 4px 20px var(--shadow-light);
+            box-shadow: 0 1px 12px var(--shadow-light);
             border-bottom: 1px solid var(--border-color);
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            height: 64px;
-        }
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            padding: 0 24px;
-            position: relative;
-            height: 100%;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            order: 1;
+            height: 60px;
         }
 
-        .logo img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            object-fit: cover;
+        .nav-container {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            height: 100%;
+            padding: 0 28px;
+            box-sizing: border-box;
+            position: relative;
         }
-        .menu-icon {
+
+        /* Analytical logo */
+        .nav-logo {
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 32px;
-            cursor: pointer;
-            z-index: 1101;
-            order: 2;
-        }
-        .nav-links {
-            position: fixed;
-            top: 0;
-            right: -100vw;
-            width: 260px;
-            height: 100vh;
-            background: var(--bg-secondary);
-            box-shadow: -2px 0 20px var(--shadow-medium);
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            padding: 80px 0 0 0;
-            gap: 0;
-            transition: right 0.35s cubic-bezier(0.77,0.2,0.05,1.0);
-            z-index: 1100;
+            flex-shrink: 0;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+            color: var(--accent-primary);
+            width: 32px;
+            height: 32px;
         }
 
-        .nav-links.active {
-            right: 0;
+        .nav-logo svg {
+            width: 28px !important;
+            height: 28px !important;
+            max-width: 28px !important;
+            max-height: 28px !important;
         }
+
+        .nav-logo:hover {
+            transform: scale(1.15);
+        }
+
+        /* Desktop nav links — absolutely centered on screen */
+        .nav-links {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 4px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
         .nav-links li {
-            width: 100%;
-            list-style-type: none;
+            display: inline;
+            list-style: none;
         }
+
         .nav-links a {
-            display: block;
-            width: 100%;
-            padding: 20px 32px;
-            color: var(--text-primary);
+            display: inline-block;
+            padding: 8px 14px;
+            color: var(--text-secondary);
             text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: 600;
-            border-bottom: 1px solid var(--border-color);
-            transition: background 0.2s, color 0.2s;
+            font-size: 0.88rem;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: all 0.25s ease;
+            white-space: nowrap;
         }
-        .nav-links a:hover {
-            background: var(--accent-primary)10;
+
+        .nav-links a:hover,
+        .nav-links a.active {
             color: var(--accent-primary);
+            background: var(--accent-primary)08;
         }
-        @media (min-width: 769px) {
-            .nav-links {
-                width: 320px;
+
+        /* Nav right actions */
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+            margin-left: auto;
+        }
+
+        .nav-contact-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            min-width: 36px;
+            min-height: 36px;
+            transition: all 0.3s cubic-bezier(.4,1.5,.5,1);
+            box-shadow: 0 2px 10px var(--accent-primary)25;
+        }
+
+        .nav-contact-btn:hover {
+            transform: translateY(-2px) scale(1.08);
+            box-shadow: 0 6px 20px var(--accent-primary)35;
+        }
+
+        .nav-contact-btn svg {
+            width: 16px !important;
+            height: 16px !important;
+            max-width: 16px !important;
+            flex-shrink: 0;
+        }
+
+        .nav-theme-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            min-width: 36px;
+            min-height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--text-secondary);
+            flex-shrink: 0;
+        }
+
+        .nav-theme-btn:hover {
+            background: var(--accent-primary);
+            color: #fff;
+            border-color: var(--accent-primary);
+            transform: scale(1.1);
+        }
+
+        .nav-theme-btn svg {
+            width: 18px !important;
+            height: 18px !important;
+            max-width: 18px !important;
+        }
+
+        /* Hamburger icon — hidden on desktop */
+        .menu-icon {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1101;
+            color: var(--text-primary);
+            padding: 6px;
+            border-radius: 8px;
+            transition: background 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .menu-icon:hover {
+            background: var(--accent-primary)10;
+        }
+
+        .nav-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.3);
+            z-index: 1099;
+            transition: opacity 0.3s;
+        }
+
+        .nav-overlay.active {
+            display: block;
+        }
+
+        /* Mobile nav */
+        @media (max-width: 900px) {
+            .nav-container {
+                padding: 0 16px;
+                gap: 10px;
             }
-        }
-        @media (max-width: 768px) {
+
+            .menu-icon {
+                display: flex;
+                margin-left: auto;
+            }
+
+            .nav-actions {
+                margin-left: 0;
+            }
+
             .nav-links {
-                width: 80vw;
-                min-width: 180px;
-                max-width: 320px;
+                position: fixed;
+                top: 0;
+                right: -100vw;
+                width: 280px;
+                height: 100dvh;
+                background: var(--bg-secondary);
+                box-shadow: -4px 0 24px var(--shadow-medium);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 80px 0 0 0;
+                gap: 0;
+                margin: 0;
+                transform: none;
+                left: auto;
+                transition: right 0.35s cubic-bezier(0.77,0.2,0.05,1.0);
+                z-index: 1100;
+                overflow-y: auto;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                width: 100%;
+            }
+
+            .nav-links a {
+                display: block;
+                width: 100%;
+                padding: 16px 28px;
+                font-size: 1.05rem;
+                font-weight: 600;
+                border-radius: 0;
+                border-bottom: 1px solid var(--border-color);
+                color: var(--text-primary);
+            }
+
+            .nav-links a:hover {
+                background: var(--accent-primary)10;
             }
         }
         .floating-theme-toggle {
@@ -1024,22 +1177,35 @@
 
     <nav id="navbar">
         <div class="nav-container">
-            <div class="menu-icon" id="menuIcon">&#9776;</div>
+            <a href="index.html#home" class="nav-logo" title="Home">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="16" width="3" height="5" rx="0.5" fill="currentColor" opacity="0.5"/>
+                    <rect x="8" y="12" width="3" height="9" rx="0.5" fill="currentColor" opacity="0.65"/>
+                    <rect x="13" y="8" width="3" height="13" rx="0.5" fill="currentColor" opacity="0.8"/>
+                    <rect x="18" y="4" width="3" height="17" rx="0.5" fill="currentColor" opacity="1"/>
+                    <path d="M4 14 L9 10 L14 6 L20 2" stroke="currentColor" stroke-width="2" fill="none"/>
+                    <path d="M17 2 L20 2 L20 5" stroke="currentColor" stroke-width="2" fill="none"/>
+                </svg>
+            </a>
             <ul class="nav-links" id="navLinks">
-                <li><a href="index.html#home">Home</a></li>
                 <li><a href="index.html#about">About</a></li>
-                <li><a href="index.html#profiles">Profiles</a></li>
-                <li><a href="index.html#education">Education</a></li>
                 <li><a href="index.html#experience">Experience</a></li>
                 <li><a href="index.html#projects">Projects</a></li>
                 <li><a href="index.html#reviews">Reviews</a></li>
-                <li><a href="index.html#books-languages">Books & Languages</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="index.html#profiles">Profiles</a></li>
+                <li><a href="index.html#education">Education</a></li>
+                <li><a href="index.html#books-languages">More</a></li>
             </ul>
-            <div id="navOverlay" class="nav-overlay"></div>
-            <div class="logo">
-                <img src="Assets/Images/Logo/tap-icon.png" alt="Logo">
+            <div class="nav-actions">
+                <a href="index.html#contact" class="nav-contact-btn" title="Contact Me">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </a>
+                <button class="nav-theme-btn" onclick="toggleTheme()" title="Toggle Theme">
+                    <svg id="theme-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                </button>
             </div>
+            <div class="menu-icon" id="menuIcon">&#9776;</div>
+            <div id="navOverlay" class="nav-overlay"></div>
         </div>
     </nav>
     <div class="floating-action-buttons">
