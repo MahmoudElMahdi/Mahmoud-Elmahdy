@@ -1082,6 +1082,44 @@
             border-color: var(--accent-primary)50;
         }
 
+        .academic-row {
+            display: flex;
+            align-items: stretch;
+            gap: 40px;
+            margin-bottom: 50px;
+            justify-content: space-between;
+        }
+
+        .academic-intro {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .academic-row .college-info {
+            flex: 1.5;
+            margin-bottom: 0;
+            width: 100%;
+            display: flex;
+        }
+
+        .academic-row .college-card {
+            height: 100%;
+        }
+
+        @media (max-width: 900px) {
+            .academic-row {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            .academic-intro .education-title, .academic-intro p {
+                text-align: center !important;
+            }
+        }
+
         .education-item {
             margin-bottom: 50px;
         }
@@ -3031,11 +3069,13 @@
     <section id="education" class="section">
         <div class="education-section fade-in">
             <h2 class="section-title">Education & Certifications</h2>
-            <p style="text-align: center; color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 30px;">My academic background and professional certifications in data science and analytics.</p>
             
             <!-- College Education -->
-            <div class="education-item">
-                <h3 class="education-title">Academic Background</h3>
+            <div class="education-item academic-row">
+                <div class="academic-intro">
+                    <h3 class="education-title" style="text-align: left; margin-bottom: 15px;">Academic Background</h3>
+                    <p style="text-align: left; color: var(--text-secondary); font-size: 1.1rem; line-height: 1.6;">My academic background and professional certifications in data science and analytics.</p>
+                </div>
                 <div class="college-info">
                     <div class="college-card">
                         <div class="college-icon">🎓</div>
