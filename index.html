@@ -3059,7 +3059,7 @@
                   </div>
                 <div class="courses-grid">
                     <div class="course-card completed">
-                        <div class="course-image">
+                        <div class="course-image" style="cursor: pointer;" onclick="openSingleImage(this.querySelector('img').src)">
                             <img src="Assets/Images/Certifications/Advanced_Data_Analysis.jpg" alt="Advanced Data Analysis Certificate">
                         </div>
                         <div class="course-content">
@@ -3069,7 +3069,7 @@
                         </div>
                     </div>
                     <div class="course-card completed">
-                        <div class="course-image">
+                        <div class="course-image" style="cursor: pointer;" onclick="openSingleImage(this.querySelector('img').src)">
                             <img src="Assets/Images/Certifications/ML_Cross-Skilling.jpeg" alt="Machine Learning Cross-Skilling Certificate">
                         </div>
                         <div class="course-content">
@@ -3079,7 +3079,7 @@
                         </div>
                     </div>
                     <div class="course-card completed">
-                        <div class="course-image">
+                        <div class="course-image" style="cursor: pointer;" onclick="openSingleImage(this.querySelector('img').src)">
                             <img src="Assets/Images/Certifications/McKinsey_Forward_Program_Badge20241216-27-7akp9q_1.jpeg" alt="McKinsey Forward Program Certificate">
                         </div>
                         <div class="course-content">
@@ -3089,7 +3089,7 @@
                         </div>
                     </div>
                     <div class="course-card completed">
-                        <div class="course-image">
+                        <div class="course-image" style="cursor: pointer;" onclick="openSingleImage(this.querySelector('img').src)">
                             <img src="Assets/Images/Certifications/CC-E95E191D5D_1.png" alt="Advanced SQL Certificate">
                         </div>
                         <div class="course-content">
@@ -3099,7 +3099,7 @@
                         </div>
                     </div>
                     <div class="course-card completed">
-                        <div class="course-image">
+                        <div class="course-image" style="cursor: pointer;" onclick="openSingleImage(this.querySelector('img').src)">
                             <img src="Assets/Images/Certifications/CC-A2A02BFF3A.jpeg" alt="Advanced Microsoft Excel Certificate">
                         </div>
                         <div class="course-content">
@@ -3109,7 +3109,7 @@
                         </div>
                     </div>
                     <div class="course-card completed">
-                        <div class="course-image">
+                        <div class="course-image" style="cursor: pointer;" onclick="openSingleImage(this.querySelector('img').src)">
                             <img src="Assets/Images/Certifications/CC-1F0E1E990A.jpg" alt="Building Business Reports Using Power BI Certificate">
                         </div>
                         <div class="course-content">
@@ -3619,6 +3619,12 @@
             const modalImage = document.getElementById('modalImage');
             const imageCounter = document.getElementById('imageCounter');
             modalImage.src = currentImages[currentImageIndex];
+            
+            // Restore visibility of gallery controls
+            imageCounter.style.display = 'block';
+            document.querySelector('.thumbnails-container').style.display = 'block';
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.style.display = 'flex');
+
             updateCounter();
             updateThumbnails();
             modal.style.display = 'flex';
@@ -3626,6 +3632,21 @@
             
             // Track gallery open event
             trackEvent('gallery_open', 'engagement', projectId, 1);
+        }
+        
+        function openSingleImage(src) {
+            currentImages = [src];
+            currentImageIndex = 0;
+            const modal = document.getElementById('imageModal');
+            document.getElementById('modalImage').src = src;
+            
+            // Hide gallery controls
+            document.getElementById('imageCounter').style.display = 'none';
+            document.querySelector('.thumbnails-container').style.display = 'none';
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.style.display = 'none');
+            
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
         }
         
         function closeGallery() {
