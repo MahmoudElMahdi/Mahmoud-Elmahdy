@@ -1330,6 +1330,10 @@
             display: none;
         }
 
+        .course-arrow-mobile {
+            display: none;
+        }
+
         .course-content {
             display: contents;
         }
@@ -1645,35 +1649,113 @@
                 width: 100%;
             }
 
+            .education-section {
+                padding: 30px 12px;
+            }
+
+            .education-item {
+                padding: 0;
+            }
+
             .courses-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
 
             .course-card {
-                display: flex;
-                flex-direction: column;
-                padding: 20px;
-                gap: 15px;
-                text-align: center;
+                display: grid !important;
+                grid-template-columns: 1fr auto !important;
+                padding: 18px 20px !important;
+                gap: 0 !important;
+                text-align: left !important;
+                cursor: pointer;
+                transition: all 0.3s ease !important;
+                align-items: flex-start !important;
             }
 
-            .course-image {
-                margin: 0 auto;
+            .course-card.is-expanded {
+                background: var(--bg-tertiary);
+                border-color: var(--accent-primary)40;
+                grid-template-rows: auto auto auto auto !important; /* Explicitly define 4 rows */
+                gap: 15px 0 !important; /* Add vertical gap between rows */
+            }
+
+            /* The Gap Fix: Use display none when collapsed */
+            .course-image, 
+            .course-content .validate-btn, 
+            .course-progress {
+                display: none !important;
+            }
+
+            .course-card.is-expanded .course-image {
+                display: block !important;
+                grid-column: 1 / 3 !important;
+                grid-row: 3 / 4 !important; /* Third row */
+                width: 100% !important;
+                height: auto !important;
+                margin-top: 5px !important;
+                border-radius: 10px;
+                box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            }
+
+            .course-content {
+                display: contents !important;
             }
 
             .course-content h4 {
-                font-size: 1.1rem;
-                margin-bottom: 5px;
+                grid-column: 1 / 3 !important;
+                grid-row: 1 / 2 !important; /* First row */
+                font-size: 1.05rem !important;
+                margin: 0 !important;
+                color: var(--text-primary);
+                font-weight: 700 !important;
+                line-height: 1.3 !important;
             }
 
             .course-provider {
-                margin-bottom: 5px;
+                grid-column: 1 / 2 !important;
+                grid-row: 2 / 3 !important; /* Second row */
+                font-size: 0.9rem !important;
+                margin: 0 !important;
+                color: var(--accent-primary) !important;
+                font-weight: 600;
+                align-self: center;
+            }
+
+            .course-card.is-expanded .course-content .validate-btn,
+            .course-card.is-expanded .course-progress {
+                display: flex !important;
+                grid-column: 1 / 3 !important;
+                grid-row: 4 / 5 !important; /* Fourth row */
+                width: 100% !important;
+                height: 44px !important;
+                padding: 10px 20px !important;
+                margin-top: 0 !important;
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .course-arrow-mobile {
+                display: flex !important;
+                grid-column: 2 / 3 !important;
+                grid-row: 2 / 3 !important; /* Beside platform */
+                color: var(--accent-primary);
+                transition: transform 0.3s ease;
+                background: var(--accent-primary)10;
+                padding: 6px;
+                border-radius: 50%;
+                margin-left: auto;
+                align-self: center;
+            }
+
+            .course-card.is-expanded .course-arrow-mobile {
+                transform: rotate(180deg);
+                background: var(--accent-primary);
+                color: white;
             }
 
             .validation-btn {
                 width: 100%;
-                margin-top: 5px;
             }
 
             .books-grid {
@@ -3181,7 +3263,7 @@
                     </button>
                   </div>
                 <div class="courses-grid">
-                    <div class="course-card completed">
+                    <div class="course-card completed" onclick="toggleCourseCard(this)">
                         <div class="course-image" style="cursor: pointer;" onclick="openSingleImage(this.querySelector('img').src)">
                             <img src="Assets/Images/Certifications/Advanced_Data_Analysis.jpg" alt="Advanced Data Analysis Certificate">
                         </div>
@@ -3190,8 +3272,11 @@
                             <p class="course-provider">Udacity</p>
                             <button class="validate-btn" onclick="window.open('https://www.udacity.com/certificate/e/196031ae-656d-11eb-a5f8-6b05e747f115', '_blank')">View Credential</button>
                         </div>
+                        <div class="course-arrow-mobile">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
                     </div>
-                    <div class="course-card completed">
+                    <div class="course-card completed" onclick="toggleCourseCard(this)">
                         <div class="course-image" style="cursor: pointer;" onclick="openSingleImage(this.querySelector('img').src)">
                             <img src="Assets/Images/Certifications/ML_Cross-Skilling.jpeg" alt="Machine Learning Cross-Skilling Certificate">
                         </div>
@@ -3200,8 +3285,11 @@
                             <p class="course-provider">Udacity</p>
                             <button class="validate-btn" onclick="window.open('https://www.udacity.com/certificate/e/6840068e-1352-11ed-b058-6b24a8d02e4f', '_blank')">View Credential</button>
                         </div>
+                        <div class="course-arrow-mobile">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
                     </div>
-                    <div class="course-card completed">
+                    <div class="course-card completed" onclick="toggleCourseCard(this)">
                         <div class="course-image" style="cursor: pointer;" onclick="openSingleImage(this.querySelector('img').src)">
                             <img src="Assets/Images/Certifications/McKinsey_Forward_Program_Badge20241216-27-7akp9q_1.jpeg" alt="McKinsey Forward Program Certificate">
                         </div>
@@ -3210,8 +3298,11 @@
                             <p class="course-provider">McKinsey & Company</p>
                             <button class="validate-btn" onclick="window.open('https://www.credly.com/badges/a9bdd0a2-a5a9-42db-a47e-0ec0869f0e11/linked_in_profile', '_blank')">View Credential</button>
                         </div>
+                        <div class="course-arrow-mobile">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
                     </div>
-                    <div class="course-card completed">
+                    <div class="course-card completed" onclick="toggleCourseCard(this)">
                         <div class="course-image" style="cursor: pointer;" onclick="openSingleImage(this.querySelector('img').src)">
                             <img src="Assets/Images/Certifications/CC-E95E191D5D_1.png" alt="Advanced SQL Certificate">
                         </div>
@@ -3220,8 +3311,11 @@
                             <p class="course-provider">365 DataScience</p>
                             <button class="validate-btn" onclick="window.open('https://learn.365datascience.com/c/05a8b96366/', '_blank')">View Credential</button>
                         </div>
+                        <div class="course-arrow-mobile">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
                     </div>
-                    <div class="course-card completed">
+                    <div class="course-card completed" onclick="toggleCourseCard(this)">
                         <div class="course-image" style="cursor: pointer;" onclick="openSingleImage(this.querySelector('img').src)">
                             <img src="Assets/Images/Certifications/CC-A2A02BFF3A.jpeg" alt="Advanced Microsoft Excel Certificate">
                         </div>
@@ -3230,8 +3324,11 @@
                             <p class="course-provider">365 DataScience</p>
                             <button class="validate-btn" onclick="window.open('https://learn.365datascience.com/certificates/CC-A2A02BFF3A/', '_blank')">View Credential</button>
                         </div>
+                        <div class="course-arrow-mobile">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
                     </div>
-                    <div class="course-card completed">
+                    <div class="course-card completed" onclick="toggleCourseCard(this)">
                         <div class="course-image" style="cursor: pointer;" onclick="openSingleImage(this.querySelector('img').src)">
                             <img src="Assets/Images/Certifications/CC-1F0E1E990A.jpg" alt="Building Business Reports Using Power BI Certificate">
                         </div>
@@ -3239,6 +3336,9 @@
                             <h4>Building Business Reports Using Power BI</h4>
                             <p class="course-provider">365 DataScience</p>
                             <button class="validate-btn" onclick="window.open('https://learn.365datascience.com/certificates/CC-1F0E1E990A/', '_blank')">View Credential</button>
+                        </div>
+                        <div class="course-arrow-mobile">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </div>
                     </div>
                 </div>
@@ -3249,25 +3349,34 @@
             <div class="education-item">
                 <h3 class="education-title">Currently Pursuing</h3>
                 <div class="courses-grid">
-                    <div class="course-card ongoing">
+                    <div class="course-card ongoing" onclick="toggleCourseCard(this)">
                         <div class="course-content">
                             <h4>Google Advanced Data Analytics Specialization</h4>
                             <p class="course-provider">Coursera</p>
                             <span class="course-progress">Ongoing</span>
                         </div>
+                        <div class="course-arrow-mobile">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
                     </div>
-                    <div class="course-card ongoing">
+                    <div class="course-card ongoing" onclick="toggleCourseCard(this)">
                         <div class="course-content">
                             <h4>Power BI Data Analyst Specialization</h4>
                             <p class="course-provider">Microsoft, Coursera</p>
                             <span class="course-progress">Ongoing</span>
                         </div>
+                        <div class="course-arrow-mobile">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
                     </div>
-                    <div class="course-card ongoing">
+                    <div class="course-card ongoing" onclick="toggleCourseCard(this)">
                         <div class="course-content">
                             <h4>Machine Learning Specialization</h4>
                             <p class="course-provider">Stanford, Coursera</p>
                             <span class="course-progress">Ongoing</span>
+                        </div>
+                        <div class="course-arrow-mobile">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </div>
                     </div>
                 </div>
@@ -4022,6 +4131,11 @@
             content.appendChild(cardBottom);
         });
         
+        function toggleCourseCard(card) {
+            if (window.innerWidth <= 768) {
+                card.classList.toggle('is-expanded');
+            }
+        }
     </script>
 
     <!-- Image Gallery Modal -->
