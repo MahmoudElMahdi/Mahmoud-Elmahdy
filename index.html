@@ -1930,6 +1930,7 @@
                 grid-column: 1 / 2 !important;
                 font-size: 1.15rem !important;
                 margin: 0 !important;
+                color: var(--accent-primary) !important;
             }
 
             .project-arrow-mobile {
@@ -4437,6 +4438,13 @@
         
         function toggleCourseCard(card) {
             if (window.innerWidth <= 768) {
+                // Close other expanded cards in the same parent section
+                const parent = card.closest('section') || card.parentElement;
+                parent.querySelectorAll('.is-expanded').forEach(otherCard => {
+                    if (otherCard !== card) {
+                        otherCard.classList.remove('is-expanded');
+                    }
+                });
                 card.classList.toggle('is-expanded');
             }
         }
@@ -4445,6 +4453,12 @@
             if (window.innerWidth <= 768) {
                 // On mobile, only toggle if the click is on the header or the card itself (not links)
                 if (!event.target.closest('.project-link') && !event.target.closest('.project-image')) {
+                    // Close other expanded project cards
+                    document.querySelectorAll('.project-card.is-expanded').forEach(otherCard => {
+                        if (otherCard !== card) {
+                            otherCard.classList.remove('is-expanded');
+                        }
+                    });
                     card.classList.toggle('is-expanded');
                 }
             } else {
