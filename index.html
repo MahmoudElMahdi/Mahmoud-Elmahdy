@@ -969,32 +969,43 @@
         .profile-badge {
             display: inline-flex;
             align-items: center;
-            background: #111;
-            padding: 5px 12px 5px 6px;
-            border-radius: 4px;
+            background: var(--card-bg);
+            padding: 8px 20px;
+            border-radius: 50px;
             text-decoration: none;
-            transition: all 0.2s ease;
-            box-shadow: 0 2px 5px var(--shadow-medium);
-            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s cubic-bezier(.4,1.5,.5,1);
+            box-shadow: 0 4px 15px var(--shadow-light);
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
         [data-theme="light"] .profile-badge {
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
         .profile-badge:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px var(--shadow-medium);
-            opacity: 0.9;
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px var(--shadow-medium);
+            border-color: var(--accent-primary);
+        }
+
+        .profile-badge svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            fill: var(--text-primary);
+            transition: fill 0.3s ease;
         }
 
         .profile-badge img {
-            width: 18px;
-            height: 18px;
+            width: 20px;
+            height: 20px;
             object-fit: cover;
-            border-radius: 2px;
-            margin-right: 8px;
-            background-color: white;
+            border-radius: 4px;
+            margin-right: 10px;
+            background-color: transparent;
+            transition: transform 0.3s ease;
         }
 
         .badge-data365 img, .badge-maven img {
@@ -1002,21 +1013,40 @@
         }
 
         .profile-badge span {
-            color: #fff;
-            font-size: 0.85rem;
+            color: var(--text-primary);
+            font-size: 0.95rem;
             font-weight: 600;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             letter-spacing: 0.4px;
+            transition: color 0.3s ease;
         }
 
-        /* Specific Brand Colors */
-        .badge-linkedin { background-color: #0077b5; border-color: #0077b5; }
-        .badge-github { background-color: #181717; border-color: #181717; }
-        .badge-mostaql { background-color: #2386c8; border-color: #2386c8; }
-        .badge-khamsat { background-color: #f36c21; border-color: #f36c21; }
-        .badge-data365 { background-color: #2A2A2A; border-color: #f7b731; border-width: 1.5px; }
-        .badge-maven { background-color: #004b87; border-color: #004b87; }
-        .badge-hackerrank { background-color: #2ec866; border-color: #2ec866; }
+        /* Specific Brand Hover Colors */
+        .badge-linkedin:hover { border-color: #0077b5; box-shadow: 0 5px 15px rgba(0, 119, 181, 0.2); }
+        .badge-linkedin:hover span { color: #0077b5; }
+        .badge-linkedin:hover svg { fill: #0077b5; }
+
+        .badge-github:hover { border-color: #fff; box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1); }
+        [data-theme="light"] .badge-github:hover { border-color: #181717; box-shadow: 0 5px 15px rgba(24, 23, 23, 0.1); }
+        .badge-github:hover span { color: #fff; }
+        [data-theme="light"] .badge-github:hover span { color: #181717; }
+        .badge-github:hover svg { fill: #fff; }
+        [data-theme="light"] .badge-github:hover svg { fill: #181717; }
+
+        .badge-mostaql:hover { border-color: #2386c8; box-shadow: 0 5px 15px rgba(35, 134, 200, 0.2); }
+        .badge-mostaql:hover span { color: #2386c8; }
+
+        .badge-khamsat:hover { border-color: #f36c21; box-shadow: 0 5px 15px rgba(243, 108, 33, 0.2); }
+        .badge-khamsat:hover span { color: #f36c21; }
+
+        .badge-data365:hover { border-color: #f7b731; box-shadow: 0 5px 15px rgba(247, 183, 49, 0.2); }
+        .badge-data365:hover span { color: #f7b731; }
+
+        .badge-maven:hover { border-color: #004b87; box-shadow: 0 5px 15px rgba(0, 75, 135, 0.2); }
+        .badge-maven:hover span { color: #004b87; }
+
+        .badge-hackerrank:hover { border-color: #2ec866; box-shadow: 0 5px 15px rgba(46, 200, 102, 0.2); }
+        .badge-hackerrank:hover span { color: #2ec866; }
+        .badge-hackerrank:hover svg { fill: #2ec866; }
         /* General mobile improvements */
         @media (max-width: 768px) {
             .section {
@@ -3042,11 +3072,11 @@
             <p style="text-align: center; color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 30px;">Connect with me on various professional and learning platforms where I showcase my data analysis expertise.</p>
             <div class="profiles-badges-container">
                 <a href="https://www.linkedin.com/in/mahmoud-il-mahdy/" target="_blank" class="profile-badge badge-linkedin">
-                    <img src="Assets\Images\Website & Icons\linkedin.png" alt="LinkedIn">
+                    <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.28c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm13.5 10.28h-3v-4.5c0-1.08-.02-2.47-1.5-2.47-1.5 0-1.73 1.17-1.73 2.39v4.58h-3v-9h2.89v1.23h.04c.4-.75 1.38-1.54 2.84-1.54 3.04 0 3.6 2 3.6 4.59v4.72z"/></svg>
                     <span>LinkedIn</span>
                 </a>
                 <a href="https://github.com/MahmoudElMahdi" target="_blank" class="profile-badge badge-github">
-                    <img src="Assets\Images\Website & Icons\github.png" alt="GitHub">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.48 2.87 8.28 6.84 9.63.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.36-3.37-1.36-.45-1.18-1.1-1.5-1.1-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05A9.38 9.38 0 0 1 12 6.84c.85.004 1.71.12 2.51.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.07.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg>
                     <span>GitHub</span>
                 </a>
                 <a href="https://mostaql.com/u/MahmoudElMahdy1" target="_blank" class="profile-badge badge-mostaql">
@@ -3066,7 +3096,7 @@
                     <span>Maven Analytics</span>
                 </a>
                 <a href="https://www.hackerrank.com/profile/Mahmoud_Elmahdy" target="_blank" class="profile-badge badge-hackerrank">
-                    <img src="Assets\Images\Website & Icons\hacker_rank.png" alt="HackerRank">
+                    <svg viewBox="0 0 24 24"><path d="M11.984 0l-10.36 6v12l10.36 6 10.36-6V6l-10.36-6zm0 2.29l8.36 4.84v9.74l-8.36 4.84-8.36-4.84V7.13l8.36-4.84zm-3.86 5.86v3.25H15.8V8.15h1.94v7.7h-1.94v-2.8H8.12v2.8H6.18v-7.7h1.94z"/></svg>
                     <span>HackerRank</span>
                 </a>
             </div>
