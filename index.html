@@ -1330,11 +1330,11 @@
             display: none;
         }
 
-        .course-arrow-mobile {
+        .course-arrow-mobile, .skills-arrow-mobile {
             display: none;
         }
 
-        .course-details-mobile {
+        .course-details-mobile, .skill-details-mobile {
             display: contents;
         }
 
@@ -1761,6 +1761,65 @@
                 margin: 0 auto 5px auto !important;
                 height: 44px !important;
                 padding: 10px 25px !important;
+            }
+
+            /* Technical Skills Expandable System */
+            .skill-category {
+                display: grid !important;
+                grid-template-columns: 1fr auto !important;
+                padding: 18px 20px !important;
+                gap: 0 !important;
+                cursor: pointer;
+                align-items: center !important;
+                border-radius: 16px !important;
+                background: var(--bg-secondary) !important;
+            }
+
+            .skill-category h4 {
+                grid-column: 1 / 2 !important;
+                font-size: 1.1rem !important;
+                margin: 0 !important;
+            }
+
+            .skills-arrow-mobile {
+                display: flex !important;
+                grid-column: 2 / 3 !important;
+                color: var(--accent-primary);
+                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                background: var(--accent-primary)10;
+                padding: 6px;
+                border-radius: 50%;
+                margin-left: auto;
+            }
+
+            .skill-category.is-expanded .skills-arrow-mobile {
+                transform: rotate(180deg);
+                background: var(--accent-primary);
+                color: white;
+            }
+
+            .skill-details-mobile {
+                grid-column: 1 / 3 !important;
+                display: block !important;
+                max-height: 0;
+                opacity: 0;
+                overflow: hidden;
+                visibility: hidden;
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            .skill-category.is-expanded .skill-details-mobile {
+                max-height: 600px;
+                opacity: 1;
+                visibility: visible;
+                padding-top: 15px;
+            }
+
+            .skills-badges {
+                display: flex !important;
+                flex-wrap: wrap !important;
+                gap: 10px !important;
+                margin: 0 !important;
             }
 
             .validation-btn {
@@ -2911,60 +2970,84 @@
              <div class="skills-section">
                   <h4 style="color: var(--accent-primary); font-size: 1.4rem; margin-bottom: 20px; font-weight: 700;">Technical Skills</h4>
                   <div class="skills-grid">
-                      <div class="skill-category">
+                      <div class="skill-category" onclick="toggleCourseCard(this)">
                           <h4><span class="icon-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg></span> Database & Analytics</h4>
-                          <div class="skills-badges">
-                              <a href="projects.html?skill=SQL" class="skill-badge" style="--badge-color: #4479A1;"><svg fill="none" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>SQL</a>
-                              <a href="projects.html?skill=MySQL" class="skill-badge" style="--badge-color: #4479A1;"><i class="skill-icon icon-mysql"></i>MySQL</a>
-                              <a href="projects.html?skill=PostgreSQL" class="skill-badge" style="--badge-color: #4169E1;"><i class="skill-icon icon-postgresql"></i>PostgreSQL</a>
-                              <a href="projects.html?skill=Data%20Modeling" class="skill-badge" style="--badge-color: #232F3E;"><svg fill="none" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>Data Modeling</a>
-                              <a href="projects.html?skill=ETL%20Processes" class="skill-badge" style="--badge-color: #232F3E;"><svg fill="none" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>ETL Processes</a>
+                          <div class="skills-arrow-mobile">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                          </div>
+                          <div class="skill-details-mobile">
+                              <div class="skills-badges">
+                                  <a href="projects.html?skill=SQL" class="skill-badge" style="--badge-color: #4479A1;"><svg fill="none" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>SQL</a>
+                                  <a href="projects.html?skill=MySQL" class="skill-badge" style="--badge-color: #4479A1;"><i class="skill-icon icon-mysql"></i>MySQL</a>
+                                  <a href="projects.html?skill=PostgreSQL" class="skill-badge" style="--badge-color: #4169E1;"><i class="skill-icon icon-postgresql"></i>PostgreSQL</a>
+                                  <a href="projects.html?skill=Data%20Modeling" class="skill-badge" style="--badge-color: #232F3E;"><svg fill="none" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>Data Modeling</a>
+                                  <a href="projects.html?skill=ETL%20Processes" class="skill-badge" style="--badge-color: #232F3E;"><svg fill="none" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>ETL Processes</a>
+                              </div>
                           </div>
                       </div>
-                      <div class="skill-category">
+                      <div class="skill-category" onclick="toggleCourseCard(this)">
                           <h4><span class="icon-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></span> Programming</h4>
-                          <div class="skills-badges">
-                              <a href="projects.html?skill=Python" class="skill-badge" style="--badge-color: #3776AB;"><i class="skill-icon icon-python"></i>Python</a>
-                              <a href="projects.html?skill=Scikit-learn" class="skill-badge" style="--badge-color: #F7931E;"><i class="skill-icon icon-scikitlearn"></i>Scikit-learn</a>
-                              <a href="projects.html?skill=TensorFlow" class="skill-badge" style="--badge-color: #FF6F00;"><i class="skill-icon icon-tensorflow"></i>TensorFlow</a>
-                              <a href="projects.html?skill=Pandas" class="skill-badge" style="--badge-color: #150458;"><i class="skill-icon icon-pandas"></i>Pandas</a>
-                              <a href="projects.html?skill=NumPy" class="skill-badge" style="--badge-color: #013243;"><i class="skill-icon icon-numpy"></i>NumPy</a>
-                              <a href="projects.html?skill=Matplotlib" class="skill-badge" style="--badge-color: #11557c;"><svg fill="none" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Matplotlib</a>
-                              <a href="projects.html?skill=Seaborn" class="skill-badge" style="--badge-color: #4C72B0;"><svg fill="none" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Seaborn</a>
+                          <div class="skills-arrow-mobile">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                          </div>
+                          <div class="skill-details-mobile">
+                              <div class="skills-badges">
+                                  <a href="projects.html?skill=Python" class="skill-badge" style="--badge-color: #3776AB;"><i class="skill-icon icon-python"></i>Python</a>
+                                  <a href="projects.html?skill=Scikit-learn" class="skill-badge" style="--badge-color: #F7931E;"><i class="skill-icon icon-scikitlearn"></i>Scikit-learn</a>
+                                  <a href="projects.html?skill=TensorFlow" class="skill-badge" style="--badge-color: #FF6F00;"><i class="skill-icon icon-tensorflow"></i>TensorFlow</a>
+                                  <a href="projects.html?skill=Pandas" class="skill-badge" style="--badge-color: #150458;"><i class="skill-icon icon-pandas"></i>Pandas</a>
+                                  <a href="projects.html?skill=NumPy" class="skill-badge" style="--badge-color: #013243;"><i class="skill-icon icon-numpy"></i>NumPy</a>
+                                  <a href="projects.html?skill=Matplotlib" class="skill-badge" style="--badge-color: #11557c;"><svg fill="none" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Matplotlib</a>
+                                  <a href="projects.html?skill=Seaborn" class="skill-badge" style="--badge-color: #4C72B0;"><svg fill="none" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Seaborn</a>
+                              </div>
                           </div>
                       </div>
-                      <div class="skill-category">
+                      <div class="skill-category" onclick="toggleCourseCard(this)">
                           <h4><span class="icon-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg></span> Visualization</h4>
-                          <div class="skills-badges">
-                              <a href="projects.html?skill=Excel" class="skill-badge" style="--badge-color: #217346;"><i class="skill-icon icon-excel"></i>Excel</a>
-                              <a href="projects.html?skill=Power%20BI" class="skill-badge" style="--badge-color: #F2C811;"><i class="skill-icon icon-powerbi"></i>Power BI</a>
-                              <a href="projects.html?skill=Tableau" class="skill-badge" style="--badge-color: #E97627;"><i class="skill-icon icon-tableau"></i>Tableau</a>
-                              <a href="projects.html?skill=Dashboard%20Design" class="skill-badge" style="--badge-color: #7952b3;"><svg fill="none" viewBox="0 0 24 24"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-4"/></svg>Dashboard Design</a>
-                              <a href="projects.html?skill=Reporting" class="skill-badge" style="--badge-color: #7952b3;"><svg fill="none" viewBox="0 0 24 24"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-4"/></svg>Reporting</a>
+                          <div class="skills-arrow-mobile">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                          </div>
+                          <div class="skill-details-mobile">
+                              <div class="skills-badges">
+                                  <a href="projects.html?skill=Excel" class="skill-badge" style="--badge-color: #217346;"><i class="skill-icon icon-excel"></i>Excel</a>
+                                  <a href="projects.html?skill=Power%20BI" class="skill-badge" style="--badge-color: #F2C811;"><i class="skill-icon icon-powerbi"></i>Power BI</a>
+                                  <a href="projects.html?skill=Tableau" class="skill-badge" style="--badge-color: #E97627;"><i class="skill-icon icon-tableau"></i>Tableau</a>
+                                  <a href="projects.html?skill=Dashboard%20Design" class="skill-badge" style="--badge-color: #7952b3;"><svg fill="none" viewBox="0 0 24 24"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-4"/></svg>Dashboard Design</a>
+                                  <a href="projects.html?skill=Reporting" class="skill-badge" style="--badge-color: #7952b3;"><svg fill="none" viewBox="0 0 24 24"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-4"/></svg>Reporting</a>
+                              </div>
                           </div>
                       </div>
-                      <div class="skill-category">
+                      <div class="skill-category" onclick="toggleCourseCard(this)">
                           <h4><span class="icon-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></span> Automation</h4>
-                          <div class="skills-badges">
-                              <a href="projects.html?skill=Process%20Automation" class="skill-badge" style="--badge-color: #d93f0b;"><svg fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>Process Automation</a>
-                              <a href="projects.html?skill=Report%20Automation" class="skill-badge" style="--badge-color: #d93f0b;"><svg fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>Report Automation</a>
-                              <a href="projects.html?skill=Data%20Pipeline" class="skill-badge" style="--badge-color: #d93f0b;"><svg fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>Data Pipeline</a>
-                              <a href="projects.html?skill=Workflow%20Optimization" class="skill-badge" style="--badge-color: #d93f0b;"><svg fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>Workflow Optimization</a>
+                          <div class="skills-arrow-mobile">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                          </div>
+                          <div class="skill-details-mobile">
+                              <div class="skills-badges">
+                                  <a href="projects.html?skill=Process%20Automation" class="skill-badge" style="--badge-color: #d93f0b;"><svg fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>Process Automation</a>
+                                  <a href="projects.html?skill=Report%20Automation" class="skill-badge" style="--badge-color: #d93f0b;"><svg fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>Report Automation</a>
+                                  <a href="projects.html?skill=Data%20Pipeline" class="skill-badge" style="--badge-color: #d93f0b;"><svg fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>Data Pipeline</a>
+                                  <a href="projects.html?skill=Workflow%20Optimization" class="skill-badge" style="--badge-color: #d93f0b;"><svg fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>Workflow Optimization</a>
+                              </div>
                           </div>
                       </div>
-                      <div class="skill-category">
+                      <div class="skill-category" onclick="toggleCourseCard(this)">
                         <h4><span class="icon-bg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></span> Soft Skills</h4>
-                        <div class="skills-badges">
-                            <span class="skill-badge" style="--badge-color: #F37626;"><svg fill="none" viewBox="0 0 24 24"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A6 6 0 1 0 7.5 11.5c.76.76 1.23 1.52 1.41 2.5"/></svg>Analytical Thinking</span>
-                            <span class="skill-badge" style="--badge-color: #6f42c1;"><svg fill="none" viewBox="0 0 24 24"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A6 6 0 1 0 7.5 11.5c.76.76 1.23 1.52 1.41 2.5"/></svg>Problem-Solving</span>
-                            <span class="skill-badge" style="--badge-color: #007bff;"><svg fill="none" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Communication</span>
-                            <span class="skill-badge" style="--badge-color: #17a2b8;"><svg fill="none" viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>Adaptability</span>
-                            <span class="skill-badge" style="--badge-color: #e83e8c;"><svg fill="none" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Resilience</span>
-                            <span class="skill-badge" style="--badge-color: #28a745;"><svg fill="none" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Relationship Management</span>
-                            <span class="skill-badge" style="--badge-color: #ffc107;"><svg fill="none" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>Well-Being</span>
+                        <div class="skills-arrow-mobile">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </div>
-                    </div>
-                  </div>
+                        <div class="skill-details-mobile">
+                            <div class="skills-badges">
+                                <span class="skill-badge" style="--badge-color: #F37626;"><svg fill="none" viewBox="0 0 24 24"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A6 6 0 1 0 7.5 11.5c.76.76 1.23 1.52 1.41 2.5"/></svg>Analytical Thinking</span>
+                                <span class="skill-badge" style="--badge-color: #6f42c1;"><svg fill="none" viewBox="0 0 24 24"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A6 6 0 1 0 7.5 11.5c.76.76 1.23 1.52 1.41 2.5"/></svg>Problem-Solving</span>
+                                <span class="skill-badge" style="--badge-color: #007bff;"><svg fill="none" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Communication</span>
+                                <span class="skill-badge" style="--badge-color: #17a2b8;"><svg fill="none" viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>Adaptability</span>
+                                <span class="skill-badge" style="--badge-color: #e83e8c;"><svg fill="none" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Resilience</span>
+                                <span class="skill-badge" style="--badge-color: #28a745;"><svg fill="none" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Relationship Management</span>
+                                <span class="skill-badge" style="--badge-color: #ffc107;"><svg fill="none" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>Well-Being</span>
+                            </div>
+                        </div>
+                      </div>
                   </div>
             </div>
         </div>
