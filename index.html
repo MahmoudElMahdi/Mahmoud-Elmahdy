@@ -1016,7 +1016,7 @@
         .profile-badge {
             display: inline-flex;
             align-items: center;
-            background: var(--card-bg);
+            background: color-mix(in srgb, var(--badge-color, var(--text-primary)) 10%, var(--card-bg));
             padding: 8px 20px;
             border-radius: 50px;
             text-decoration: none;
@@ -1034,7 +1034,8 @@
         .profile-badge:hover {
             transform: translateY(-3px) scale(1.02);
             box-shadow: 0 8px 25px var(--shadow-medium);
-            border-color: var(--accent-primary);
+            border-color: var(--badge-color, var(--accent-primary));
+            background: color-mix(in srgb, var(--badge-color, var(--text-primary)) 20%, var(--card-bg));
         }
 
         .profile-badge svg {
@@ -1067,33 +1068,18 @@
             transition: color 0.3s ease;
         }
 
-        /* Specific Brand Hover Colors */
-        .badge-linkedin:hover { border-color: #0077b5; box-shadow: 0 5px 15px rgba(0, 119, 181, 0.2); }
-        .badge-linkedin:hover span { color: #0077b5; }
-        .badge-linkedin:hover svg { fill: #0077b5; }
+        /* Profile Hover Colors Unified */
+        .profile-badge:hover span { color: var(--badge-color, var(--text-primary)); }
+        .profile-badge:hover svg { fill: var(--badge-color, var(--text-primary)); }
 
-        .badge-github:hover { border-color: #fff; box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1); }
-        body:not([data-theme="dark"]) .badge-github:hover { border-color: #181717; box-shadow: 0 5px 15px rgba(24, 23, 23, 0.1); }
-        .badge-github:hover span { color: #fff; }
-        body:not([data-theme="dark"]) .badge-github:hover span { color: #181717; }
-        .badge-github:hover svg { fill: #fff; }
-        body:not([data-theme="dark"]) .badge-github:hover svg { fill: #181717; }
-
-        .badge-mostaql:hover { border-color: #2386c8; box-shadow: 0 5px 15px rgba(35, 134, 200, 0.2); }
-        .badge-mostaql:hover span { color: #2386c8; }
-
-        .badge-khamsat:hover { border-color: #f36c21; box-shadow: 0 5px 15px rgba(243, 108, 33, 0.2); }
-        .badge-khamsat:hover span { color: #f36c21; }
-
-        .badge-data365:hover { border-color: #f7b731; box-shadow: 0 5px 15px rgba(247, 183, 49, 0.2); }
-        .badge-data365:hover span { color: #f7b731; }
-
-        .badge-maven:hover { border-color: #004b87; box-shadow: 0 5px 15px rgba(0, 75, 135, 0.2); }
-        .badge-maven:hover span { color: #004b87; }
-
-        .badge-hackerrank:hover { border-color: #2ec866; box-shadow: 0 5px 15px rgba(46, 200, 102, 0.2); }
-        .badge-hackerrank:hover span { color: #2ec866; }
-        .badge-hackerrank:hover svg { fill: #2ec866; }
+        .badge-linkedin { --badge-color: #0077b5; }
+        .badge-github { --badge-color: #ffffff; }
+        body:not([data-theme="dark"]) .badge-github { --badge-color: #181717; }
+        .badge-mostaql { --badge-color: #2386c8; }
+        .badge-khamsat { --badge-color: #f36c21; }
+        .badge-data365 { --badge-color: #f7b731; }
+        .badge-maven { --badge-color: #004b87; }
+        .badge-hackerrank { --badge-color: #2ec866; }
         /* General mobile improvements */
         @media (max-width: 768px) {
             .section {
@@ -2105,30 +2091,42 @@
             justify-content: center;
             flex: 1;
             min-width: 100px;
-            height: 44px;
-            padding: 0 10px;
-            font-size: 0.95rem;
+            height: 48px;
+            padding: 0 20px;
+            font-size: 1rem;
             font-weight: 600;
             border-radius: 50px;
-            background: linear-gradient(135deg, var(--accent-primary)20, var(--accent-secondary)20);
-            border: 2px solid var(--accent-primary);
-            color: var(--accent-primary);
+            background: color-mix(in srgb, var(--badge-color, var(--text-primary)) 10%, var(--card-bg));
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
             text-decoration: none;
-            transition: all 0.3s ease;
-            outline: 2px solid transparent;
-            outline-offset: 2px;
+            transition: all 0.3s cubic-bezier(.4,1.5,.5,1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px var(--shadow-light);
             margin-bottom: 0;
             box-sizing: border-box;
             white-space: nowrap;
         }
-        .contact-link:hover {
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            color: white;
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 35px var(--accent-primary)40;
-            outline: 2px solid var(--accent-primary);
-            outline-offset: 3px;
+
+        body:not([data-theme="dark"]) .contact-link {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
+
+        .contact-link:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px var(--shadow-medium);
+            border-color: var(--badge-color, var(--accent-primary));
+            background: color-mix(in srgb, var(--badge-color, var(--text-primary)) 20%, var(--card-bg));
+            color: var(--badge-color, var(--text-primary));
+        }
+
+        .contact-link:hover svg {
+            color: var(--badge-color, var(--text-primary));
+        }
+        
+        .badge-email { --badge-color: #EA4335; }
+
         @media (max-width: 600px) {
             .contact-links {
                 flex-direction: column;
@@ -2694,14 +2692,15 @@
         }
 
         .contact-link svg {
-            width: 28px;
-            height: 28px;
-            min-width: 28px;
-            min-height: 28px;
+            width: 24px;
+            height: 24px;
+            min-width: 24px;
+            min-height: 24px;
             margin-right: 12px !important;
             vertical-align: middle;
             display: inline-block;
-            color: var(--accent-primary);
+            color: var(--text-primary);
+            transition: all 0.3s cubic-bezier(.4,1.5,.5,1);
         }
     </style>
 </head>
@@ -3460,15 +3459,15 @@
                     <h2 class="section-title" style="text-align: left;">Let's Connect</h2>
                     <p style="text-align: left; margin-bottom: 30px; font-size: 1.1rem; line-height: 1.6; color: var(--text-secondary);">Ready to transform your data into actionable insights? Let's discuss how we can work together.</p>
                     <div class="contact-links" style="margin-top: 0; justify-content: flex-start;">
-                        <a href="mailto:mahmoud.ilmahdy1@gmail.com" class="contact-link">
+                        <a href="mailto:mahmoud.ilmahdy1@gmail.com" class="contact-link badge-email">
                             <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,6 12,13 2,6"/></svg>
                             Email
                         </a>
-                        <a href="https://www.linkedin.com/in/mahmoud-il-mahdy/" class="contact-link" target="_blank">
+                        <a href="https://www.linkedin.com/in/mahmoud-il-mahdy/" class="contact-link badge-linkedin" target="_blank">
                             <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.28c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm13.5 10.28h-3v-4.5c0-1.08-.02-2.47-1.5-2.47-1.5 0-1.73 1.17-1.73 2.39v4.58h-3v-9h2.89v1.23h.04c.4-.75 1.38-1.54 2.84-1.54 3.04 0 3.6 2 3.6 4.59v4.72z"/></svg>
                             LinkedIn
                         </a>
-                        <a href="https://github.com/MahmoudElMahdi" class="contact-link" target="_blank">
+                        <a href="https://github.com/MahmoudElMahdi" class="contact-link badge-github" target="_blank">
                             <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.48 2.87 8.28 6.84 9.63.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.36-3.37-1.36-.45-1.18-1.1-1.5-1.1-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05A9.38 9.38 0 0 1 12 6.84c.85.004 1.71.12 2.51.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.07.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg>
                             GitHub
                         </a>
