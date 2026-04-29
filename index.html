@@ -1330,11 +1330,11 @@
             display: none;
         }
 
-        .course-arrow-mobile, .skills-arrow-mobile, .experience-arrow-mobile {
+        .course-arrow-mobile, .skills-arrow-mobile, .experience-arrow-mobile, .project-arrow-mobile {
             display: none;
         }
 
-        .course-details-mobile, .skill-details-mobile, .experience-details-mobile {
+        .course-details-mobile, .skill-details-mobile, .experience-details-mobile, .project-details-mobile {
             display: contents;
         }
 
@@ -1909,6 +1909,67 @@
                 top: 8px !important;
                 width: 5px !important;
                 height: 5px !important;
+            }
+
+            /* Projects Expandable System */
+            .project-card {
+                display: grid !important;
+                grid-template-columns: 1fr auto !important;
+                padding: 18px 20px !important;
+                gap: 0 !important;
+                cursor: pointer;
+                background: var(--bg-secondary) !important;
+                border-radius: 20px !important;
+                margin-bottom: 10px !important;
+                align-items: center !important;
+            }
+
+            .project-card h3 {
+                grid-column: 1 / 2 !important;
+                font-size: 1.15rem !important;
+                margin: 0 !important;
+            }
+
+            .project-arrow-mobile {
+                display: flex !important;
+                grid-column: 2 / 3 !important;
+                color: var(--accent-primary);
+                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                background: var(--accent-primary)10;
+                padding: 6px;
+                border-radius: 50%;
+                margin-left: auto;
+            }
+
+            .project-card.is-expanded .project-arrow-mobile {
+                transform: rotate(180deg);
+                background: var(--accent-primary);
+                color: white;
+            }
+
+            .project-details-mobile {
+                grid-column: 1 / 3 !important;
+                display: block !important;
+                max-height: 0;
+                opacity: 0;
+                overflow: hidden;
+                visibility: hidden;
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            .project-card.is-expanded .project-details-mobile {
+                max-height: 2000px;
+                opacity: 1;
+                visibility: visible;
+                padding-top: 15px;
+            }
+
+            .project-card .project-image {
+                margin-bottom: 15px !important;
+            }
+
+            .project-card .project-links {
+                margin-top: 15px !important;
             }
 
             .validation-btn {
@@ -3203,140 +3264,171 @@
         </div>
         <div class="projects-grid">
             <!-- Project 1 -->
-            <div class="project-card" onclick="openGallery('project4')" data-project="project4" data-images="Assets\Images\Projects\Data Warehous\High Level Architecture.png,Assets\Images\Projects\Data Warehous\data_model.drawio.png,Assets\Images\Projects\Data Warehous\data_flow.drawio.png,Assets\Images\Projects\Data Warehous\data_integration.drawio.png" data-tech="sql">
-                <div class="project-image">
-                    <img src="Assets\Images\Projects\Data Warehous\High Level Architecture.png" alt="SQL Data Warehouse Project" onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=Data+Warehouse+Project';">
+            <div class="project-card" onclick="handleProjectClick(this, event, 'project4')" data-project="project4" data-images="Assets\Images\Projects\Data Warehous\High Level Architecture.png,Assets\Images\Projects\Data Warehous\data_model.drawio.png,Assets\Images\Projects\Data Warehous\data_flow.drawio.png,Assets\Images\Projects\Data Warehous\data_integration.drawio.png" data-tech="sql">
+                <h3>Data Warehouse and Analytics Project</h3>
+                <div class="project-arrow-mobile">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                 </div>
-                <div class="project-content">
-                    <h3>Data Warehouse and Analytics Project</h3>
-                    <p>Building a modern data warehouse with SQL Server using Medallion Architecture (Bronze, Silver, Gold layers). Includes ETL processes, data modeling, and analytics for customer behavior, product performance, and sales trends.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">SQL Server</span>
-                        <span class="tech-tag">ETL</span>
-                        <span class="tech-tag">Data Modeling</span>
-                        <span class="tech-tag">Data Analytics</span>
-                        <span class="tech-tag">Data Warehouse</span>
+                <div class="project-details-mobile">
+                    <div class="project-image" onclick="openGallery('project4'); event.stopPropagation();">
+                        <img src="Assets\Images\Projects\Data Warehous\High Level Architecture.png" alt="SQL Data Warehouse Project" onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=Data+Warehouse+Project';">
                     </div>
-                    <div class="project-links">
-                        <a href="https://github.com/MahmoudElMahdi/sql-data-warehouse-project" class="project-link" onclick="event.stopPropagation()">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                            GitHub
-                        </a>
+                    <div class="project-content">
+                        <p>Building a modern data warehouse with SQL Server using Medallion Architecture (Bronze, Silver, Gold layers). Includes ETL processes, data modeling, and analytics for customer behavior, product performance, and sales trends.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">SQL Server</span>
+                            <span class="tech-tag">ETL</span>
+                            <span class="tech-tag">Data Modeling</span>
+                            <span class="tech-tag">Data Analytics</span>
+                            <span class="tech-tag">Data Warehouse</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/MahmoudElMahdi/sql-data-warehouse-project" class="project-link" onclick="event.stopPropagation()">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                                GitHub
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
             <!-- Project 2 -->
-            <div class="project-card" onclick="openGallery('project1')" data-project="project1" data-images="Assets/Images/Projects/Sales Analytics Dashboard/1.jpg,Assets/Images/Projects/Sales Analytics Dashboard/2.png,Assets/Images/Projects/Sales Analytics Dashboard/3.png" data-tech="python sql">
-                <div class="project-image">
-                    <img src="Assets/Images/Projects/Sales Analytics Dashboard/1.jpg" alt="Sales Analytics Dashboard" onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=Project+1';">
+            <div class="project-card" onclick="handleProjectClick(this, event, 'project1')" data-project="project1" data-images="Assets/Images/Projects/Sales Analytics Dashboard/1.jpg,Assets/Images/Projects/Sales Analytics Dashboard/2.png,Assets/Images/Projects/Sales Analytics Dashboard/3.png" data-tech="python sql">
+                <h3>Sales Analytics Dashboard</h3>
+                <div class="project-arrow-mobile">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                 </div>
-                <div class="project-content">
-                    <h3>Sales Analytics Dashboard</h3>
-                    <p>Comprehensive sales performance dashboard featuring KPI tracking and trend analysis, allowing us to identify trends and determine which products are the most profitable.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Power BI</span>
-                        <span class="tech-tag">ETL</span>
-                        <span class="tech-tag">Dax</span>
-                        <span class="tech-tag">Data Modeling</span>
+                <div class="project-details-mobile">
+                    <div class="project-image" onclick="openGallery('project1'); event.stopPropagation();">
+                        <img src="Assets/Images/Projects/Sales Analytics Dashboard/1.jpg" alt="Sales Analytics Dashboard" onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=Project+1';">
                     </div>
-                    <div class="project-links">
+                    <div class="project-content">
+                        <p>Comprehensive sales performance dashboard featuring KPI tracking and trend analysis, allowing us to identify trends and determine which products are the most profitable.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Power BI</span>
+                            <span class="tech-tag">ETL</span>
+                            <span class="tech-tag">Dax</span>
+                            <span class="tech-tag">Data Modeling</span>
+                        </div>
+                        <div class="project-links">
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Project 3 -->
-            <div class="project-card" onclick="openGallery('project2')" data-project="project2" data-images="Assets\Images\Projects\Big Mart Sales Dashboard\1.jpeg,Assets\Images\Projects\Big Mart Sales Dashboard\2.jpeg" data-tech="powerbi">
-                <div class="project-image">
-                    <img src="Assets\Images\Projects\Big Mart Sales Dashboard\1.jpeg" alt="Customer Segmentation ML" onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=Project+2';">
+            <div class="project-card" onclick="handleProjectClick(this, event, 'project2')" data-project="project2" data-images="Assets\Images\Projects\Big Mart Sales Dashboard\1.jpeg,Assets\Images\Projects\Big Mart Sales Dashboard\2.jpeg" data-tech="powerbi">
+                <h3>Big Mart Sales Dashboard</h3>
+                <div class="project-arrow-mobile">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                 </div>
-                <div class="project-content">
-                    <h3>Big Mart Sales Dashboard</h3>
-                    <p>An interactive dashboard analyzing Big Mart's sales data to uncover performance trends and identify the primary drivers of revenue across different products and outlets.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Power BI</span>
-                        <span class="tech-tag">ETL</span>
-                        <span class="tech-tag">Dax</span>
-                        <span class="tech-tag">Data Modeling</span>
+                <div class="project-details-mobile">
+                    <div class="project-image" onclick="openGallery('project2'); event.stopPropagation();">
+                        <img src="Assets\Images\Projects\Big Mart Sales Dashboard\1.jpeg" alt="Customer Segmentation ML" onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=Project+2';">
                     </div>
-                    <div class="project-links">
-                        <a href="https://mavenanalytics.io/project/23470" class="project-link" onclick="event.stopPropagation()">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                            Report
-                        </a>
-                        <a href="https://github.com/MahmoudElMahdi/CognoRise-InfoTech-Internship-Projects/tree/main/Project%203%20-%20BIGMART%20SALES%20DATA" class="project-link" onclick="event.stopPropagation()">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                            GitHub
-                        </a>
+                    <div class="project-content">
+                        <p>An interactive dashboard analyzing Big Mart's sales data to uncover performance trends and identify the primary drivers of revenue across different products and outlets.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Power BI</span>
+                            <span class="tech-tag">ETL</span>
+                            <span class="tech-tag">Dax</span>
+                            <span class="tech-tag">Data Modeling</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://mavenanalytics.io/project/23470" class="project-link" onclick="event.stopPropagation()">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                                Report
+                            </a>
+                            <a href="https://github.com/MahmoudElMahdi/CognoRise-InfoTech-Internship-Projects/tree/main/Project%203%20-%20BIGMART%20SALES%20DATA" class="project-link" onclick="event.stopPropagation()">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                                GitHub
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Project 4 -->
-            <div class="project-card" onclick="openGallery('project3')" data-project="project3" data-images="Assets\Images\Projects\Finding Donors for Charity\1.png,Assets\Images\Projects\Finding Donors for Charity\2.PNG" data-tech="python">
-                <div class="project-image">
-                    <img src="Assets\Images\Projects\Finding Donors for Charity\1.png" alt="Financial Report Automation" onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=Project+3';">
+            <div class="project-card" onclick="handleProjectClick(this, event, 'project3')" data-project="project3" data-images="Assets\Images\Projects\Finding Donors for Charity\1.png,Assets\Images\Projects\Finding Donors for Charity\2.PNG" data-tech="python">
+                <h3>Finding Donors for Charity</h3>
+                <div class="project-arrow-mobile">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                 </div>
-                <div class="project-content">
-                    <h3>Finding Donors for Charity</h3>
-                    <p>This project involved a comparative analysis of supervised learning algorithms from the scikit-learn library. I developed a framework to evaluate and contrast the performance of various models, providing insights into their practical application and the critical skill of selecting the most suitable algorithm for a given machine learning task.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Scikit-learn</span>
-                        <span class="tech-tag">Pandas</span>
-                        <span class="tech-tag">NumPy</span>
-                        <span class="tech-tag">Matplotlib</span>
-                        <span class="tech-tag">Feature Engineering</span>
+                <div class="project-details-mobile">
+                    <div class="project-image" onclick="openGallery('project3'); event.stopPropagation();">
+                        <img src="Assets\Images\Projects\Finding Donors for Charity\1.png" alt="Financial Report Automation" onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=Project+3';">
                     </div>
-                    <div class="project-links">
-                        <a href="https://github.com/MahmoudElMahdi/Finding-Donors-for-CharityML/tree/main" class="project-link" onclick="event.stopPropagation()">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                            GitHub
-                        </a>
+                    <div class="project-content">
+                        <p>This project involved a comparative analysis of supervised learning algorithms from the scikit-learn library. I developed a framework to evaluate and contrast the performance of various models, providing insights into their practical application and the critical skill of selecting the most suitable algorithm for a given machine learning task.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Scikit-learn</span>
+                            <span class="tech-tag">Pandas</span>
+                            <span class="tech-tag">NumPy</span>
+                            <span class="tech-tag">Matplotlib</span>
+                            <span class="tech-tag">Feature Engineering</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/MahmoudElMahdi/Finding-Donors-for-CharityML/tree/main" class="project-link" onclick="event.stopPropagation()">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                                GitHub
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
             
             <!-- Project 5 - Omnichannel Digital Marketing Dashboard -->
-            <div class="project-card" onclick="openGallery('project_omnichannel')" data-project="project_omnichannel" data-images="Assets/Images/Projects/Omnichannel Digital Marketing & Paid Ads Dashboard (Travel & Tourism)/1.png,Assets/Images/Projects/Omnichannel Digital Marketing & Paid Ads Dashboard (Travel & Tourism)/2.png,Assets/Images/Projects/Omnichannel Digital Marketing & Paid Ads Dashboard (Travel & Tourism)/3.png,Assets/Images/Projects/Omnichannel Digital Marketing & Paid Ads Dashboard (Travel & Tourism)/4.png" data-tech="excel">
-                <div class="project-image">
-                    <img src="Assets/Images/Projects/Omnichannel Digital Marketing & Paid Ads Dashboard (Travel & Tourism)/1.png" alt="Omnichannel Digital Marketing & Paid Ads Dashboard">
+            <div class="project-card" onclick="handleProjectClick(this, event, 'project_omnichannel')" data-project="project_omnichannel" data-images="Assets/Images/Projects/Omnichannel Digital Marketing & Paid Ads Dashboard (Travel & Tourism)/1.png,Assets/Images/Projects/Omnichannel Digital Marketing & Paid Ads Dashboard (Travel & Tourism)/2.png,Assets/Images/Projects/Omnichannel Digital Marketing & Paid Ads Dashboard (Travel & Tourism)/3.png,Assets/Images/Projects/Omnichannel Digital Marketing & Paid Ads Dashboard (Travel & Tourism)/4.png" data-tech="excel">
+                <h3>Omnichannel Marketing Dashboard</h3>
+                <div class="project-arrow-mobile">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                 </div>
-                <div class="project-content">
-                    <h3>Omnichannel Digital Marketing & Paid Ads Dashboard</h3>
-                    <p>A comprehensive, multi-tab Excel dashboard consolidating fragmented marketing data (Google Ads, Social Media, SEO, and Blog) for a travel agency, enabling data-driven budget reallocation to maximize ROI.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Advanced Excel</span>
-                        <span class="tech-tag">Data Consolidation</span>
-                        <span class="tech-tag">Data Modeling</span>
-                        <span class="tech-tag">UI/UX Design</span>
+                <div class="project-details-mobile">
+                    <div class="project-image" onclick="openGallery('project_omnichannel'); event.stopPropagation();">
+                        <img src="Assets/Images/Projects/Omnichannel Digital Marketing & Paid Ads Dashboard (Travel & Tourism)/1.png" alt="Omnichannel Marketing Dashboard" onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=Omnichannel+Dashboard';">
                     </div>
-                    <div class="project-links">
+                    <div class="project-content">
+                        <p>An interactive Excel dashboard analyzing omnichannel digital marketing performance and paid advertising metrics specifically tailored for the travel and tourism industry.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Excel</span>
+                            <span class="tech-tag">Marketing Analytics</span>
+                            <span class="tech-tag">Paid Ads</span>
+                            <span class="tech-tag">Dashboard Design</span>
+                        </div>
+                        <div class="project-links">
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Project 6 -->
-            <div class="project-card" onclick="openGallery('project15')" data-project="project15" data-images="Assets/Images/Projects/SQL-User-Journey-Analysis/SQL-User-Journey-Analysis.png" data-tech="sql">
-                <div class="project-image">
-                    <img src="Assets/Images/Projects/SQL-User-Journey-Analysis/SQL-User-Journey-Analysis.png" alt="SQL User Journey Analysis">
+            <div class="project-card" onclick="handleProjectClick(this, event, 'project_sql_journey')" data-project="project_sql_journey" data-images="Assets/Images/Projects/SQL-User-Journey-Analysis/SQL-User-Journey-Analysis.png" data-tech="sql">
+                <h3>SQL User Journey Analysis</h3>
+                <div class="project-arrow-mobile">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                 </div>
-                <div class="project-content">
-                    <h3>SQL User Journey Analysis</h3>
-                    <p>An advanced MySQL project extracting and concatenating website user journeys for paying customers to analyze conversion funnels. Built using CTEs, Window Functions, and GROUP_CONCAT.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">MySQL</span>
-                        <span class="tech-tag">Window Functions</span>
-                        <span class="tech-tag">CTEs</span>
-                        <span class="tech-tag">Data Analysis</span>
+                <div class="project-details-mobile">
+                    <div class="project-image" onclick="openGallery('project_sql_journey'); event.stopPropagation();">
+                        <img src="Assets/Images/Projects/SQL-User-Journey-Analysis/SQL-User-Journey-Analysis.png" alt="SQL User Journey Analysis" onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=SQL+Analysis';">
                     </div>
-                    <div class="project-links">
-                        <a href="https://github.com/MahmoudElMahdi/SQL-User-Journey-Analysis" class="project-link" onclick="event.stopPropagation()">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                            GitHub
-                        </a>
+                    <div class="project-content">
+                        <p>An advanced MySQL project extracting and concatenating website user journeys for paying customers to analyze conversion funnels. Built using CTEs, Window Functions, and GROUP_CONCAT.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">Window Functions</span>
+                            <span class="tech-tag">CTEs</span>
+                            <span class="tech-tag">Data Analysis</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/MahmoudElMahdi/SQL-User-Journey-Analysis" class="project-link" onclick="event.stopPropagation()">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                                GitHub
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
+
             
         </div>
         
@@ -4341,6 +4433,17 @@
         function toggleCourseCard(card) {
             if (window.innerWidth <= 768) {
                 card.classList.toggle('is-expanded');
+            }
+        }
+
+        function handleProjectClick(card, event, projectId) {
+            if (window.innerWidth <= 768) {
+                // On mobile, only toggle if the click is on the header or the card itself (not links)
+                if (!event.target.closest('.project-link') && !event.target.closest('.project-image')) {
+                    card.classList.toggle('is-expanded');
+                }
+            } else {
+                openGallery(projectId);
             }
         }
     </script>
