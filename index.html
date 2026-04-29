@@ -509,14 +509,16 @@
         }
 
         .cta-button {
-            display: inline-block;
-            padding: 18px 45px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 24px;
             background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
             color: #ffffff;
             text-decoration: none;
             border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.1rem;
+            font-weight: 600;
+            font-size: 0.95rem;
             transition: all 0.4s ease;
             animation: fadeInUp 1.2s ease 0.9s both;
             position: relative;
@@ -928,13 +930,13 @@
         }
 
         .projects-btn {
-            padding: 16px 48px;
+            padding: 10px 24px;
             background: linear-gradient(135deg, var(--accent-primary) 60%, var(--accent-secondary) 100%);
             color: #ffffff;
             text-decoration: none;
-            border-radius: 32px;
-            font-size: 1.15rem;
-            font-weight: 700;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
             transition: all 0.3s cubic-bezier(.4,1.5,.5,1);
             box-shadow: 0 4px 24px 0 var(--shadow-medium), 0 1.5px 6px 0 var(--accent-primary)10;
             border: 2px solid var(--accent-primary);
@@ -2977,23 +2979,22 @@
             }
             .projects-btn {
                 width: 100%;
-                font-size: 1.15rem;
-                padding: 18px 0;
+                font-size: 0.95rem;
+                padding: 10px 0;
                 justify-content: center;
                 align-items: center;
                 display: flex;
             }
             .projects-btn svg {
-                width: 28px;
-                height: 28px;
-                margin-right: 12px;
+                width: 20px;
+                height: 20px;
+                margin-right: 10px;
             }
         }
 
         @media (max-width: 600px) {
             .project-buttons .projects-btn {
-                padding-left: 32px;
-                padding-right: 32px;
+                padding: 10px 24px;
             }
         }
 
