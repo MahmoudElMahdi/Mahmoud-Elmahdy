@@ -574,46 +574,7 @@
             }
         }
 
-        @media (max-width: 768px) {
-            .projects-grid {
-                grid-template-columns: 1fr !important;
-                gap: 16px;
-                width: 100%;
-            }
-            .project-card {
-                min-width: 0;
-                width: 100%;
-                box-sizing: border-box;
-                padding: 20px 18px 18px;
-            }
-            .section {
-                padding: 100px 12px 20px 12px;
-            }
-            .section-title {
-                font-size: 2.2rem;
-                margin-bottom: 25px;
-            }
-            .modal-content {
-                padding: 10px;
-                max-width: 98vw;
-            }
-            .modal-image {
-                max-height: 45vh;
-            }
-            .nav-btn {
-                width: 36px;
-                height: 36px;
-                font-size: 18px;
-                top: 60%;
-            }
-            .close {
-                width: 32px;
-                height: 32px;
-                font-size: 18px;
-                top: -10px;
-                right: -10px;
-            }
-        }
+
 
         .project-card {
             background: var(--card-bg);
@@ -639,6 +600,14 @@
         /* Hide the old hero image div */
         .project-image {
             display: none;
+        }
+
+        .project-arrow-mobile {
+            display: none;
+        }
+
+        .project-details-mobile {
+            display: contents;
         }
 
         .project-content {
@@ -1163,6 +1132,139 @@
             }
         }
 
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr !important;
+                gap: 16px;
+                width: 100%;
+            }
+            .project-card.hidden {
+                display: none !important;
+            }
+
+            .project-card {
+                display: grid !important;
+                grid-template-columns: 1fr auto !important;
+                padding: 18px 20px !important;
+                gap: 0 !important;
+                cursor: pointer !important;
+                background: var(--bg-secondary) !important;
+                border-radius: 20px !important;
+                margin-bottom: 10px !important;
+                align-items: center !important;
+                min-width: 0;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            
+            /* Specific fix for confidential cards on mobile */
+            .project-card.confidential-card {
+                border-style: dashed !important;
+                padding: 18px 20px !important;
+            }
+
+            .project-card h3 {
+                margin-bottom: 0 !important;
+                font-size: 1.1rem !important;
+                grid-column: 1;
+                white-space: normal;
+                overflow: visible;
+                text-overflow: clip;
+                padding-right: 15px;
+                line-height: 1.3;
+                color: var(--accent-primary) !important;
+            }
+
+            .project-content {
+                display: none !important;
+            }
+
+            .project-card.is-expanded .project-content {
+                display: block !important;
+                grid-column: 1 / span 2;
+                margin-top: 0px;
+            }
+
+            .project-arrow-mobile {
+                display: flex !important;
+                grid-column: 2;
+                color: var(--accent-primary);
+                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            .project-card.is-expanded .project-arrow-mobile {
+                transform: rotate(180deg);
+            }
+
+            .project-details-mobile {
+                grid-column: 1 / span 2;
+                display: grid;
+                grid-template-rows: 0fr;
+                transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                width: 100%;
+                overflow: hidden;
+            }
+
+            .project-card.is-expanded .project-details-mobile {
+                grid-template-rows: 1fr;
+                margin-top: 20px;
+                padding-top: 15px;
+                border-top: 1px solid var(--border-color);
+            }
+
+            .project-details-inner {
+                min-height: 0;
+            }
+
+            /* Elements inside the expanded drawer */
+            .project-details-inner p,
+            .project-details-inner .project-tech,
+            .project-details-inner .card-bottom {
+                display: flex !important;
+                flex-direction: column;
+            }
+            
+            .project-details-inner p {
+                display: block !important;
+                margin-bottom: 15px;
+                color: var(--text-secondary) !important;
+            }
+
+            .project-details-inner .project-tech {
+                flex-direction: row;
+                margin-bottom: 15px;
+                gap: 5px;
+                display: flex !important;
+            }
+
+            .section {
+                padding: 80px 12px 20px 12px;
+            }
+            .section-title {
+                font-size: 2.2rem;
+                margin-bottom: 25px;
+            }
+            .modal-content {
+                padding: 10px;
+                max-width: 98vw;
+            }
+            .modal-image {
+                max-height: 45vh;
+            }
+            .nav-btn {
+                width: 36px;
+                height: 36px;
+                font-size: 18px;
+                top: 60%;
+            }
+            .close {
+                width: 32px;
+                height: 32px;
+                font-size: 18px;
+                top: -10px;
+                right: -10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1845,6 +1947,36 @@
         });
 
         // Nav open/close logic for all screens
+        function handleProjectClick(card, event, projectId) {
+            // Only handle as accordion on mobile (screen width <= 768px)
+            if (window.innerWidth <= 768) {
+                // Check if the click was on an image or link
+                if (event.target.closest('.project-thumb') || 
+                    event.target.closest('.thumb-more') || 
+                    event.target.closest('.project-link')) {
+                    return; // Let the original event handle it
+                }
+                
+                event.preventDefault();
+                event.stopPropagation();
+                
+                const isExpanded = card.classList.contains('is-expanded');
+                
+                // Close other cards
+                document.querySelectorAll('.project-card.is-expanded').forEach(otherCard => {
+                    if (otherCard !== card) {
+                        otherCard.classList.remove('is-expanded');
+                    }
+                });
+                
+                // Toggle current card
+                card.classList.toggle('is-expanded');
+            } else {
+                // On desktop, clicking the card opens the gallery
+                openGallery(projectId);
+            }
+        }
+
         const menuIcon = document.getElementById('menuIcon');
         const navLinks = document.getElementById('navLinks');
         const navOverlay = document.getElementById('navOverlay');
@@ -1979,12 +2111,13 @@
         // Project Filtering Functionality
         document.addEventListener('DOMContentLoaded', function() {
             const filterButtons = document.querySelectorAll('.filter-btn');
+            const allCards = document.querySelectorAll('.project-card');
             const projectCards = document.querySelectorAll('.project-card:not(.confidential-card)');
             const confidentialCards = document.querySelectorAll('.confidential-card');
             const allProjectsButton = document.querySelector('.filter-btn[data-filter="all"]');
 
             // ===== Card Setup: Thumbnails, Reorder, Button Handling =====
-            projectCards.forEach(card => {
+            allCards.forEach(card => {
                 const content = card.querySelector('.project-content');
                 if (!content) return;
 
@@ -1993,57 +2126,55 @@
                 const p = content.querySelector('p');
                 const linksDiv = content.querySelector('.project-links');
 
-                // Reorder: h3 -> tech-tags -> description
-                if (h3 && techDiv && p) {
-                    content.insertBefore(h3, content.firstChild);
-                    h3.after(techDiv);
-                    techDiv.after(p);
+                // For confidential cards, h3 might be different structure
+                if (card.classList.contains('confidential-card')) {
+                    // Handle confidential card specific reordering if needed
                 }
 
-                // Create card-bottom wrapper for thumbnails + buttons
-                const cardBottom = document.createElement('div');
-                cardBottom.className = 'card-bottom';
+                // Build thumbnail gallery (only for normal cards)
+                let cardBottom = card.querySelector('.card-bottom');
+                if (!cardBottom && !card.classList.contains('confidential-card')) {
+                    cardBottom = document.createElement('div');
+                    cardBottom.className = 'card-bottom';
+                    
+                    const imagesData = card.getAttribute('data-images');
+                    if (imagesData) {
+                        const images = imagesData.split(',').filter(s => s.trim());
+                        if (images.length > 0) {
+                            const thumbContainer = document.createElement('div');
+                            thumbContainer.className = 'project-thumbnails';
+                            const maxShow = 4;
+                            const showImages = images.slice(0, maxShow);
+                            
+                            showImages.forEach((imgSrc, idx) => {
+                                const thumb = document.createElement('img');
+                                thumb.className = 'project-thumb';
+                                thumb.src = imgSrc.trim();
+                                thumb.alt = `Preview ${idx + 1}`;
+                                thumb.onclick = (e) => {
+                                    e.stopPropagation();
+                                    openGallery(card.getAttribute('data-project'));
+                                    goToImage(idx);
+                                };
+                                thumbContainer.appendChild(thumb);
+                            });
 
-                // Build thumbnail gallery from data-images
-                const imagesData = card.getAttribute('data-images');
-                if (imagesData) {
-                    const images = imagesData.split(',').filter(s => s.trim());
-                    if (images.length > 0) {
-                        const thumbContainer = document.createElement('div');
-                        thumbContainer.className = 'project-thumbnails';
-                        const maxShow = 4;
-                        const showImages = images.slice(0, maxShow);
-                        
-                        showImages.forEach((imgSrc, idx) => {
-                            const thumb = document.createElement('img');
-                            thumb.className = 'project-thumb';
-                            thumb.src = imgSrc.trim();
-                            thumb.alt = `Preview ${idx + 1}`;
-                            thumb.onclick = (e) => {
-                                e.stopPropagation();
-                                openGallery(card.getAttribute('data-project'));
-                                goToImage(idx);
-                            };
-                            thumbContainer.appendChild(thumb);
-                        });
-
-                        if (images.length > maxShow) {
-                            const moreBtn = document.createElement('div');
-                            moreBtn.className = 'thumb-more';
-                            moreBtn.textContent = `+${images.length - maxShow}`;
-                            moreBtn.onclick = (e) => {
-                                e.stopPropagation();
-                                openGallery(card.getAttribute('data-project'));
-                            };
-                            thumbContainer.appendChild(moreBtn);
+                            if (images.length > maxShow) {
+                                const moreBtn = document.createElement('div');
+                                moreBtn.className = 'thumb-more';
+                                moreBtn.textContent = `+${images.length - maxShow}`;
+                                moreBtn.onclick = (e) => {
+                                    e.stopPropagation();
+                                    openGallery(card.getAttribute('data-project'));
+                                };
+                                thumbContainer.appendChild(moreBtn);
+                            }
+                            cardBottom.appendChild(thumbContainer);
                         }
-
-                        cardBottom.appendChild(thumbContainer);
                     }
                 }
 
-                // Move links into card-bottom and handle empty links
-                if (linksDiv) {
+                if (linksDiv && cardBottom) {
                     const links = linksDiv.querySelectorAll('a');
                     if (links.length === 0) {
                         linksDiv.style.display = 'none';
@@ -2051,7 +2182,32 @@
                     cardBottom.appendChild(linksDiv);
                 }
 
-                content.appendChild(cardBottom);
+                // Create mobile arrow
+                const arrowMobile = document.createElement('div');
+                arrowMobile.className = 'project-arrow-mobile';
+                arrowMobile.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+                card.appendChild(arrowMobile);
+
+                // Create mobile details wrapper
+                const detailsMobile = document.createElement('div');
+                detailsMobile.className = 'project-details-mobile';
+                const detailsInner = document.createElement('div');
+                detailsInner.className = 'project-details-inner';
+                detailsMobile.appendChild(detailsInner);
+                
+                // Move elements into drawer
+                if (techDiv) detailsInner.appendChild(techDiv);
+                if (p) detailsInner.appendChild(p);
+                if (cardBottom) detailsInner.appendChild(cardBottom);
+                
+                // Move h3 to be a direct child of project-card for grid layout
+                if (h3) card.insertBefore(h3, content);
+                
+                content.appendChild(detailsMobile);
+
+                // Remove inline onclick and add unified handler
+                card.removeAttribute('onclick');
+                card.addEventListener('click', (e) => handleProjectClick(card, e, card.getAttribute('data-project')));
             });
 
             // ===== Filtering =====
