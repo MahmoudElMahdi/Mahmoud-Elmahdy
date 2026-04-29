@@ -980,7 +980,7 @@
             -webkit-backdrop-filter: blur(10px);
         }
 
-        [data-theme="light"] .profile-badge {
+        body:not([data-theme="dark"]) .profile-badge {
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
@@ -1026,11 +1026,11 @@
         .badge-linkedin:hover svg { fill: #0077b5; }
 
         .badge-github:hover { border-color: #fff; box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1); }
-        [data-theme="light"] .badge-github:hover { border-color: #181717; box-shadow: 0 5px 15px rgba(24, 23, 23, 0.1); }
+        body:not([data-theme="dark"]) .badge-github:hover { border-color: #181717; box-shadow: 0 5px 15px rgba(24, 23, 23, 0.1); }
         .badge-github:hover span { color: #fff; }
-        [data-theme="light"] .badge-github:hover span { color: #181717; }
+        body:not([data-theme="dark"]) .badge-github:hover span { color: #181717; }
         .badge-github:hover svg { fill: #fff; }
-        [data-theme="light"] .badge-github:hover svg { fill: #181717; }
+        body:not([data-theme="dark"]) .badge-github:hover svg { fill: #181717; }
 
         .badge-mostaql:hover { border-color: #2386c8; box-shadow: 0 5px 15px rgba(35, 134, 200, 0.2); }
         .badge-mostaql:hover span { color: #2386c8; }
