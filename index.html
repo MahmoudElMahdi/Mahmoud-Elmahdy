@@ -1896,7 +1896,19 @@
 
             .timeline-achievements {
                 margin: 0 !important;
-                padding-left: 20px !important;
+                padding-left: 15px !important;
+            }
+
+            .timeline-achievements li {
+                padding-left: 18px !important;
+                margin-bottom: 8px !important;
+                font-size: 0.9rem !important;
+            }
+
+            .timeline-achievements li::before {
+                top: 8px !important;
+                width: 5px !important;
+                height: 5px !important;
             }
 
             .validation-btn {
@@ -2242,19 +2254,24 @@
 
         .timeline-achievements li {
             color: var(--text-secondary);
-            margin-bottom: 15px;
-            padding-left: 25px;
+            margin-bottom: 12px;
+            padding-left: 20px;
             position: relative;
-            line-height: 1.7;
-            font-size: 1.1rem;
+            line-height: 1.6;
+            font-size: 1.05rem;
         }
 
         .timeline-achievements li:before {
-            content: '▶';
+            content: "";
             position: absolute;
             left: 0;
-            color: var(--accent-primary);
-            font-size: 1rem;
+            top: 10px;
+            width: 6px;
+            height: 6px;
+            background: var(--accent-primary);
+            border-radius: 50%;
+            opacity: 0.8;
+            box-shadow: 0 0 8px var(--accent-primary)40;
         }
 
         /* Enhanced Contact Section */
