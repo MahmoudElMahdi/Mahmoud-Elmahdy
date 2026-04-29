@@ -2973,22 +2973,26 @@
         /* Enhance project buttons for mobile */
         @media (max-width: 600px) {
             .project-buttons {
-                flex-direction: column;
-                gap: 16px;
+                flex-direction: row !important;
+                gap: 12px;
                 width: 100%;
+                justify-content: center;
+                margin-top: 25px; /* Added space from title */
             }
             .projects-btn {
-                width: 100%;
-                font-size: 0.95rem;
-                padding: 10px 0;
+                flex: 0 1 auto;
+                width: auto;
+                font-size: 0.8rem;
+                padding: 7px 14px;
                 justify-content: center;
                 align-items: center;
                 display: flex;
+                min-width: 0;
             }
             .projects-btn svg {
-                width: 20px;
-                height: 20px;
-                margin-right: 10px;
+                width: 18px;
+                height: 18px;
+                margin-right: 8px;
             }
         }
 
