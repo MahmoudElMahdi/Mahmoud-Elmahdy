@@ -552,7 +552,8 @@
             font-size: 3.5rem;
             font-weight: 800;
             text-align: center;
-            margin-bottom: 50px;
+            width: fit-content;
+            margin: 0 auto 50px;
             background: linear-gradient(135deg, var(--text-primary), var(--accent-primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -1522,15 +1523,38 @@
 
         /* Responsive Design for New Sections */
         @media (max-width: 900px) {
-            .academic-row {
-                flex-direction: column;
-                text-align: center;
-                gap: 20px;
+            .section-title {
+                font-size: 1.8rem !important;
+                margin-bottom: 25px;
             }
 
-            .academic-intro .education-title, 
+            .academic-row {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 15px;
+                width: 100%;
+            }
+
+            .academic-intro {
+                width: 100%;
+                min-width: 0;
+                align-items: center;
+                text-align: center;
+            }
+
+            .academic-intro .education-title {
+                text-align: center !important;
+                font-size: 1.5rem !important;
+                margin-bottom: 10px !important;
+                width: 100%;
+            }
+
             .academic-intro p {
                 text-align: center !important;
+                font-size: 1rem !important;
+                margin-bottom: 20px !important;
+                width: 100%;
             }
 
             .college-card {
@@ -1551,10 +1575,10 @@
             .college-details .college-name, 
             .college-details .college-field, 
             .college-details .college-year {
-                grid-column: auto;
-                grid-row: auto;
-                text-align: center;
+                text-align: center !important;
+                align-self: center !important;
                 margin: 0;
+                width: 100%;
             }
 
             .courses-grid {
