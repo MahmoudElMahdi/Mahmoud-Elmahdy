@@ -81,7 +81,7 @@
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .bg-animation {
@@ -501,17 +501,19 @@
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                gap: 20px;
+                gap: 35px;
                 text-align: center;
             }
             .section-title {
-                margin-bottom: 0;
-                font-size: 2.2rem;
+                margin-bottom: 25px;
+                font-size: 2rem;
             }
             .projects-btn {
                 margin-left: 0;
-                width: 100%;
+                width: auto;
                 max-width: 250px;
+                padding: 10px 20px;
+                font-size: 0.9rem;
             }
         }
         
@@ -538,8 +540,19 @@
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             outline: none;
+        }
+
+        @media (max-width: 768px) {
+            .filter-buttons {
+                gap: 10px;
+            }
+            .filter-btn {
+                padding: 8px 16px;
+                font-size: 0.85rem;
+                border-radius: 20px;
+            }
         }
 
         .filter-btn:hover {
@@ -580,7 +593,7 @@
             background: var(--card-bg);
             border-radius: 16px;
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transition: all 0.4s cubic-bezier(0.4, 1.5, 0.5, 1);
             border: 1px solid var(--border-color);
             backdrop-filter: blur(20px);
             position: relative;
@@ -1197,19 +1210,21 @@
             }
 
             .project-details-mobile {
-                grid-column: 1 / span 2;
-                display: grid;
-                grid-template-rows: 0fr;
-                transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                width: 100%;
+                grid-column: 1 / 3 !important;
+                display: block !important;
+                max-height: 0;
+                opacity: 0;
                 overflow: hidden;
+                visibility: hidden;
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             }
 
             .project-card.is-expanded .project-details-mobile {
-                grid-template-rows: 1fr;
-                margin-top: 20px;
+                max-height: 2000px;
+                opacity: 1;
+                visibility: visible;
                 padding-top: 15px;
-                border-top: 1px solid var(--border-color);
+                margin-top: 10px;
             }
 
             .project-details-inner {
@@ -1253,11 +1268,11 @@
             }
 
             .section {
-                padding: 10px 12px;
+                padding: 80px 12px 30px;
             }
             .section-title {
-                font-size: 2.2rem;
-                margin-bottom: 55px;
+                font-size: 2rem;
+                margin-bottom: 40px;
             }
             .modal-content {
                 padding: 10px;
@@ -1365,7 +1380,7 @@
         </div>
         <div class="projects-grid">
             <!-- Confidential Excel Client Projects -->
-            <div class="project-card confidential-card" data-tech="excel" style="cursor: default;" onclick="">
+            <div class="project-card confidential-card fade-in" data-tech="excel" style="cursor: default;" onclick="">
                 <div class="project-image"><img src="" alt=""></div>
                 <div class="project-content">
                     <h3>🔒 Confidential Client Excel Projects</h3>
@@ -1399,7 +1414,7 @@
             </div>
 
             <!-- Mega-Event Operations & Hiring Automated Report (Hajj Season) -->
-            <div class="project-card" onclick="openGallery('project_hajj')" data-project="project_hajj" data-images="Assets/Images/Projects/Mega-Event Operations & Hiring Automated Report (Hajj Season)/1.png,Assets/Images/Projects/Mega-Event Operations & Hiring Automated Report (Hajj Season)/2.png,Assets/Images/Projects/Mega-Event Operations & Hiring Automated Report (Hajj Season)/3.png,Assets/Images/Projects/Mega-Event Operations & Hiring Automated Report (Hajj Season)/4.png" data-tech="excel">
+            <div class="project-card fade-in" onclick="openGallery('project_hajj')" data-project="project_hajj" data-images="Assets/Images/Projects/Mega-Event Operations & Hiring Automated Report (Hajj Season)/1.png,Assets/Images/Projects/Mega-Event Operations & Hiring Automated Report (Hajj Season)/2.png,Assets/Images/Projects/Mega-Event Operations & Hiring Automated Report (Hajj Season)/3.png,Assets/Images/Projects/Mega-Event Operations & Hiring Automated Report (Hajj Season)/4.png" data-tech="excel">
                 <div class="project-image">
                     <img src="Assets/Images/Projects/Mega-Event Operations & Hiring Automated Report (Hajj Season)/1.png" alt="Mega-Event Operations & Hiring Automated Report" onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=Hajj+Operations+Report';">
                 </div>
@@ -1418,7 +1433,7 @@
             </div>
 
             <!-- Project 1 -->
-            <div class="project-card" onclick="openGallery('project1')" data-project="project1" data-images="Assets/Images/Projects/Sales Analytics Dashboard/1.jpg,Assets/Images/Projects/Sales Analytics Dashboard/2.png,Assets/Images/Projects/Sales Analytics Dashboard/3.png" data-tech="power bi">
+            <div class="project-card fade-in" onclick="openGallery('project1')" data-project="project1" data-images="Assets/Images/Projects/Sales Analytics Dashboard/1.jpg,Assets/Images/Projects/Sales Analytics Dashboard/2.png,Assets/Images/Projects/Sales Analytics Dashboard/3.png" data-tech="power bi">
                 <div class="project-image">
                     <img src="Assets/Images/Projects/Sales Analytics Dashboard/1.jpg" alt="Sales Analytics Dashboard" onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=Project+1';">
                 </div>
@@ -1437,7 +1452,7 @@
             </div>
 
             <!-- Enterprise HR Analytics & Workforce Planning Dashboard -->
-            <div class="project-card" onclick="openGallery('project_hr_analytics')" data-project="project_hr_analytics" data-images="Assets/Images/Projects/Enterprise HR Analytics & Workforce Planning Dashboard/1.png" data-tech="excel">
+            <div class="project-card fade-in" onclick="openGallery('project_hr_analytics')" data-project="project_hr_analytics" data-images="Assets/Images/Projects/Enterprise HR Analytics & Workforce Planning Dashboard/1.png" data-tech="excel">
                 <div class="project-image">
                     <img src="Assets/Images/Projects/Enterprise HR Analytics & Workforce Planning Dashboard/1.png" alt="Enterprise HR Analytics & Workforce Planning Dashboard" onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=HR+Analytics+Dashboard';">
                 </div>
@@ -1456,7 +1471,7 @@
             </div>
 
             <!-- Omnichannel Digital Marketing & Paid Ads Dashboard -->
-            <div class="project-card" onclick="openGallery('project_omnichannel')" data-project="project_omnichannel" data-images="Assets/Images/Projects/Omnichannel Digital Marketing & Paid Ads Dashboard (Travel & Tourism)/1.png,Assets/Images/Projects/Omnichannel Digital Marketing & Paid Ads Dashboard (Travel & Tourism)/2.png,Assets/Images/Projects/Omnichannel Digital Marketing & Paid Ads Dashboard (Travel & Tourism)/3.png,Assets/Images/Projects/Omnichannel Digital Marketing & Paid Ads Dashboard (Travel & Tourism)/4.png" data-tech="excel">
+            <div class="project-card fade-in" onclick="openGallery('project_omnichannel')" data-project="project_omnichannel" data-images="Assets/Images/Projects/Omnichannel Digital Marketing & Paid Ads Dashboard (Travel & Tourism)/1.png,Assets/Images/Projects/Omnichannel Digital Marketing & Paid Ads Dashboard (Travel & Tourism)/2.png,Assets/Images/Projects/Omnichannel Digital Marketing & Paid Ads Dashboard (Travel & Tourism)/3.png,Assets/Images/Projects/Omnichannel Digital Marketing & Paid Ads Dashboard (Travel & Tourism)/4.png" data-tech="excel">
                 <div class="project-image">
                     <img src="Assets/Images/Projects/Omnichannel Digital Marketing & Paid Ads Dashboard (Travel & Tourism)/1.png" alt="Omnichannel Digital Marketing & Paid Ads Dashboard" onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=Marketing+Dashboard';">
                 </div>
@@ -1475,7 +1490,7 @@
             </div>
 
             <!-- Automated Executive HR Reporting System -->
-            <div class="project-card" onclick="openGallery('project_hr_reporting')" data-project="project_hr_reporting" data-images="Assets/Images/Projects/Automated Executive HR Reporting System (Excel to PowerPoint Integration)/1.png,Assets/Images/Projects/Automated Executive HR Reporting System (Excel to PowerPoint Integration)/2.png" data-tech="excel">
+            <div class="project-card fade-in" onclick="openGallery('project_hr_reporting')" data-project="project_hr_reporting" data-images="Assets/Images/Projects/Automated Executive HR Reporting System (Excel to PowerPoint Integration)/1.png,Assets/Images/Projects/Automated Executive HR Reporting System (Excel to PowerPoint Integration)/2.png" data-tech="excel">
                 <div class="project-image">
                     <img src="Assets/Images/Projects/Automated Executive HR Reporting System (Excel to PowerPoint Integration)/1.png" alt="Automated Executive HR Reporting System" onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=HR+Reporting+System';">
                 </div>
@@ -1494,7 +1509,7 @@
             </div>
 
             <!-- Project 2 -->
-            <div class="project-card" onclick="openGallery('project2')" data-project="project2" data-images="Assets\Images\Projects\Big Mart Sales Dashboard\1.jpeg,Assets\Images\Projects\Big Mart Sales Dashboard\2.jpeg" data-tech="power bi">
+            <div class="project-card fade-in" onclick="openGallery('project2')" data-project="project2" data-images="Assets\Images\Projects\Big Mart Sales Dashboard\1.jpeg,Assets\Images\Projects\Big Mart Sales Dashboard\2.jpeg" data-tech="power bi">
                 <div class="project-image">
                     <img src="Assets\Images\Projects\Big Mart Sales Dashboard\1.jpeg" alt="Customer Segmentation ML" onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=Project+2';">
                 </div>
@@ -1521,7 +1536,7 @@
             </div>
 
             <!-- Project 3 -->
-            <div class="project-card" onclick="openGallery('project3')" data-project="project3" data-images="Assets\Images\Projects\Finding Donors for Charity\1.png,Assets\Images\Projects\Finding Donors for Charity\2.PNG" data-tech="python">
+            <div class="project-card fade-in" onclick="openGallery('project3')" data-project="project3" data-images="Assets\Images\Projects\Finding Donors for Charity\1.png,Assets\Images\Projects\Finding Donors for Charity\2.PNG" data-tech="python">
                 <div class="project-image">
                     <img src="Assets\Images\Projects\Finding Donors for Charity\1.png" alt="Financial Report Automation" onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=Project+3';">
                 </div>
@@ -1546,7 +1561,7 @@
             </div>
             
             <!-- Project 4 -->
-            <div class="project-card" onclick="openGallery('project4')" data-project="project4" data-images="Assets\Images\Projects\Data Warehous\High Level Architecture.png,Assets\Images\Projects\Data Warehous\data_model.drawio.png,Assets\Images\Projects\Data Warehous\data_flow.drawio.png,Assets\Images\Projects\Data Warehous\data_integration.drawio.png" data-tech="sql">
+            <div class="project-card fade-in" onclick="openGallery('project4')" data-project="project4" data-images="Assets\Images\Projects\Data Warehous\High Level Architecture.png,Assets\Images\Projects\Data Warehous\data_model.drawio.png,Assets\Images\Projects\Data Warehous\data_flow.drawio.png,Assets\Images\Projects\Data Warehous\data_integration.drawio.png" data-tech="sql">
                 <div class="project-image">
                     <img src="Assets\Images\Projects\Data Warehous\High Level Architecture.png" alt="SQL Data Warehouse Project" onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=Data+Warehouse+Project';">
                 </div>
@@ -1569,7 +1584,7 @@
                 </div>
             </div>            
             <!-- Project 5 -->
-            <div class="project-card" onclick="openGallery('project5')" data-project="project5" data-images="Assets/Images/Projects/Bikes Market EDA/1.png" data-tech="python">
+            <div class="project-card fade-in" onclick="openGallery('project5')" data-project="project5" data-images="Assets/Images/Projects/Bikes Market EDA/1.png" data-tech="python">
                 <div class="project-image">
                     <img src="Assets/Images/Projects/Bikes Market EDA/1.png" alt="Bikes Market EDA">
                 </div>
@@ -2211,14 +2226,20 @@
                 detailsMobile.appendChild(detailsInner);
                 
                 // Move elements into drawer
+                const img = card.querySelector('.project-image') || card.querySelector('.confidential-image');
+                if (img) detailsInner.appendChild(img);
                 if (techDiv) detailsInner.appendChild(techDiv);
                 if (p) detailsInner.appendChild(p);
                 if (cardBottom) detailsInner.appendChild(cardBottom);
                 
                 // Move h3 to be a direct child of project-card for grid layout
-                if (h3) card.insertBefore(h3, content);
+                if (h3) card.insertBefore(h3, arrowMobile);
                 
-                content.appendChild(detailsMobile);
+                // Append drawer directly to card (sibling of h3 and arrow)
+                card.appendChild(detailsMobile);
+
+                // Hide original content container as it's now mostly empty/redundant
+                if (content) content.style.display = 'none';
 
                 // Remove inline onclick and add unified handler
                 card.removeAttribute('onclick');
@@ -2290,6 +2311,20 @@
                     }
                 });
             }
+
+            // Intersection Observer for fade-in animations
+            const fadeObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        fadeObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                fadeObserver.observe(el);
+            });
         });
     </script>
 
