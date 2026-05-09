@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="Assets/Images/Logo/tap-icon.png">
+    <title>Mahmoud Elmahdy - Resume</title>
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Q9YGJ4HZL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-3Q9YGJ4HZL');
+    </script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-primary: #f8fafc;
+            --bg-secondary: rgba(255, 255, 255, 0.95);
+            --bg-tertiary: rgba(255, 255, 255, 0.8);
+            --text-primary: #0f172a;
+            --text-secondary: #334155;
+            --text-muted: #64748b;
+            --accent-primary: #2563eb;
+            --accent-secondary: #0ea5e9;
+            --accent-hover: #1d4ed8;
+            --border-color: rgba(15, 23, 42, 0.08);
+            --shadow-light: rgba(15, 23, 42, 0.04);
+            --shadow-medium: rgba(15, 23, 42, 0.1);
+            --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #eff6ff 50%, #e0f2fe 100%);
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --print-bg: #ffffff;
+            --print-text: #000000;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0d1117;
+            --bg-secondary: rgba(13, 17, 23, 0.95);
+            --bg-tertiary: rgba(21, 32, 43, 0.9);
+            --text-primary: #f0f6fc;
+            --text-secondary: #c9d1d9;
+            --text-muted: #8b949e;
+            --accent-primary: #26a69a;
+            --accent-secondary: #4dd0e1;
+            --accent-hover: #80cbc4;
+            --border-color: rgba(38, 166, 154, 0.2);
+            --shadow-light: rgba(0, 0, 0, 0.3);
+            --shadow-medium: rgba(38, 166, 154, 0.2);
+            --bg-gradient: linear-gradient(135deg, #0d1117, #161b22, #21262d);
+            --card-bg: rgba(21, 32, 43, 0.8);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: background-color 0.4s, color 0.4s;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        /* Nav */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            background: var(--bg-secondary);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            box-shadow: 0 1px 12px var(--shadow-light);
+            border-bottom: 1px solid var(--border-color);
+            height: 60px;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1400px;
+            margin: 0 auto;
+            height: 100%;
+            padding: 0 28px;
+        }
+
+        .nav-logo {
+            color: var(--accent-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            gap: 8px;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-theme-btn, .nav-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            gap: 8px;
+        }
+
+        .nav-btn.primary {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: white;
+            border: none;
+        }
+
+        .nav-theme-btn:hover, .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--shadow-medium);
+        }
+
+        .nav-theme-btn {
+            width: 36px;
+            height: 36px;
+            padding: 0;
+            border-radius: 50%;
+        }
+
+        /* Resume Container */
+        .resume-wrapper {
+            padding: 100px 20px 60px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .resume-container {
+            background: var(--card-bg);
+            max-width: 850px; /* A4 aspect ratio approximation */
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px var(--shadow-medium);
+            padding: 50px 60px;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        /* Resume Header */
+        .r-header {
+            text-align: center;
+            border-bottom: 2px solid var(--accent-primary);
+            padding-bottom: 25px;
+            margin-bottom: 30px;
+        }
+
+        .r-name {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 5px;
+            letter-spacing: -0.5px;
+        }
+
+        .r-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--accent-primary);
+            margin-bottom: 15px;
+        }
+
+        .r-contact {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .r-contact a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.2s;
+        }
+
+        .r-contact a:hover {
+            color: var(--accent-primary);
+        }
+
+        /* Summary */
+        .r-summary {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            text-align: justify;
+            line-height: 1.6;
+        }
+
+        /* Sections */
+        .r-section {
+            margin-bottom: 30px;
+        }
+
+        .r-section-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .r-section-title i {
+            color: var(--accent-primary);
+        }
+
+        /* Two Column Layout */
+        .r-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .r-grid {
+                grid-template-columns: 1fr;
+            }
+            .resume-container {
+                padding: 30px 20px;
+            }
+        }
+
+        /* Experience Items */
+        .r-item {
+            margin-bottom: 20px;
+        }
+
+        .r-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+
+        .r-item-title {
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: 1.05rem;
+        }
+
+        .r-item-company {
+            font-weight: 600;
+            color: var(--accent-primary);
+            font-size: 0.95rem;
+        }
+
+        .r-item-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .r-item-desc {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .r-item-desc li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .r-item-desc li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--accent-primary);
+            font-weight: bold;
+        }
+
+        /* Skills */
+        .r-skill-group {
+            margin-bottom: 15px;
+        }
+
+        .r-skill-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+
+        .r-skill-list {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Education & Certs */
+        .r-edu-item {
+            margin-bottom: 15px;
+        }
+
+        .r-edu-degree {
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        .r-edu-school {
+            font-weight: 500;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .r-edu-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .r-certs {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .r-certs strong {
+            color: var(--text-primary);
+        }
+
+        /* Highlights Grid */
+        .r-highlights {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .r-highlight-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .r-highlight-item i {
+            color: var(--accent-primary);
+            margin-top: 3px;
+            font-size: 0.8rem;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: var(--print-bg) !important;
+                color: var(--print-text) !important;
+            }
+            nav {
+                display: none !important;
+            }
+            .resume-wrapper {
+                padding: 0 !important;
+            }
+            .resume-container {
+                box-shadow: none !important;
+                border: none !important;
+                padding: 0 !important;
+                max-width: 100% !important;
+            }
+            * {
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+            .r-name, .r-section-title, .r-item-title, .r-skill-title {
+                color: #000 !important;
+            }
+            .r-title, .r-item-company, .r-section-title i, .r-item-desc li::before, .r-highlight-item i {
+                color: #2563eb !important;
+            }
+            .r-text-secondary, .r-summary, .r-item-desc li {
+                color: #333 !important;
+            }
+            .r-section {
+                page-break-inside: avoid;
+            }
+            a {
+                text-decoration: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <i class="fas fa-arrow-left"></i> Back to Portfolio
+            </a>
+            <div class="nav-actions">
+                <button class="nav-theme-btn" id="themeToggle" title="Toggle Dark Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="Assets/Resume/Mahmoud_Elmahdy_Resume_Data_Analyst.pdf" target="_blank" class="nav-btn primary" title="Download PDF">
+                    <i class="fas fa-download"></i> Download PDF
+                </a>
+                <button onclick="window.print()" class="nav-btn" title="Print Resume">
+                    <i class="fas fa-print"></i> Print
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="resume-wrapper">
+        <div class="resume-container">
+            <!-- Header -->
+            <div class="r-header">
+                <h1 class="r-name">MAHMOUD ELMAHDY</h1>
+                <div class="r-title">Data Analyst | BI Developer | Process Analytics Specialist</div>
+                <div class="r-contact">
+                    <span><i class="fas fa-map-marker-alt"></i> Alexandria, Egypt (Open to Relocate)</span>
+                    <a href="tel:+201110782859"><i class="fas fa-phone"></i> +20 111 078 2859</a>
+                    <a href="mailto:mahmoud.ilmahdy1@gmail.com"><i class="fas fa-envelope"></i> mahmoud.ilmahdy1@gmail.com</a>
+                    <a href="https://github.com/MahmoudElMahdi" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="https://www.linkedin.com/in/mahmoud-il-mahdy" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="https://mahmoud-elmahdy.vercel.app/" target="_blank"><i class="fas fa-globe"></i> Portfolio</a>
+                </div>
+            </div>
+
+            <div class="r-summary">
+                Data Analyst & BI Developer with 3+ years of experience constructing 120+ analytics projects for 30+ international clients. Specialized in Power BI, SQL, and Excel automation — compressed reporting cycles from 10 days to 1 day and reduced operational costs by 20% for SGS Saudi Arabia. Trilingual in Arabic, English, and German. Seeking a full-time role in Egypt, Saudi Arabia, or remotely.
+            </div>
+
+            <div class="r-grid">
+                <!-- Left Column -->
+                <div class="r-col-main">
+                    <div class="r-section">
+                        <h2 class="r-section-title"><i class="fas fa-briefcase"></i> Professional Experience</h2>
+                        
+                        <div class="r-item">
+                            <div class="r-item-header">
+                                <div>
+                                    <div class="r-item-title">Data Analyst & BI Consultant</div>
+                                    <div class="r-item-company">SGS – Saudi Ground Services (Remote)</div>
+                                </div>
+                                <div class="r-item-date">Mar 2022 – May 2023</div>
+                            </div>
+                            <ul class="r-item-desc">
+                                <li>Analyzed passenger load, boarding, and delay data across 3 daily shifts during Hajj season — enabling strategic staff reallocation without new hiring costs.</li>
+                                <li>Identified operational bottlenecks through statistical modeling, reducing passenger wait times and cutting flight delay costs by 20%+ per shift.</li>
+                                <li>Built a multi-module Excel KPI dashboard and PowerPoint presentation for real-time ground operations monitoring; automated reporting pipeline from 10 days to 1 day.</li>
+                                <li>Facilitated stakeholder workshops to translate complex data into actionable process redesigns and sustainable operating models.</li>
+                            </ul>
+                        </div>
+
+                        <div class="r-item">
+                            <div class="r-item-header">
+                                <div>
+                                    <div class="r-item-title">Data Analyst – Freelance</div>
+                                    <div class="r-item-company">Khamsat & Mostaql (International)</div>
+                                </div>
+                                <div class="r-item-date">Sep 2021 – Present</div>
+                            </div>
+                            <ul class="r-item-desc">
+                                <li>Designed 120+ end-to-end analytics projects for 30+ clients: dashboards, ETL pipelines, KPI reporting, and process automation across multiple industries.</li>
+                                <li>Built 70+ Power BI & Excel dashboards; engineered VBA/Power Query automation that cut manual processing time by 50% across client workflows.</li>
+                                <li>Conducted root cause analysis on operational data, translating complex findings into clear recommendations and data-driven process redesigns.</li>
+                                <li>Maintained 20+ verified 5-star reviews reflecting consistent delivery quality, clear communication, and business-focused outcomes.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="r-section">
+                        <h2 class="r-section-title"><i class="fas fa-project-diagram"></i> Key Projects</h2>
+                        
+                        <div class="r-item">
+                            <div class="r-item-header">
+                                <div>
+                                    <div class="r-item-title">Enterprise Data Warehouse & Analytics Solution</div>
+                                    <div class="r-item-company">SQL Server · ETL · Medallion Architecture</div>
+                                </div>
+                            </div>
+                            <ul class="r-item-desc">
+                                <li>Architected a scalable SQL Server data warehouse (Bronze/Silver/Gold), created ETL pipelines with quality checks, and built analytics covering customer behavior and sales trends.</li>
+                                <li>Established end-to-end ETL pipelines with rigorous quality checks, and built an analytics roadmap covering customer behavior, cumulative trends, and segmentation.</li>
+                            </ul>
+                        </div>
+
+                        <div class="r-item">
+                            <div class="r-item-header">
+                                <div>
+                                    <div class="r-item-title">Excel Automation Consultant</div>
+                                    <div class="r-item-company">SAR – Saudi Arabia Railways (Remote)</div>
+                                </div>
+                                <div class="r-item-date">Feb 2025 – Jun 2025</div>
+                            </div>
+                            <ul class="r-item-desc">
+                                <li>Devised a 4-system Excel automation suite for SAR’s engineering and operations teams, replacing fully manual workflows with structured, error-proof data entry via custom VBA forms.</li>
+                                <li>Built an ECR management system with Gantt chart timeline, automated overdue alerts, and one-click PDF daily dashboard for management reporting.</li>
+                                <li>Developed systems for RCA tracking, asset task management, and attendance — centralizing operational data into auditable records.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="r-col-side">
+                    <div class="r-section">
+                        <h2 class="r-section-title"><i class="fas fa-trophy"></i> Key Achievements</h2>
+                        <div class="r-highlights">
+                            <div class="r-highlight-item"><i class="fas fa-check"></i> 120+ Projects</div>
+                            <div class="r-highlight-item"><i class="fas fa-check"></i> 30+ Clients</div>
+                            <div class="r-highlight-item"><i class="fas fa-arrow-down"></i> 20% Cost cut</div>
+                            <div class="r-highlight-item"><i class="fas fa-clock"></i> 10d → 1d Reports</div>
+                            <div class="r-highlight-item"><i class="fas fa-bolt"></i> 50% Faster</div>
+                            <div class="r-highlight-item"><i class="fas fa-star"></i> 20+ 5-Star</div>
+                        </div>
+                    </div>
+
+                    <div class="r-section">
+                        <h2 class="r-section-title"><i class="fas fa-laptop-code"></i> Technical Skills</h2>
+                        
+                        <div class="r-skill-group">
+                            <div class="r-skill-title">BI & Visualization</div>
+                            <div class="r-skill-list">Power BI, DAX, Excel (VBA, PivotTables), Tableau, Power Query</div>
+                        </div>
+                        
+                        <div class="r-skill-group">
+                            <div class="r-skill-title">Data Engineering</div>
+                            <div class="r-skill-list">SQL Server, PostgreSQL, MySQL, ETL, Medallion Architecture, Star Schema, Data Modeling</div>
+                        </div>
+
+                        <div class="r-skill-group">
+                            <div class="r-skill-title">Analytics & Automation</div>
+                            <div class="r-skill-list">Python (Pandas, NumPy), Process Optimization, Root Cause Analysis, KPI Development, LLMs</div>
+                        </div>
+
+                        <div class="r-skill-group">
+                            <div class="r-skill-title">Languages</div>
+                            <div class="r-skill-list">Arabic (Native) · English (Fluent) · German (Fluent)</div>
+                        </div>
+                    </div>
+
+                    <div class="r-section">
+                        <h2 class="r-section-title"><i class="fas fa-graduation-cap"></i> Education</h2>
+                        <div class="r-edu-item">
+                            <div class="r-edu-degree">Bachelor of Management Information Systems</div>
+                            <div class="r-edu-school">Alexandria University</div>
+                            <div class="r-edu-date">2018 – 2022</div>
+                        </div>
+                    </div>
+
+                    <div class="r-section">
+                        <h2 class="r-section-title"><i class="fas fa-certificate"></i> Certifications</h2>
+                        <div class="r-certs">
+                            <strong>Udacity:</strong> Advanced Data Analysis, Machine Learning<br>
+                            <strong>McKinsey:</strong> Forward Program<br>
+                            <strong>365 Data Science:</strong> Advanced SQL & Excel, Power BI Reporting<br>
+                            <br>
+                            <em>Pursuing:</em> Google Advanced Data Analytics, Microsoft Power BI Data Analyst, Stanford ML Specialization
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('themeToggle');
+        const icon = themeToggle.querySelector('i');
+        
+        // Check saved theme or system preference
+        const savedTheme = localStorage.getItem('theme');
+        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            icon.className = 'fas fa-sun';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                icon.className = 'fas fa-moon';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                icon.className = 'fas fa-sun';
+            }
+        });
+    </script>
+</body>
+</html>
