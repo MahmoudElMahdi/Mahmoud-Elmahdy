@@ -600,34 +600,52 @@
             }
         }
 
-
-
+        /* ═══════════════════════════════════════════════════════════
+           DESKTOP PROJECT CARDS — Matching Mobile Expanded Style
+           ═══════════════════════════════════════════════════════════ */
         .project-card {
             background: var(--card-bg);
             border-radius: 16px;
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 1.5, 0.5, 1);
+            transition: all 0.35s ease;
             border: 1px solid var(--border-color);
-            backdrop-filter: blur(20px);
+            border-left: 4px solid var(--accent-primary);
+            backdrop-filter: blur(24px);
             position: relative;
-            box-shadow: 0 4px 16px var(--shadow-light);
+            box-shadow: 0 2px 12px var(--shadow-light);
             display: flex;
             flex-direction: column;
             cursor: pointer;
-            padding: 24px 24px 20px;
+            padding: 20px 22px;
         }
 
-        .project-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 16px 40px rgba(0, 188, 212, 0.12), 0 8px 20px var(--shadow-medium);
-            border-color: var(--accent-primary);
-        }
-
-        /* Hide the old hero image div */
-        .project-image {
+        .project-card::before {
             display: none;
         }
 
+        .project-card:hover {
+            transform: translateY(-4px);
+            border-left-color: var(--accent-secondary);
+            box-shadow: 0 8px 30px var(--shadow-medium);
+        }
+
+        body[data-theme="dark"] .project-card:hover {
+            box-shadow:
+                0 8px 30px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(38, 166, 154, 0.06);
+        }
+
+        /* Title */
+        .project-card > h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin: 0 0 14px 0;
+            padding: 0;
+            color: var(--accent-primary);
+            line-height: 1.35;
+        }
+
+        /* Hide the arrow on desktop */
         .project-arrow-mobile {
             display: none;
         }
@@ -636,6 +654,34 @@
             display: contents;
         }
 
+        /* Image */
+        .project-card .project-image {
+            display: block;
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 14px;
+        }
+
+        .project-card .project-image img {
+            width: 100%;
+            height: auto;
+            max-height: 220px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.03);
+        }
+
+        .project-card .project-image::after {
+            display: none;
+        }
+
+        /* Content */
         .project-content {
             padding: 0;
             display: flex;
@@ -644,25 +690,25 @@
         }
 
         .project-content h3 {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 700;
             margin-bottom: 8px;
             color: var(--accent-primary);
-            line-height: 1.3;
+            line-height: 1.35;
         }
 
         .project-tech {
             display: flex;
             flex-wrap: wrap;
-            gap: 5px;
-            margin-bottom: 12px;
+            gap: 6px;
+            margin-bottom: 14px;
         }
 
         .tech-tag {
-            padding: 2px 9px;
-            background: var(--accent-primary)10;
-            border: 1px solid var(--accent-primary)25;
-            border-radius: 10px;
+            padding: 3px 10px;
+            background: rgba(38, 166, 154, 0.08);
+            border: 1px solid rgba(38, 166, 154, 0.15);
+            border-radius: 20px;
             font-size: 0.7rem;
             color: var(--accent-primary);
             font-weight: 600;
@@ -673,13 +719,15 @@
         .tech-tag:hover {
             background: var(--accent-primary);
             color: white;
-            transform: scale(1.05);
+            border-color: var(--accent-primary);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(38, 166, 154, 0.25);
         }
 
         .project-content p {
             color: var(--text-secondary);
             margin-bottom: 0;
-            line-height: 1.6;
+            line-height: 1.65;
             font-size: 0.85rem;
             flex-grow: 1;
         }
@@ -687,22 +735,22 @@
         /* Card Bottom — thumbnails + buttons pinned to bottom */
         .card-bottom {
             margin-top: auto;
-            padding-top: 14px;
+            padding-top: 16px;
         }
 
         /* Thumbnail Gallery */
         .project-thumbnails {
             display: flex;
-            gap: 6px;
-            margin-bottom: 12px;
+            gap: 8px;
+            margin-bottom: 14px;
             flex-wrap: nowrap;
             overflow: hidden;
         }
 
         .project-thumb {
-            width: 64px;
-            height: 44px;
-            border-radius: 8px;
+            width: 68px;
+            height: 46px;
+            border-radius: 10px;
             object-fit: cover;
             border: 2px solid var(--border-color);
             transition: all 0.3s ease;
@@ -712,16 +760,16 @@
 
         .project-thumb:hover {
             border-color: var(--accent-primary);
-            transform: scale(1.08);
-            box-shadow: 0 4px 12px var(--shadow-medium);
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px var(--shadow-medium);
         }
 
         .thumb-more {
-            width: 64px;
-            height: 44px;
-            border-radius: 8px;
-            background: var(--accent-primary)15;
-            border: 2px dashed var(--accent-primary)40;
+            width: 68px;
+            height: 46px;
+            border-radius: 10px;
+            background: rgba(38, 166, 154, 0.06);
+            border: 2px dashed rgba(38, 166, 154, 0.3);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -734,7 +782,7 @@
         }
 
         .thumb-more:hover {
-            background: var(--accent-primary)25;
+            background: rgba(38, 166, 154, 0.15);
             border-color: var(--accent-primary);
             transform: scale(1.05);
         }
@@ -742,8 +790,8 @@
         /* Action Buttons */
         .project-links {
             display: flex;
-            gap: 8px;
-            justify-content: center;
+            gap: 10px;
+            justify-content: flex-start;
             flex-wrap: wrap;
         }
 
@@ -752,27 +800,27 @@
         }
 
         .project-link {
-            padding: 8px 18px;
+            padding: 9px 20px;
             background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
             color: #ffffff;
             text-decoration: none;
-            border-radius: 20px;
+            border-radius: 25px;
             font-size: 0.82rem;
             font-weight: 600;
             transition: all 0.3s cubic-bezier(.4,1.5,.5,1);
-            box-shadow: 0 3px 12px 0 var(--shadow-medium);
+            box-shadow: 0 3px 14px rgba(38, 166, 154, 0.2);
             border: none;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
+            gap: 7px;
         }
 
         .project-link:hover {
             background: linear-gradient(135deg, var(--accent-secondary), var(--accent-primary));
             color: #fff;
-            box-shadow: 0 6px 20px 0 var(--accent-primary)30;
-            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 8px 24px rgba(38, 166, 154, 0.3);
+            transform: translateY(-3px) scale(1.03);
         }
 
         .project-link svg {
@@ -784,8 +832,13 @@
         }
 
         @media (max-width: 768px) {
-            .project-card {
-                padding: 20px 16px 16px;
+            .project-card .project-image {
+                display: block;
+                height: auto;
+                max-height: 200px;
+            }
+            .project-content {
+                padding: 0;
             }
             .project-content h3 {
                 font-size: 1.1rem;
@@ -793,18 +846,18 @@
             .project-content p {
                 font-size: 0.84rem;
             }
-            .project-links {
-                flex-direction: row;
-                justify-content: center;
-            }
             .project-thumb {
                 width: 56px;
                 height: 38px;
+                flex-shrink: 1;
+                min-width: 0;
             }
             .thumb-more {
                 width: 56px;
                 height: 38px;
                 font-size: 0.75rem;
+                flex-shrink: 1;
+                min-width: 0;
             }
         }
         
@@ -1161,43 +1214,65 @@
         @media (max-width: 768px) {
             .projects-grid {
                 grid-template-columns: 1fr !important;
-                gap: 16px;
+                gap: 0;
                 width: 100%;
             }
             .project-card.hidden {
                 display: none !important;
             }
 
+            /* ═══════════════════════════════════════════
+               MOBILE — Premium Accordion Project Cards  
+               ═══════════════════════════════════════════ */
             .project-card {
                 display: grid !important;
                 grid-template-columns: 1fr auto !important;
-                padding: 18px 20px !important;
+                padding: 16px 18px !important;
                 gap: 0 !important;
                 cursor: pointer !important;
-                background: var(--bg-secondary) !important;
-                border-radius: 20px !important;
-                margin-bottom: 10px !important;
+                background: var(--card-bg) !important;
+                border-radius: 16px !important;
+                margin-bottom: 8px !important;
                 align-items: center !important;
+                border-left: 4px solid var(--accent-primary) !important;
+                box-shadow: 0 2px 12px var(--shadow-light) !important;
+                transition: all 0.35s ease !important;
                 min-width: 0;
                 width: 100%;
                 box-sizing: border-box;
+            }
+
+            .project-card::before {
+                display: none !important;
+            }
+
+            .project-card.is-expanded {
+                border-left-color: var(--accent-secondary) !important;
+                box-shadow: 0 6px 24px var(--shadow-medium) !important;
+                background: var(--bg-secondary) !important;
             }
             
             /* Specific fix for confidential cards on mobile */
             .project-card.confidential-card {
                 border-style: dashed !important;
-                padding: 18px 20px !important;
+                padding: 16px 18px !important;
             }
 
             .project-card h3 {
-                margin-bottom: 0 !important;
-                font-size: 1.1rem !important;
-                grid-column: 1;
+                grid-column: 1 / 2 !important;
+                font-size: 1rem !important;
+                font-weight: 700 !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                color: var(--text-primary) !important;
+                line-height: 1.4 !important;
                 white-space: normal;
                 overflow: visible;
                 text-overflow: clip;
-                padding-right: 15px;
-                line-height: 1.3;
+                padding-right: 15px !important;
+            }
+
+            .project-card.is-expanded h3 {
                 color: var(--accent-primary) !important;
             }
 
@@ -1209,39 +1284,68 @@
                 display: block !important;
                 grid-column: 1 / span 2;
                 margin-top: 0px;
+                padding: 0 !important;
             }
 
             .project-arrow-mobile {
                 display: flex !important;
-                grid-column: 2;
+                grid-column: 2 / 3 !important;
                 color: var(--accent-primary);
-                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                background: rgba(38, 166, 154, 0.08);
+                padding: 7px;
+                border-radius: 50%;
+                margin-left: auto;
             }
 
             .project-card.is-expanded .project-arrow-mobile {
                 transform: rotate(180deg);
+                background: var(--accent-primary);
+                color: white;
+                box-shadow: 0 2px 8px rgba(38, 166, 154, 0.35);
             }
 
             .project-details-mobile {
                 grid-column: 1 / 3 !important;
-                display: block !important;
-                max-height: 0;
-                opacity: 0;
-                overflow: hidden;
-                visibility: hidden;
-                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                display: none !important;
             }
 
             .project-card.is-expanded .project-details-mobile {
-                max-height: 2000px;
-                opacity: 1;
-                visibility: visible;
-                padding-top: 15px;
-                margin-top: 10px;
+                display: block !important;
+                padding-top: 16px;
+                border-top: 1px solid var(--border-color);
+                margin-top: 14px;
             }
 
             .project-details-inner {
                 min-height: 0;
+            }
+
+            .project-card .project-image {
+                display: block !important;
+                margin-bottom: 14px !important;
+                border-radius: 12px !important;
+                overflow: hidden !important;
+                height: auto !important;
+            }
+
+            .project-card .project-image img {
+                border-radius: 12px !important;
+                width: 100% !important;
+                height: auto !important;
+                max-height: 200px !important;
+                object-fit: cover !important;
+            }
+
+            .project-card .project-image::after {
+                display: none !important;
+            }
+
+            .project-card .project-content p {
+                font-size: 0.88rem !important;
+                line-height: 1.6 !important;
+                margin-bottom: 12px !important;
+                color: var(--text-secondary) !important;
             }
 
             /* Elements inside the expanded drawer */
@@ -1254,14 +1358,14 @@
             
             .project-details-inner p {
                 display: block !important;
-                margin-bottom: 15px;
+                margin-bottom: 12px;
                 color: var(--text-secondary) !important;
             }
 
             .project-details-inner .project-tech {
                 flex-direction: row;
-                margin-bottom: 15px;
-                gap: 5px;
+                margin-bottom: 14px;
+                gap: 6px;
                 display: flex !important;
             }
 
@@ -1271,13 +1375,14 @@
                 flex-wrap: wrap;
                 gap: 8px !important;
                 justify-content: flex-start !important;
-                margin-top: 15px;
+                margin-top: 14px;
             }
 
             .project-details-inner .project-link {
-                padding: 6px 16px !important;
-                font-size: 0.75rem !important;
+                padding: 8px 18px !important;
+                font-size: 0.78rem !important;
                 min-height: auto !important;
+                border-radius: 20px !important;
             }
 
             .section {
@@ -1431,7 +1536,7 @@
         <div class="projects-grid">
             <!-- Confidential Excel Client Projects -->
             <div class="project-card confidential-card fade-in" data-tech="excel" style="cursor: default;" onclick="">
-                <div class="project-image"><img src="" alt=""></div>
+                <div class="project-image"><img src="Assets/Images/Projects/confidential-excel.png" alt="Confidential Excel Projects"></div>
                 <div class="project-content">
                     <h3>🔒 Confidential Client Excel Projects</h3>
                     <div class="project-tech">
@@ -1448,7 +1553,7 @@
 
             <!-- Confidential Power BI Client Projects -->
             <div class="project-card confidential-card" data-tech="power bi" style="cursor: default;" onclick="">
-                <div class="project-image"><img src="" alt=""></div>
+                <div class="project-image"><img src="Assets/Images/Projects/confidential-powerbi.png" alt="Confidential Power BI Projects"></div>
                 <div class="project-content">
                     <h3>🔒 Confidential Client Power BI Projects</h3>
                     <div class="project-tech">
