@@ -619,7 +619,7 @@
             text-align: center;
             color: var(--text-secondary);
             font-size: 1.15rem;
-            margin: -28px auto 40px;
+            margin: 0 auto 40px;
             max-width: 720px;
             line-height: 1.65;
         }
@@ -635,6 +635,14 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             position: relative;
+        }
+
+        .section-title:has(+ .section-intro) {
+            margin-bottom: 28px;
+        }
+
+        .section-title + .section-intro {
+            margin-top: 10px;
         }
 
         .section-title::after {
@@ -1161,6 +1169,14 @@
             .section-title {
                 font-size: 2.2rem;
                 margin-bottom: 55px;
+            }
+
+            .section-title:has(+ .section-intro) {
+                margin-bottom: 32px;
+            }
+
+            .section-title + .section-intro {
+                margin-top: 8px;
             }
             .review-card {
                 min-width: 0;
