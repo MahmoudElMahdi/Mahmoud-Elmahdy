@@ -708,14 +708,14 @@
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
+            box-shadow: 0 4px 15px rgba(38, 166, 154, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.1);
             width: fit-content;
         }
         
         .resume-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+            box-shadow: 0 8px 25px rgba(38, 166, 154, 0.4);
             background: linear-gradient(135deg, var(--accent-secondary), var(--accent-primary));
         }
 
@@ -3478,41 +3478,72 @@
         </button>
     </div>
 
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <img src="Assets/Images/Logo/1.png" alt="Logo Dark" class="logo-dark" style="height:550px;width:auto;vertical-align:middle;margin-bottom: -180px; margin-top: -20px;">
-            <img src="Assets/Images/Logo/2.png" alt="Logo Light" class="logo-light" style="height:550px;width:auto;vertical-align:middle;margin-bottom: -180px; margin-top: -20px;display:none;">
-            <style>
-                [data-theme="dark"] .logo-dark { display: none !important; }
-                [data-theme="dark"] .logo-light { display: inline !important; }
-                [data-theme="light"] .logo-dark { display: inline !important; }
-                [data-theme="light"] .logo-light { display: none !important; }
-              </style>
-            <div class="subtitle">Data Analyst & Insights Specialist</div>
-            <p class="description">
-                Transforming complex data into actionable insights with over three years of experience in data analysis, visualization, and automation. Passionate about driving data-driven strategies and delivering solutions that align with business goals.
-            </p>
-            <a href="#experience" class="cta-button">View My Work</a>
-        </div>
-    </section>
 
-    <section id="about" class="section">
+
+    <section id="about" class="section" style="padding-top: 120px;">
         <div class="about fade-in">
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>About Me</h3>
-                    <p>
-                        Results-driven Data Analyst & BI Consultant with 3+ years of experience specializing in Advanced Excel, Power BI, and SQL. Across 120+ freelance projects and corporate roles at SGS, I build automated reporting systems and dashboards that cut manual processing time by up to 90%. Bilingual in English and German, I am passionate about translating complex data into actionable business value.
-                    </p>
-                    <div class="resume-btn-container" style="margin-top: 30px;">
-                        <a href="resume.html" class="resume-btn">
-                            <i class="fas fa-file-alt"></i> View My Resume
-                        </a>
-                    </div>
+            <!-- Header Row: Logo Left + Photo Right -->
+            <div class="about-hero-row">
+                <div class="about-logo-container">
+                    <img src="Assets/Images/Logo/1.png" alt="Logo Dark" class="logo-dark about-logo">
+                    <img src="Assets/Images/Logo/2.png" alt="Logo Light" class="logo-light about-logo" style="display:none;">
                 </div>
                 <div class="about-left">
                     <div class="profile-picture">
                         <img src="Assets/Images/Profile Picture/Mein Foto.png" alt="Mahmoud Elmahdy">
+                    </div>
+                </div>
+            </div>
+            <style>
+                .about-hero-row {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-bottom: 30px;
+                    gap: 30px;
+                }
+                .about-logo-container {
+                    flex-shrink: 0;
+                }
+                .about-logo {
+                    height: 400px;
+                    width: auto;
+                }
+                .about-hero-row .about-left {
+                    flex-shrink: 0;
+                }
+                [data-theme="dark"] .logo-dark { display: none !important; }
+                [data-theme="dark"] .logo-light { display: inline !important; }
+                [data-theme="light"] .logo-dark { display: inline !important; }
+                [data-theme="light"] .logo-light { display: none !important; }
+                @media (max-width: 768px) {
+                    .about-hero-row {
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 20px;
+                    }
+                    .about-logo {
+                        height: 250px;
+                    }
+                }
+            </style>
+            <!-- Full Width Description -->
+            <div class="about-content" style="display: block;">
+                <div class="about-text" style="max-width: 100%;">
+                    <h3>Data Analyst & Insights Specialist</h3>
+                    <p>
+                        Results-driven Data Analyst & BI Consultant with 3+ years of experience specializing in Advanced Excel, Power BI, and SQL. Across 120+ freelance projects and corporate roles at SGS, I build automated reporting systems and dashboards that cut manual processing time by up to 90%. Bilingual in English and German, I am passionate about translating complex data into actionable business value.
+                    </p>
+                    <div class="resume-btn-container" style="margin-top: 30px; display: flex; gap: 14px; flex-wrap: wrap;">
+                        <a href="resume.html" class="resume-btn">
+                            <i class="fas fa-file-alt"></i> View My Resume
+                        </a>
+                        <a href="#projects" class="resume-btn">
+                            <i class="fas fa-folder-open"></i> My Projects
+                        </a>
+                        <a href="#contact" class="resume-btn">
+                            <i class="fas fa-envelope"></i> Contact Me
+                        </a>
                     </div>
                 </div>
             </div>
