@@ -3132,6 +3132,89 @@
             margin-bottom: 15px;
             font-size: 0.95rem;
         }
+
+        .trusted-by-section {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .trusted-by-title {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .companies-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .company-logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+            cursor: default;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .company-logo img {
+            height: 40px;
+            width: auto;
+            max-width: 140px;
+            filter: opacity(0.85);
+            transition: all 0.3s ease;
+            object-fit: contain;
+        }
+
+        body[data-theme="dark"] .company-logo img {
+            filter: opacity(0.9) brightness(1.1); /* Slight brightness boost for dark mode visibility */
+        }
+        
+        body[data-theme="dark"] .company-logo:hover img {
+            filter: opacity(1) brightness(1.2);
+            transform: translateY(-2px);
+        }
+
+        .company-logo:hover img {
+            filter: opacity(1) brightness(1);
+            transform: translateY(-2px);
+        }
+        
+        .company-logo.other-entities {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            opacity: 0.6;
+            font-family: 'Tajawal', 'Cairo', sans-serif;
+        }
+
+        .company-logo.other-entities:hover {
+            opacity: 1;
+            color: var(--accent-primary);
+            transform: translateY(-2px);
+        }
+
+        .fallback-logo {
+            font-size: 1.2rem;
+            font-weight: 800;
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+        .company-logo:hover .fallback-logo {
+            opacity: 1;
+            color: var(--accent-primary);
+        }
     </style>
 </head>
 <body>
@@ -3372,6 +3455,33 @@
                             <li>Maintained 20+ verified 5-star reviews reflecting consistent delivery quality, clear communication, and business-focused outcomes.</li>
                         </ul>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="trusted-by-section fade-in">
+            <h3 class="trusted-by-title">Trusted By</h3>
+            <div class="companies-row">
+                <div class="company-logo" title="Sela">
+                    <img src="Assets/Images/Logo/sela.png" alt="Sela">
+                </div>
+                <div class="company-logo" title="Saudi Ground Services (SGS)">
+                    <img src="Assets/Images/Logo/SGS.png" alt="SGS">
+                </div>
+                <div class="company-logo" title="Saudi Arabia Railways (SAR)">
+                    <img src="Assets/Images/Logo/SAR.svg" alt="SAR">
+                </div>
+                <div class="company-logo" title="Maximus">
+                    <img src="Assets/Images/Logo/Maximus.svg" alt="Maximus">
+                </div>
+                <div class="company-logo" title="Bugshan & Dr. Erfan General Hospital">
+                    <img src="Assets/Images/Logo/Erfan.png" alt="Dr. Erfan Hospital">
+                </div>
+                <div class="company-logo" title="Ministry of Health (Saudi Arabia)">
+                    <img src="Assets/Images/Logo/MOH.svg" alt="Ministry of Health">
+                </div>
+                <div class="company-logo" title="Ministry of Education (Saudi Arabia)">
+                    <img src="Assets/Images/Logo/MOE.svg" alt="Ministry of Education">
                 </div>
             </div>
         </div>
