@@ -479,10 +479,10 @@
             width: 44px;
             height: 44px;
             border-radius: 50%;
-            background: var(--card-bg);
-            border: 2px solid var(--border-color);
+            background: color-mix(in srgb, var(--accent-primary) 8%, transparent);
+            border: 1px solid var(--border-color);
             margin-right: 12px;
-            box-shadow: 0 2px 8px var(--shadow-medium);
+            box-shadow: none;
         }
         .skill-category .icon-bg svg {
             width: 28px;
@@ -593,9 +593,35 @@
 
         /* Enhanced Sections */
         .section {
-            padding: 20px 50px;
+            padding: 72px 50px;
             max-width: 1450px;
             margin: 0 auto;
+        }
+
+        .section:not(#home) {
+            border-top: 1px solid color-mix(in srgb, var(--border-color) 70%, transparent);
+        }
+
+        #about.section {
+            border-top: none;
+        }
+
+        .section-flow {
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            backdrop-filter: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .section-intro {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            margin: -28px auto 40px;
+            max-width: 720px;
+            line-height: 1.65;
         }
 
         .section-title {
@@ -623,21 +649,14 @@
             border-radius: 2px;
         }
 
-        /* Enhanced About Section */
+        /* About — content on page background */
         .about {
-            background: var(--card-bg);
-            border-radius: 30px;
-            padding: 80px;
-            margin: 40px 0;
-            border: 2px solid var(--border-color);
-            box-shadow: 0 20px 60px var(--shadow-light);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-        }
-
-        .about:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 30px 80px var(--shadow-medium);
-            border-color: var(--accent-primary)50;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            padding: 0;
+            margin: 0;
+            box-shadow: none;
         }
 
         .about-content {
@@ -730,12 +749,12 @@
         }
 
         .stat-item {
-            background: var(--card-bg);
-            border-radius: 20px;
+            background: color-mix(in srgb, var(--accent-primary) 6%, transparent);
+            border-radius: 16px;
             padding: 15px 20px;
-            border: 2px solid var(--border-color);
+            border: 1px solid var(--border-color);
             text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            transition: border-color 0.3s ease, background 0.3s ease;
             flex: 1;
             min-width: 100px;
             max-width: none;
@@ -746,9 +765,8 @@
         }
         
         .stat-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px var(--shadow-medium);
-            border-color: var(--accent-primary)50;
+            border-color: color-mix(in srgb, var(--accent-primary) 40%, var(--border-color));
+            background: color-mix(in srgb, var(--accent-primary) 10%, transparent);
         }
 
         .stat-number {
@@ -827,20 +845,20 @@
         }
 
         .skill-category {
-            background: var(--bg-secondary);
-            border-radius: 12px;
-            padding: 15px 25px;
-            border: 1px solid var(--border-color);
-            transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+            background: transparent;
+            border-radius: 0;
+            padding: 18px 0;
+            border: none;
+            border-bottom: 1px solid var(--border-color);
+            transition: border-color 0.3s ease, background 0.3s ease;
             display: flex;
             flex-direction: row;
             align-items: center;
         }
 
         .skill-category:hover {
-            transform: translateX(5px);
-            background: var(--card-bg);
-            border-color: var(--accent-primary)50;
+            background: color-mix(in srgb, var(--accent-primary) 5%, transparent);
+            border-bottom-color: color-mix(in srgb, var(--accent-primary) 35%, var(--border-color));
         }
 
         .skill-category h4 {
@@ -1047,23 +1065,16 @@
 
         /* Profiles Section */
         .profiles-section {
-            background: var(--card-bg);
-            border-radius: 30px;
-            padding: 25px;
-            margin: 20px 0;
-            backdrop-filter: blur(20px);
-            border: 2px solid var(--border-color);
-            box-shadow: 0 20px 60px var(--shadow-light);
-            transition: all 0.3s ease;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            padding: 0;
+            margin: 0;
+            box-shadow: none;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-        }
-        .profiles-section:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 30px 80px var(--shadow-medium);
-            border-color: var(--accent-primary)50;
         }
         .profiles-badges-container {
             display: flex;
@@ -1193,19 +1204,12 @@
 
         /* Education Section */
         .education-section {
-            background: var(--card-bg);
-            border-radius: 30px;
-            padding: 60px;
-            margin: 20px 0;
-            border: 2px solid var(--border-color);
-            box-shadow: 0 20px 60px var(--shadow-light);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-        }
-
-        .education-section:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 30px 80px var(--shadow-medium);
-            border-color: var(--accent-primary)50;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            padding: 0;
+            margin: 0;
+            box-shadow: none;
         }
 
         .academic-row {
@@ -1265,22 +1269,21 @@
         }
 
         .college-card {
-            background: var(--card-bg);
+            background: color-mix(in srgb, var(--accent-primary) 5%, transparent);
             border-radius: 16px;
             padding: 20px;
-            border: 2px solid var(--border-color);
+            border: 1px solid var(--border-color);
             display: flex;
             align-items: center;
             gap: 20px;
             max-width: 900px;
             width: 100%;
-            transition: all 0.3s ease;
+            transition: border-color 0.3s ease, background 0.3s ease;
         }
 
         .college-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px var(--shadow-medium);
-            border-color: var(--accent-primary);
+            border-color: color-mix(in srgb, var(--accent-primary) 40%, var(--border-color));
+            background: color-mix(in srgb, var(--accent-primary) 9%, transparent);
         }
 
         .college-icon {
@@ -1469,20 +1472,12 @@
 
         /* Books & Languages Section */
         .books-languages-section {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 40px;
-            margin: 20px 0;
-            backdrop-filter: blur(20px);
-            border: 2px solid var(--border-color);
-            box-shadow: 0 10px 40px var(--shadow-light);
-            transition: all 0.3s ease;
-        }
-
-        .books-languages-section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 60px var(--shadow-medium);
-            border-color: var(--accent-primary)50;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            padding: 0;
+            margin: 0;
+            box-shadow: none;
         }
 
         .books-languages-grid {
@@ -2463,19 +2458,17 @@
         }
 
         .timeline-content {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 40px;
-            backdrop-filter: blur(20px);
-            border: 2px solid var(--border-color);
-            transition: all 0.3s ease;
-            box-shadow: 0 15px 40px var(--shadow-light);
+            background: transparent;
+            border-radius: 0;
+            padding: 4px 0 4px 28px;
+            border: none;
+            border-left: 3px solid color-mix(in srgb, var(--accent-primary) 45%, var(--border-color));
+            transition: border-color 0.3s ease;
+            box-shadow: none;
         }
 
         .timeline-content:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 60px var(--shadow-medium);
-            border-color: var(--accent-primary)50;
+            border-left-color: var(--accent-primary);
         }
 
         .timeline-content h3 {
@@ -2522,14 +2515,12 @@
         /* Enhanced Contact Section */
         .contact {
             text-align: left;
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 40px;
-            margin: 20px 0;
-            backdrop-filter: blur(20px);
-            border: 2px solid var(--border-color);
-            box-shadow: 0 20px 60px var(--shadow-light);
-            transition: all 0.3s ease;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            padding: 0;
+            margin: 0;
+            box-shadow: none;
         }
 
         .contact-grid {
@@ -2540,8 +2531,8 @@
         }
 
         .contact:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 30px 60px var(--shadow-medium);
+            transform: none;
+            box-shadow: none;
         }
 
         .contact-links {
@@ -2686,12 +2677,7 @@
             }
 
             .section {
-                padding: 100px 20px 20px 20px;
-            }
-
-            .about {
-                padding: 30px 15px;
-                margin: 20px 0;
+                padding: 64px 20px;
             }
 
             .about-content {
@@ -2722,11 +2708,6 @@
             .projects-grid {
                 grid-template-columns: 1fr;
                 gap: 40px;
-            }
-
-            .contact {
-                padding: 35px 20px;
-                margin: 20px 0;
             }
 
             .contact-links {
@@ -3116,13 +3097,6 @@
                 font-size: 0.7rem;
             }
 
-            /* Mobile optimization for books and languages */
-            .books-languages-section {
-                padding: 20px 15px;
-                margin: 20px 10px;
-                border-radius: 20px;
-            }
-
             .books-languages-grid {
                 grid-template-columns: 1fr;
                 gap: 30px;
@@ -3133,13 +3107,6 @@
             }
 
             /* Redundant mobile overrides removed for better consistency with the main responsive block */
-
-            /* Profiles section mobile optimization */
-            .profiles-section {
-                padding: 30px 20px;
-                margin: 40px 10px;
-            }
-
 
         }
 
@@ -3159,24 +3126,6 @@
             vertical-align: middle;
             margin-right: 10px;
             margin-bottom: 2px;
-        }
-
-        /* Unique SVGs for each skill category icon */
-        .skill-category .icon-bg {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: var(--card-bg);
-            border: 2px solid var(--border-color);
-            margin-right: 12px;
-            box-shadow: 0 2px 8px var(--shadow-medium);
-        }
-        .skill-category .icon-bg svg {
-            width: 28px;
-            height: 28px;
         }
 
         /* Enhance project buttons for mobile */
@@ -3507,8 +3456,7 @@
 
 
 
-    <section id="about" class="section" style="padding-top: 120px;">
-        <div class="about fade-in">
+    <section id="about" class="section fade-in" style="padding-top: 120px;">
             <!-- Header Row: Logo Left + Photo Right -->
             <div class="about-hero-row">
                 <div class="about-logo-container">
@@ -3680,7 +3628,6 @@
                       </div>
                   </div>
             </div>
-        </div>
     </section>
 
     <!-- Experience Section -->
@@ -3943,10 +3890,9 @@
     </section>
 
 
-    <section id="reviews" class="section">
-        <div class="reviews fade-in">
+    <section id="reviews" class="section fade-in">
             <h2 class="section-title">Client Reviews</h2>
-            <p style="text-align: center; color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 30px;">What my clients say about my work and dedication to delivering exceptional results.</p>
+            <p class="section-intro">What my clients say about my work and dedication to delivering exceptional results.</p>
             <div class="reviews-grid">
                 <div class="review-card" onclick="openGallery('reviews1')" data-project="reviews1" data-images="Reviews/Khamsat-01.png,Reviews/Khamsat-02.png,Reviews/Khamsat-03.png,Reviews/Khamsat-04.png,Reviews/Khamsat-05.png,Reviews/Khamsat-06.png,Reviews/Khamsat-07.png,Reviews/Khamsat-08.png,Reviews/Khamsat-09.png,Reviews/Khamsat-10.png,Reviews/Khamsat-11.png">
                     <div class="review-card-content">
@@ -3989,14 +3935,12 @@
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 
     <!-- Profiles Section -->
-    <section id="profiles" class="section">
-        <div class="profiles-section fade-in">
+    <section id="profiles" class="section fade-in">
             <h2 class="section-title">My Profiles</h2>
-            <p style="text-align: center; color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 30px;">Connect with me on various professional and learning platforms where I showcase my data analysis expertise.</p>
+            <p class="section-intro">Connect with me on various professional and learning platforms where I showcase my data analysis expertise.</p>
             <div class="profiles-badges-container">
                 <a href="https://www.linkedin.com/in/mahmoud-il-mahdy/" target="_blank" class="profile-badge badge-linkedin">
                     <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.28c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm13.5 10.28h-3v-4.5c0-1.08-.02-2.47-1.5-2.47-1.5 0-1.73 1.17-1.73 2.39v4.58h-3v-9h2.89v1.23h.04c.4-.75 1.38-1.54 2.84-1.54 3.04 0 3.6 2 3.6 4.59v4.72z"/></svg>
@@ -4031,12 +3975,10 @@
                     <span>HackerRank</span>
                 </a> -->
             </div>
-        </div>
     </section>
 
     <!-- Education Section -->
-    <section id="education" class="section">
-        <div class="education-section fade-in">
+    <section id="education" class="section fade-in">
             <h2 class="section-title">Education & Certifications</h2>
             
             <!-- College Education -->
@@ -4205,12 +4147,10 @@
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 
     <!-- Books & Languages Section -->
-    <section id="books-languages" class="section">
-        <div class="books-languages-section fade-in">
+    <section id="books-languages" class="section fade-in">
             <div class="books-languages-grid">
                 <!-- Books Section -->
                 <div class="books-section">
@@ -4381,14 +4321,12 @@
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 
     <!-- Articles & Posts Section -->
-    <section id="articles" class="section">
-        <div class="fade-in">
+    <section id="articles" class="section fade-in">
             <h2 class="section-title">Featured Articles & Posts</h2>
-            <p style="text-align: center; color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 30px;">My latest insights on data analytics, business intelligence, and automation.</p>
+            <p class="section-intro">My latest insights on data analytics, business intelligence, and automation.</p>
             
             <div class="articles-grid">
                 
@@ -4442,11 +4380,9 @@
                 </div>
 
             </div>
-        </div>
     </section>
 
-    <section id="contact" class="section">
-        <div class="contact fade-in">
+    <section id="contact" class="section fade-in">
             <div class="contact-grid">
                 <div class="contact-text-area">
                     <h2 class="section-title" style="text-align: left;">Let's Connect</h2>
@@ -4483,7 +4419,6 @@
                     </form>
                 </div>
             </div>
-        </div>
     </section>
     <!-- EmailJS integration -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
