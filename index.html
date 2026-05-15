@@ -369,11 +369,11 @@
 
             .menu-icon {
                 display: flex;
-                margin-left: auto;
+                margin-left: 0;
             }
 
             .nav-actions {
-                margin-left: 0;
+                margin-left: auto;
             }
 
             .nav-links {
@@ -708,14 +708,14 @@
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
+            box-shadow: 0 4px 15px rgba(38, 166, 154, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.1);
             width: fit-content;
         }
         
         .resume-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+            box-shadow: 0 8px 25px rgba(38, 166, 154, 0.4);
             background: linear-gradient(135deg, var(--accent-secondary), var(--accent-primary));
         }
 
@@ -3465,7 +3465,7 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                 </a>
                 <button class="nav-theme-btn" onclick="toggleTheme()" title="Toggle Theme">
-                    <svg id="theme-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                    <svg class="theme-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
                 </button>
             </div>
             <div class="menu-icon" id="menuIcon">&#9776;</div>
@@ -3473,46 +3473,86 @@
         </div>
     </nav>
     <div class="floating-action-buttons">
+        <a href="#contact" class="floating-btn" style="background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary)); color: #fff; border: none;" title="Contact Me">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </a>
+        <button class="floating-btn" onclick="toggleTheme()" title="Toggle Theme">
+            <svg class="theme-svg-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
         <button class="floating-btn" id="scrollTopBtn" title="Go to top">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
         </button>
     </div>
 
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <img src="Assets/Images/Logo/1.png" alt="Logo Dark" class="logo-dark" style="height:550px;width:auto;vertical-align:middle;margin-bottom: -180px; margin-top: -20px;">
-            <img src="Assets/Images/Logo/2.png" alt="Logo Light" class="logo-light" style="height:550px;width:auto;vertical-align:middle;margin-bottom: -180px; margin-top: -20px;display:none;">
-            <style>
-                [data-theme="dark"] .logo-dark { display: none !important; }
-                [data-theme="dark"] .logo-light { display: inline !important; }
-                [data-theme="light"] .logo-dark { display: inline !important; }
-                [data-theme="light"] .logo-light { display: none !important; }
-              </style>
-            <div class="subtitle">Data Analyst & Insights Specialist</div>
-            <p class="description">
-                Transforming complex data into actionable insights with over three years of experience in data analysis, visualization, and automation. Passionate about driving data-driven strategies and delivering solutions that align with business goals.
-            </p>
-            <a href="#experience" class="cta-button">View My Work</a>
-        </div>
-    </section>
 
-    <section id="about" class="section">
+
+    <section id="about" class="section" style="padding-top: 120px;">
         <div class="about fade-in">
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>About Me</h3>
-                    <p>
-                        Results-driven Data Analyst & BI Consultant with 3+ years of experience specializing in Advanced Excel, Power BI, and SQL. Across 120+ freelance projects and corporate roles at SGS, I build automated reporting systems and dashboards that cut manual processing time by up to 90%. Bilingual in English and German, I am passionate about translating complex data into actionable business value.
-                    </p>
-                    <div class="resume-btn-container" style="margin-top: 30px;">
-                        <a href="resume.html" class="resume-btn">
-                            <i class="fas fa-file-alt"></i> View My Resume
-                        </a>
-                    </div>
+            <!-- Header Row: Logo Left + Photo Right -->
+            <div class="about-hero-row">
+                <div class="about-logo-container">
+                    <img src="Assets/Images/Logo/1.png" alt="Logo Dark" class="logo-dark about-logo">
+                    <img src="Assets/Images/Logo/2.png" alt="Logo Light" class="logo-light about-logo" style="display:none;">
                 </div>
                 <div class="about-left">
                     <div class="profile-picture">
                         <img src="Assets/Images/Profile Picture/Mein Foto.png" alt="Mahmoud Elmahdy">
+                    </div>
+                </div>
+            </div>
+            <style>
+                .about-hero-row {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-bottom: 30px;
+                    gap: 30px;
+                }
+                .about-logo-container {
+                    flex-shrink: 0;
+                }
+                .about-logo {
+                    height: 400px;
+                    width: auto;
+                }
+                .about-hero-row .about-left {
+                    flex-shrink: 0;
+                }
+                [data-theme="dark"] .logo-dark { display: none !important; }
+                [data-theme="dark"] .logo-light { display: inline !important; }
+                [data-theme="light"] .logo-dark { display: inline !important; }
+                [data-theme="light"] .logo-light { display: none !important; }
+                @media (max-width: 768px) {
+                    .about-hero-row {
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 20px;
+                    }
+                    .about-logo {
+                        height: 250px;
+                    }
+                    .resume-btn-container {
+                        justify-content: center !important;
+                    }
+                }
+            </style>
+            <!-- Full Width Description -->
+            <div class="about-content" style="display: block;">
+                <div class="about-text" style="max-width: 100%;">
+                    <h3>Data Analyst & Insights Specialist</h3>
+                    <p>
+                        Results-driven Data Analyst & BI Consultant with 3+ years of experience specializing in Advanced Excel, Power BI, and SQL. Across 120+ freelance projects and corporate roles at SGS, I build automated reporting systems and dashboards that cut manual processing time by up to 90%. Bilingual in English and German, I am passionate about translating complex data into actionable business value.
+                    </p>
+                    <div class="resume-btn-container" style="margin-top: 30px; display: flex; gap: 14px; flex-wrap: wrap;">
+                        <a href="resume.html" class="resume-btn">
+                            <i class="fas fa-file-alt"></i> View My Resume
+                        </a>
+                        <a href="#projects" class="resume-btn">
+                            <i class="fas fa-folder-open"></i> My Projects
+                        </a>
+                        <a href="#contact" class="resume-btn">
+                            <i class="fas fa-envelope"></i> Contact Me
+                        </a>
                     </div>
                 </div>
             </div>
@@ -4512,19 +4552,18 @@
         // Dark mode functionality
         function toggleTheme() {
             const body = document.body;
-            const themeIcon = document.getElementById('theme-icon');
-            const themeSvg = document.getElementById('theme-svg');
+            const themeSvgs = document.querySelectorAll('.theme-svg-icon');
             const currentTheme = body.getAttribute('data-theme');
             if (currentTheme === 'dark') {
                 body.removeAttribute('data-theme');
                 // Sun icon
-                themeSvg.innerHTML = '<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>';
+                themeSvgs.forEach(svg => svg.innerHTML = '<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>');
                 localStorage.setItem('theme', 'light');
                 trackEvent('theme_toggle', 'preference', 'light', 1);
             } else {
                 body.setAttribute('data-theme', 'dark');
                 // Moon icon
-                themeSvg.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/>';
+                themeSvgs.forEach(svg => svg.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/>');
                 localStorage.setItem('theme', 'dark');
                 trackEvent('theme_toggle', 'preference', 'dark', 1);
             }
@@ -4533,12 +4572,12 @@
         // Set correct icon on load
         document.addEventListener('DOMContentLoaded', function() {
             const savedTheme = localStorage.getItem('theme');
-            const themeSvg = document.getElementById('theme-svg');
+            const themeSvgs = document.querySelectorAll('.theme-svg-icon');
             if (savedTheme === 'dark') {
                 document.body.setAttribute('data-theme', 'dark');
-                themeSvg.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/>';
+                themeSvgs.forEach(svg => svg.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/>');
             } else {
-                themeSvg.innerHTML = '<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>';
+                themeSvgs.forEach(svg => svg.innerHTML = '<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>');
             }
         });
         
