@@ -136,7 +136,7 @@
             height: 18px;
             color: var(--accent-primary);
             background: none;
-            animation: float 20s infinite linear;
+            animation: float 50s infinite linear;
             z-index: -1;
             opacity: 0.35;
             will-change: transform;
@@ -3403,8 +3403,8 @@
             particle.style.width = size + 'px';
             particle.style.height = size + 'px';
             particle.style.left = Math.random() * 100 + 'vw';
-            particle.style.animationDelay = Math.random() * 20 + 's';
-            particle.style.animationDuration = (18 + Math.random() * 8) + 's';
+            particle.style.animationDelay = Math.random() * 50 + 's';
+            particle.style.animationDuration = (42 + Math.random() * 28) + 's';
             particle.style.opacity = (0.22 + Math.random() * 0.2).toString();
             document.body.appendChild(particle);
         }

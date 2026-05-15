@@ -124,7 +124,7 @@
             height: 18px;
             color: var(--accent-primary);
             background: none;
-            animation: float 20s infinite linear;
+            animation: float 50s infinite linear;
             z-index: -1;
             opacity: 0.35;
             will-change: transform;
@@ -437,10 +437,28 @@
         /* tech-tag styles defined in main card CSS below */
         /* Mobile responsive overrides handled in main card CSS below */
         .section {
-            padding: 70px 50px;
+            padding: 72px 50px;
             max-width: 1450px;
             margin: 0 auto;
-            padding-top: 100px; /* Add padding to push content below fixed nav */
+            padding-top: 100px;
+        }
+
+        .section-flow {
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            backdrop-filter: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .section-intro {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            margin: 0 auto 28px;
+            max-width: 720px;
+            line-height: 1.65;
         }
 
         .section-title {
@@ -525,8 +543,15 @@
         
         /* Project Filters */
         .project-filters {
-            margin: 40px 0;
+            margin: 48px 0 40px;
             text-align: center;
+        }
+
+        .project-filters h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
         }
 
         .filter-buttons {
@@ -539,14 +564,14 @@
 
         .filter-btn {
             padding: 12px 24px;
-            background: var(--card-bg);
-            border: 2px solid var(--border-color);
+            background: transparent;
+            border: 1px solid var(--border-color);
             border-radius: 25px;
             color: var(--text-secondary);
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
             outline: none;
         }
 
@@ -562,10 +587,11 @@
         }
 
         .filter-btn:hover {
-            border-color: var(--accent-primary);
+            border-color: color-mix(in srgb, var(--accent-primary) 40%, var(--border-color));
             color: var(--accent-primary);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px var(--accent-primary)20;
+            background: color-mix(in srgb, var(--accent-primary) 8%, transparent);
+            transform: none;
+            box-shadow: none;
         }
 
         .filter-btn.active {
@@ -1379,7 +1405,7 @@
             }
 
             .section {
-                padding: 80px 12px 30px;
+                padding: 88px 20px 48px;
             }
             .section-title {
                 font-size: 2rem;
@@ -1408,23 +1434,28 @@
         }
 
         .privacy-notice {
-            max-width: 800px;
-            margin: 20px auto 40px;
-            padding: 15px 20px;
-            background: rgba(37, 99, 235, 0.05);
-            border: 2px dashed var(--accent-primary);
-            border-radius: 12px;
+            max-width: 900px;
+            margin: 0 auto 40px;
+            padding: 16px 0 16px 20px;
+            background: transparent;
+            border: none;
+            border-left: 3px solid color-mix(in srgb, var(--accent-primary) 50%, var(--border-color));
+            border-radius: 0;
             display: flex;
             align-items: flex-start;
             gap: 15px;
             color: var(--text-secondary);
             font-size: 0.95rem;
-            line-height: 1.6;
-            transition: all 0.3s ease;
+            line-height: 1.65;
+            transition: border-color 0.3s ease;
+        }
+
+        .privacy-notice:hover {
+            border-left-color: var(--accent-primary);
         }
 
         body[data-theme="dark"] .privacy-notice {
-            background: rgba(38, 166, 154, 0.1);
+            background: transparent;
         }
 
         .privacy-notice svg {
@@ -1456,8 +1487,8 @@
             particle.style.width = size + 'px';
             particle.style.height = size + 'px';
             particle.style.left = Math.random() * 100 + 'vw';
-            particle.style.animationDelay = Math.random() * 20 + 's';
-            particle.style.animationDuration = (18 + Math.random() * 8) + 's';
+            particle.style.animationDelay = Math.random() * 50 + 's';
+            particle.style.animationDuration = (42 + Math.random() * 28) + 's';
             particle.style.opacity = (0.22 + Math.random() * 0.2).toString();
             document.body.appendChild(particle);
         }
@@ -1500,7 +1531,7 @@
         </button>
     </div>
 
-    <section id="all-projects" class="section">
+    <section id="all-projects" class="section fade-in">
         <div class="projects-header">
             <h2 class="section-title" style="margin-bottom: 0;">All Projects</h2>
             <a href="index.html" class="projects-btn">
@@ -1511,7 +1542,7 @@
         
         <!-- Project Filters -->
         <div class="project-filters">
-            <h3 style="text-align: center; margin-bottom: 20px; color: var(--text-primary);">Filter by Technology</h3>
+            <h3 class="section-intro" style="margin-bottom: 20px;">Filter by Technology</h3>
             <div class="filter-buttons">
                 <button class="filter-btn active" data-filter="all">All Projects</button>
                 <button class="filter-btn" data-filter="python">Python</button>
