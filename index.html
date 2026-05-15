@@ -129,17 +129,27 @@
             75% { background-position: 0% 100%; }
         }
 
-        /* Enhanced floating particles */
+        /* Floating analytics icons */
         .particle {
             position: fixed;
-            width: 4px;
-            height: 4px;
-            background: var(--accent-primary);
-            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            color: var(--accent-primary);
+            background: none;
             animation: float 20s infinite linear;
             z-index: -1;
-            opacity: 0.4;
+            opacity: 0.35;
             will-change: transform;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .particle svg {
+            width: 100%;
+            height: 100%;
+            display: block;
         }
 
         @keyframes float {
@@ -3429,13 +3439,24 @@
     <div class="bg-animation"></div>
     
     <script>
-        // Optimized particles - reduced count and complexity
+        // Floating analytics icons (bar, line, pie, trend)
+        const analyticsIcons = [
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="14" width="4" height="7" rx="0.5" fill="currentColor" opacity="0.5"/><rect x="9" y="10" width="4" height="11" rx="0.5" fill="currentColor" opacity="0.65"/><rect x="15" y="6" width="4" height="15" rx="0.5" fill="currentColor" opacity="0.8"/></svg>',
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 14 14 21 7"/><circle cx="3" cy="17" r="1.5" fill="currentColor"/><circle cx="9" cy="11" r="1.5" fill="currentColor"/><circle cx="14" cy="14" r="1.5" fill="currentColor"/><circle cx="21" cy="7" r="1.5" fill="currentColor"/></svg>',
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 3v9l6.5 6.5" stroke="currentColor" stroke-linecap="round"/><path d="M12 3a9 9 0 0 1 9 9H12V3z" fill="currentColor" opacity="0.55"/></svg>',
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-5 4 3 9-9"/><path d="M17 6h4v4" stroke="currentColor"/></svg>'
+        ];
         for (let i = 0; i < 25; i++) {
             const particle = document.createElement('div');
             particle.className = 'particle';
+            particle.innerHTML = analyticsIcons[Math.floor(Math.random() * analyticsIcons.length)];
+            const size = 14 + Math.floor(Math.random() * 10);
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
             particle.style.left = Math.random() * 100 + 'vw';
             particle.style.animationDelay = Math.random() * 20 + 's';
-            particle.style.animationDuration = '20s';
+            particle.style.animationDuration = (18 + Math.random() * 8) + 's';
+            particle.style.opacity = (0.22 + Math.random() * 0.2).toString();
             document.body.appendChild(particle);
         }
     </script>
