@@ -635,6 +635,12 @@
                 icon.className = 'fas fa-sun';
             }
         });
+
+        if (new URLSearchParams(window.location.search).get('download') === 'pdf') {
+            window.addEventListener('load', () => {
+                setTimeout(() => window.print(), 400);
+            });
+        }
     </script>
 </body>
 </html>
