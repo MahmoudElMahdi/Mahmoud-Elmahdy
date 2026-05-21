@@ -242,88 +242,62 @@ document.addEventListener('keydown', function(e) {
 // ===== Project Filtering Functionality =====
 document.addEventListener('DOMContentLoaded', function() {
     const techFilterButtons = document.querySelectorAll('.filter-btn-tech');
-    const outcomeFilterButtons = document.querySelectorAll('.filter-btn-outcome');
     const allCards = document.querySelectorAll('.project-card');
     const projectCards = document.querySelectorAll('.project-card:not(.confidential-card)');
     const confidentialCards = document.querySelectorAll('.confidential-card');
     let activeTechFilter = 'all';
-    let activeOutcomeFilter = 'all';
 
-    function getCardOutcome(card) {
-        const explicit = card.getAttribute('data-outcome');
-        if (explicit) return explicit.toLowerCase();
-        const tech = (card.getAttribute('data-tech') || '').toLowerCase();
-        const title = (card.querySelector('h3')?.textContent || '').toLowerCase();
-        if (tech.includes('sql') || title.includes('warehouse') || title.includes('database') || title.includes('journey') || title.includes('integration')) {
-            return 'sql-etl';
-        }
-        if (tech.includes('power bi') || tech.includes('tableau')) return 'bi';
-        if (title.includes('automation') || title.includes('automated') || title.includes('sar') || title.includes('hajj') || title.includes('reporting system')) {
-            return 'automation';
-        }
-        if (tech.includes('excel')) {
-            return (title.includes('dashboard') || title.includes('analytics') || title.includes('tracker')) ? 'bi' : 'automation';
-        }
-        if (tech.includes('python')) {
-            return (title.includes('donor') || title.includes('eda') || title.includes('bike')) ? 'bi' : 'sql-etl';
-        }
-        return 'bi';
-    }
-
-    // ===== Card Setup: Thumbnails, Reorder, Button Handling =====
+    // ===== Card Setup: Thumbnails & Link Wrapping =====
     allCards.forEach(card => {
         const content = card.querySelector('.project-content');
         if (!content) return;
 
-        const h3 = content.querySelector('h3');
-        const techDiv = content.querySelector('.project-tech');
-        const p = content.querySelector('p');
         const linksDiv = content.querySelector('.project-links');
 
-        // Build thumbnail gallery (only for normal cards)
-        let cardBottom = card.querySelector('.card-bottom');
-        if (!cardBottom && !card.classList.contains('confidential-card')) {
-            cardBottom = document.createElement('div');
-            cardBottom.className = 'card-bottom';
-            
-            const imagesData = card.getAttribute('data-images');
-            if (imagesData) {
-                const images = imagesData.split(',').filter(s => s.trim());
-                if (images.length > 0) {
-                    const thumbContainer = document.createElement('div');
-                    thumbContainer.className = 'project-thumbnails';
-                    const maxShow = 4;
-                    const showImages = images.slice(0, maxShow);
-                    
-                    showImages.forEach((imgSrc, idx) => {
-                        const thumb = document.createElement('img');
-                        thumb.className = 'project-thumb';
-                        thumb.src = imgSrc.trim();
-                        thumb.alt = `Preview ${idx + 1}`;
-                        thumb.onclick = (e) => {
-                            e.stopPropagation();
-                            openGallery(card.getAttribute('data-project'));
-                            goToImage(idx);
-                        };
-                        thumbContainer.appendChild(thumb);
-                    });
+        // Create card-bottom wrapper for thumbnails + buttons
+        const cardBottom = document.createElement('div');
+        cardBottom.className = 'card-bottom';
 
-                    if (images.length > maxShow) {
-                        const moreBtn = document.createElement('div');
-                        moreBtn.className = 'thumb-more';
-                        moreBtn.textContent = `+${images.length - maxShow}`;
-                        moreBtn.onclick = (e) => {
-                            e.stopPropagation();
-                            openGallery(card.getAttribute('data-project'));
-                        };
-                        thumbContainer.appendChild(moreBtn);
-                    }
-                    cardBottom.appendChild(thumbContainer);
+        // Build thumbnail gallery from data-images
+        const imagesData = card.getAttribute('data-images');
+        if (imagesData) {
+            const images = imagesData.split(',').filter(s => s.trim());
+            if (images.length > 0) {
+                const thumbContainer = document.createElement('div');
+                thumbContainer.className = 'project-thumbnails';
+                const maxShow = 4;
+                const showImages = images.slice(0, maxShow);
+                
+                showImages.forEach((imgSrc, idx) => {
+                    const thumb = document.createElement('img');
+                    thumb.className = 'project-thumb';
+                    thumb.src = imgSrc.trim();
+                    thumb.alt = `Preview ${idx + 1}`;
+                    thumb.onclick = (e) => {
+                        e.stopPropagation();
+                        openGallery(card.getAttribute('data-project'));
+                        goToImage(idx);
+                    };
+                    thumbContainer.appendChild(thumb);
+                });
+
+                if (images.length > maxShow) {
+                    const moreBtn = document.createElement('div');
+                    moreBtn.className = 'thumb-more';
+                    moreBtn.textContent = `+${images.length - maxShow}`;
+                    moreBtn.onclick = (e) => {
+                        e.stopPropagation();
+                        openGallery(card.getAttribute('data-project'));
+                    };
+                    thumbContainer.appendChild(moreBtn);
                 }
+
+                cardBottom.appendChild(thumbContainer);
             }
         }
 
-        if (linksDiv && cardBottom) {
+        // Move links into card-bottom and handle empty links
+        if (linksDiv) {
             const links = linksDiv.querySelectorAll('a');
             if (links.length === 0) {
                 linksDiv.style.display = 'none';
@@ -331,48 +305,15 @@ document.addEventListener('DOMContentLoaded', function() {
             cardBottom.appendChild(linksDiv);
         }
 
-        // Create mobile arrow
-        const arrowMobile = document.createElement('div');
-        arrowMobile.className = 'project-arrow-mobile';
-        arrowMobile.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
-        card.appendChild(arrowMobile);
-
-        // Create mobile details wrapper
-        const detailsMobile = document.createElement('div');
-        detailsMobile.className = 'project-details-mobile';
-        const detailsInner = document.createElement('div');
-        detailsInner.className = 'project-details-inner';
-        detailsMobile.appendChild(detailsInner);
-        
-        // Move elements into drawer
-        const img = card.querySelector('.project-image') || card.querySelector('.confidential-image');
-        if (img) detailsInner.appendChild(img);
-        if (techDiv) detailsInner.appendChild(techDiv);
-        if (p) detailsInner.appendChild(p);
-        if (cardBottom) detailsInner.appendChild(cardBottom);
-        
-        // Move h3 to be a direct child of project-card for grid layout
-        if (h3) card.insertBefore(h3, arrowMobile);
-        
-        // Append drawer directly to card (sibling of h3 and arrow)
-        card.appendChild(detailsMobile);
-
-        // Hide original content container as it's now mostly empty/redundant
-        if (content) content.style.display = 'none';
-
-        // Remove inline onclick and add unified handler
-        card.removeAttribute('onclick');
-        card.addEventListener('click', (e) => handleProjectClick(card, e, card.getAttribute('data-project')));
+        content.appendChild(cardBottom);
     });
 
     // ===== Filtering =====
     function applyProjectFilters() {
         projectCards.forEach(card => {
             const cardTech = (card.getAttribute('data-tech') || '').toLowerCase();
-            const cardOutcome = getCardOutcome(card);
             const techMatch = activeTechFilter === 'all' || cardTech.includes(activeTechFilter);
-            const outcomeMatch = activeOutcomeFilter === 'all' || cardOutcome === activeOutcomeFilter;
-            if (techMatch && outcomeMatch) {
+            if (techMatch) {
                 card.style.display = 'flex';
                 card.classList.remove('hidden');
             } else {
@@ -383,10 +324,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         confidentialCards.forEach(card => {
             const cardTech = (card.getAttribute('data-tech') || '').toLowerCase();
-            const cardOutcome = getCardOutcome(card);
             const techMatch = activeTechFilter === 'all' || cardTech === activeTechFilter;
-            const outcomeMatch = activeOutcomeFilter === 'all' || cardOutcome === activeOutcomeFilter;
-            if (techMatch && outcomeMatch) {
+            if (techMatch) {
                 card.style.display = 'flex';
                 card.classList.remove('hidden');
             } else {
@@ -400,14 +339,6 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', function() {
             activeTechFilter = (this.getAttribute('data-filter') || 'all').toLowerCase();
             techFilterButtons.forEach(btn => btn.classList.toggle('active', btn === this));
-            applyProjectFilters();
-        });
-    });
-
-    outcomeFilterButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            activeOutcomeFilter = (this.getAttribute('data-outcome') || 'all').toLowerCase();
-            outcomeFilterButtons.forEach(btn => btn.classList.toggle('active', btn === this));
             applyProjectFilters();
         });
     });
