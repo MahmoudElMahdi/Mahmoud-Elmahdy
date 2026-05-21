@@ -171,7 +171,7 @@
             width: 100%;
             border-radius: 12px;
             box-shadow: 0 10px 40px var(--shadow-medium);
-            padding: 50px 60px;
+            padding: 40px 50px;
             border: 1px solid var(--border-color);
             position: relative;
         }
@@ -180,12 +180,12 @@
         .r-header {
             text-align: center;
             border-bottom: 2px solid var(--accent-primary);
-            padding-bottom: 25px;
-            margin-bottom: 30px;
+            padding-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .r-name {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 800;
             color: var(--text-primary);
             margin-bottom: 5px;
@@ -193,25 +193,32 @@
         }
 
         .r-title {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             font-weight: 600;
             color: var(--accent-primary);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .r-contact {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 15px;
-            font-size: 0.9rem;
+            align-items: center;
+            gap: 8px 10px;
+            font-size: 0.85rem;
             color: var(--text-secondary);
+        }
+
+        .r-contact span.r-contact-sep {
+            color: var(--text-muted);
+            font-weight: 300;
+            user-select: none;
         }
 
         .r-contact a {
             color: var(--text-secondary);
             text-decoration: none;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 5px;
             transition: color 0.2s;
@@ -221,52 +228,58 @@
             color: var(--accent-primary);
         }
 
-        /* Summary */
-        .r-summary {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            margin-bottom: 30px;
-            text-align: justify;
-            line-height: 1.6;
-        }
-
         /* Sections */
         .r-section {
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .r-section-title {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: var(--text-primary);
             text-transform: uppercase;
-            letter-spacing: 1px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 8px;
+            letter-spacing: 0.5px;
+            border-bottom: 1.5px solid var(--border-color);
+            padding-bottom: 5px;
             margin-bottom: 15px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         .r-section-title i {
             color: var(--accent-primary);
+            font-size: 0.95rem;
         }
 
-        /* Two Column Layout */
+        /* Single Column Layout */
         .r-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 40px;
+            display: block;
         }
 
-        @media (max-width: 768px) {
-            .r-grid {
-                grid-template-columns: 1fr;
-            }
-            .resume-container {
-                padding: 30px 20px;
-            }
+        .r-summary-text {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-align: justify;
+            line-height: 1.6;
+        }
+
+        /* Core Competencies */
+        .r-competencies {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .r-comp-row {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .r-comp-row strong {
+            color: var(--text-primary);
+            font-weight: 600;
         }
 
         /* Experience Items */
@@ -274,30 +287,54 @@
             margin-bottom: 20px;
         }
 
+        .r-item:last-child {
+            margin-bottom: 0;
+        }
+
         .r-item-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 8px;
+            align-items: baseline;
+            margin-bottom: 6px;
             flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .r-item-title-row {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
         }
 
         .r-item-title {
             font-weight: 700;
             color: var(--text-primary);
-            font-size: 1.05rem;
+            font-size: 0.95rem;
+        }
+
+        .r-item-sep {
+            color: var(--text-muted);
+            font-weight: bold;
+            font-size: 0.8rem;
         }
 
         .r-item-company {
             font-weight: 600;
             color: var(--accent-primary);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+        }
+
+        .r-item-location, .r-item-school {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
         }
 
         .r-item-date {
             font-size: 0.85rem;
             color: var(--text-muted);
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .r-item-desc {
@@ -307,11 +344,12 @@
 
         .r-item-desc li {
             position: relative;
-            padding-left: 18px;
-            margin-bottom: 6px;
-            font-size: 0.9rem;
+            padding-left: 15px;
+            margin-bottom: 5px;
+            font-size: 0.88rem;
             color: var(--text-secondary);
             line-height: 1.5;
+            text-align: justify;
         }
 
         .r-item-desc li::before {
@@ -322,76 +360,91 @@
             font-weight: bold;
         }
 
-        /* Skills */
-        .r-skill-group {
-            margin-bottom: 15px;
+        /* Certifications & Education */
+        .r-cert-group {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
         }
 
-        .r-skill-title {
-            font-weight: 600;
+        .r-cert-group strong {
             color: var(--text-primary);
-            font-size: 0.95rem;
-            margin-bottom: 5px;
         }
 
-        .r-skill-list {
+        /* Languages */
+        .r-languages {
             font-size: 0.9rem;
             color: var(--text-secondary);
             line-height: 1.5;
         }
 
-        /* Education & Certs */
-        .r-edu-item {
-            margin-bottom: 15px;
-        }
-
-        .r-edu-degree {
-            font-weight: 700;
+        .r-languages strong {
             color: var(--text-primary);
-            font-size: 0.95rem;
         }
 
-        .r-edu-school {
-            font-weight: 500;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        .r-edu-date {
-            font-size: 0.85rem;
+        /* Footer */
+        .r-footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px dashed var(--border-color);
+            font-size: 0.8rem;
             color: var(--text-muted);
         }
 
-        .r-certs {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        .r-certs strong {
-            color: var(--text-primary);
-        }
-
-        /* Highlights Grid */
-        .r-highlights {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .r-highlight-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-
-        .r-highlight-item i {
+        .r-footer a {
             color: var(--accent-primary);
-            margin-top: 3px;
-            font-size: 0.8rem;
+            text-decoration: none;
+        }
+
+        .r-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .print-only {
+            display: none;
+        }
+
+        /* Responsive Media Queries */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 16px;
+            }
+            .nav-actions {
+                gap: 8px;
+            }
+            .nav-btn-text, .nav-logo-extra {
+                display: none;
+            }
+            .nav-btn {
+                width: 36px;
+                height: 36px;
+                padding: 0;
+                border-radius: 50%;
+                justify-content: center;
+            }
+            .resume-wrapper {
+                padding: 80px 12px 40px;
+            }
+            .resume-container {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .resume-container {
+                padding: 24px 16px;
+            }
+            .r-name {
+                font-size: 2rem;
+            }
+            .r-contact {
+                flex-direction: column;
+                gap: 5px;
+            }
+            .r-contact span.r-contact-sep {
+                display: none;
+            }
         }
 
         /* Print Styles */
@@ -416,14 +469,23 @@
                 -webkit-print-color-adjust: exact !important;
                 color-adjust: exact !important;
             }
-            .r-name, .r-section-title, .r-item-title, .r-skill-title {
+            .r-name, .r-section-title, .r-item-title, .r-skill-title, .r-languages strong, .r-cert-group strong, .r-comp-row strong {
                 color: #000 !important;
             }
-            .r-title, .r-item-company, .r-section-title i, .r-item-desc li::before, .r-highlight-item i {
+            .r-title, .r-item-company, .r-item-desc li::before {
                 color: #2563eb !important;
             }
-            .r-text-secondary, .r-summary, .r-item-desc li {
+            .r-text-secondary, .r-summary-text, .r-item-desc li, .r-languages, .r-cert-group, .r-comp-row {
                 color: #333 !important;
+            }
+            .r-section-title i, .r-contact i {
+                display: none !important;
+            }
+            .print-only {
+                display: inline !important;
+            }
+            .screen-only {
+                display: none !important;
             }
             .r-section {
                 page-break-inside: avoid;
@@ -439,17 +501,17 @@
     <nav>
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
-                <i class="fas fa-arrow-left"></i> Back to Portfolio
+                <i class="fas fa-arrow-left"></i> Back <span class="nav-logo-extra">to Portfolio</span>
             </a>
             <div class="nav-actions">
                 <button class="nav-theme-btn" id="themeToggle" title="Toggle Dark Mode">
                     <i class="fas fa-moon"></i>
                 </button>
                 <a href="Assets/Resume/Mahmoud_Elmahdy_Data_Analyst.pdf" target="_blank" class="nav-btn primary" title="Download PDF">
-                    <i class="fas fa-download"></i> Download PDF
+                    <i class="fas fa-download"></i> <span class="nav-btn-text">Download PDF</span>
                 </a>
                 <button onclick="window.print()" class="nav-btn" title="Print Resume">
-                    <i class="fas fa-print"></i> Print
+                    <i class="fas fa-print"></i> <span class="nav-btn-text">Print</span>
                 </button>
             </div>
         </div>
@@ -460,151 +522,135 @@
             <!-- Header -->
             <div class="r-header">
                 <h1 class="r-name">MAHMOUD ELMAHDY</h1>
-                <div class="r-title">Data Analyst | BI Developer | Process Analytics Specialist</div>
+                <div class="r-title">Data Analyst | BI Developer</div>
                 <div class="r-contact">
                     <span><i class="fas fa-map-marker-alt"></i> Alexandria, Egypt (Open to Relocate)</span>
+                    <span class="r-contact-sep">|</span>
                     <a href="tel:+201110782859"><i class="fas fa-phone"></i> +20 111 078 2859</a>
+                    <span class="r-contact-sep">|</span>
                     <a href="mailto:mahmoud.ilmahdy1@gmail.com"><i class="fas fa-envelope"></i> mahmoud.ilmahdy1@gmail.com</a>
-                    <a href="https://github.com/MahmoudElMahdi" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-                    <a href="https://www.linkedin.com/in/mahmoud-il-mahdy" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                    <a href="https://mahmoud-elmahdy.vercel.app/" target="_blank"><i class="fas fa-globe"></i> Portfolio</a>
+                    <span class="r-contact-sep">|</span>
+                    <a href="https://github.com/MahmoudElMahdi" target="_blank"><i class="fab fa-github"></i> <span class="screen-only">GitHub</span><span class="print-only">GitHub: https://github.com/MahmoudElMahdi</span></a>
+                    <span class="r-contact-sep">|</span>
+                    <a href="https://www.linkedin.com/in/mahmoud-il-mahdy" target="_blank"><i class="fab fa-linkedin"></i> <span class="screen-only">LinkedIn</span><span class="print-only">LinkedIn: https://www.linkedin.com/in/mahmoud-il-mahdy</span></a>
+                    <span class="r-contact-sep">|</span>
+                    <a href="https://mahmoud-elmahdy.vercel.app/" target="_blank"><i class="fas fa-globe"></i> <span class="screen-only">Portfolio</span><span class="print-only">Portfolio: https://mahmoud-elmahdy.vercel.app/</span></a>
                 </div>
             </div>
 
-            <div class="r-summary">
-                Data Analyst & BI Developer with 3+ years of experience constructing 120+ analytics projects for 30+ international clients. Specialized in Power BI, SQL, and Excel automation — compressed reporting cycles from 10 days to 1 day and reduced operational costs by 20% for SGS Saudi Arabia. Trilingual in Arabic, English, and German. Seeking a full-time role in Egypt, Saudi Arabia, or remotely.
+            <!-- Professional Summary -->
+            <div class="r-section">
+                <h2 class="r-section-title"><i class="fas fa-user"></i> Professional Summary</h2>
+                <div class="r-summary-text">
+                    Data Analyst & BI Developer with <strong>3+ years</strong> of experience constructing <strong>120+ analytics projects</strong> for <strong>30+ international clients</strong>. Specialized in Power BI, SQL, and Excel automation — compressed reporting cycles <strong>from 10 days to 1 day</strong> and reduced operational costs by <strong>20%</strong> for SGS Saudi Arabia. <strong>Trilingual in Arabic, English, and German</strong>. Seeking a full-time role in Egypt, Saudi Arabia, or remotely.
+                </div>
             </div>
 
-            <div class="r-grid">
-                <!-- Left Column -->
-                <div class="r-col-main">
-                    <div class="r-section">
-                        <h2 class="r-section-title"><i class="fas fa-briefcase"></i> Professional Experience</h2>
-                        
-                        <div class="r-item">
-                            <div class="r-item-header">
-                                <div>
-                                    <div class="r-item-title">Excel Automation Consultant</div>
-                                    <div class="r-item-company">SAR – Saudi Arabia Railways (Remote)</div>
-                                </div>
-                                <div class="r-item-date">Feb 2025 – Jun 2025</div>
-                            </div>
-                            <ul class="r-item-desc">
-                                <li>Engineered a 4-system Excel automation suite for SAR’s engineering and operations teams, eliminating fully manual workflows and reducing data entry errors to zero through custom VBA forms with validated dropdowns.</li>
-                                <li>Built an ECR management system with Gantt chart timeline, automated overdue alerts with color-coded rows, and one-click PDF daily dashboard — cutting management reporting time by an estimated 3+ hours/day and eliminating missed project deadlines.</li>
-                                <li>Designed RCA tracking, asset task management, and attendance systems — consolidating cross-functional operational data for 4 engineering teams into auditable, structured records that replaced fragmented manual logs.</li>
-                            </ul>
-                        </div>
+            <!-- Core Competencies -->
+            <div class="r-section">
+                <h2 class="r-section-title"><i class="fas fa-laptop-code"></i> Core Competencies</h2>
+                <div class="r-competencies">
+                    <div class="r-comp-row"><strong>BI & Visualization:</strong> Power BI, DAX, Power Query, Advanced Excel (VBA, PivotTables), Tableau</div>
+                    <div class="r-comp-row"><strong>Data Engineering:</strong> SQL Server, PostgreSQL, MySQL, ETL Pipelines, Medallion Architecture, Star Schema, Data Modeling</div>
+                    <div class="r-comp-row"><strong>Analytics:</strong> Statistical Modeling, Root-Cause Analysis, KPI Development, Process Optimization, A/B Testing, Segmentation</div>
+                    <div class="r-comp-row"><strong>Automation:</strong> VBA Macros, Python (Pandas, NumPy), Workflow Automation, Automated Reporting</div>
+                    <div class="r-comp-row"><strong>Soft Skills:</strong> Stakeholder Workshops, Cross-functional Communication, Client Delivery, Data-Driven Storytelling</div>
+                </div>
+            </div>
 
-                        <div class="r-item">
-                            <div class="r-item-header">
-                                <div>
-                                    <div class="r-item-title">Data Analyst & BI Consultant</div>
-                                    <div class="r-item-company">SGS – Saudi Ground Services (Remote)</div>
-                                </div>
-                                <div class="r-item-date">Mar 2022 – May 2023</div>
-                            </div>
-                            <ul class="r-item-desc">
-                                <li>Analyzed passenger load, boarding, and delay data across 3 daily shifts during Hajj season — enabling strategic staff reallocation without new hiring costs.</li>
-                                <li>Identified operational bottlenecks through statistical modeling, reducing passenger wait times and cutting flight delay costs by 20%+ per shift.</li>
-                                <li>Built a multi-module Excel KPI dashboard and PowerPoint presentation for real-time ground operations monitoring; automated reporting pipeline from 10 days to 1 day.</li>
-                                <li>Facilitated stakeholder workshops to translate complex data into actionable process redesigns and sustainable operating models.</li>
-                            </ul>
+            <!-- Professional Experience -->
+            <div class="r-section">
+                <h2 class="r-section-title"><i class="fas fa-briefcase"></i> Professional Experience</h2>
+                
+                <div class="r-item">
+                    <div class="r-item-header">
+                        <div class="r-item-title-row">
+                            <span class="r-item-title">Excel Automation Consultant</span>
+                            <span class="r-item-sep">·</span>
+                            <span class="r-item-company">SAR – Saudi Arabia Railways</span>
+                            <span class="r-item-sep">·</span>
+                            <span class="r-item-location">Saudi Arabia (Remote)</span>
                         </div>
-
-                        <div class="r-item">
-                            <div class="r-item-header">
-                                <div>
-                                    <div class="r-item-title">Data Analyst – Freelance</div>
-                                    <div class="r-item-company">Khamsat & Mostaql (International)</div>
-                                </div>
-                                <div class="r-item-date">Sep 2021 – Present</div>
-                            </div>
-                            <ul class="r-item-desc">
-                                <li>Designed 120+ end-to-end analytics projects for 30+ clients: dashboards, ETL pipelines, KPI reporting, and process automation across multiple industries.</li>
-                                <li>Built 70+ Power BI & Excel dashboards; engineered VBA/Power Query automation that cut manual processing time by 50% across client workflows.</li>
-                                <li>Conducted root cause analysis on operational data, translating complex findings into clear recommendations and data-driven process redesigns.</li>
-                                <li>Maintained 20+ verified 5-star reviews reflecting consistent delivery quality, clear communication, and business-focused outcomes.</li>
-                            </ul>
-                        </div>
+                        <div class="r-item-date">Feb 2025 – Jun 2025</div>
                     </div>
-
-                    <div class="r-section">
-                        <h2 class="r-section-title"><i class="fas fa-project-diagram"></i> Key Projects</h2>
-                        
-                        <div class="r-item">
-                            <div class="r-item-header">
-                                <div>
-                                    <div class="r-item-title">Enterprise Data Warehouse & Analytics Solution</div>
-                                    <div class="r-item-company">SQL Server · ETL · Medallion Architecture</div>
-                                </div>
-                            </div>
-                            <ul class="r-item-desc">
-                                <li>Architected a scalable SQL Server data warehouse (Bronze/Silver/Gold), created ETL pipelines with quality checks, and built analytics covering customer behavior and sales trends.</li>
-                                <li>Established end-to-end ETL pipelines with rigorous quality checks, and built an analytics roadmap covering customer behavior, cumulative trends, and segmentation.</li>
-                            </ul>
-                        </div>
-                    </div>
+                    <ul class="r-item-desc">
+                        <li>Engineered a 4-system Excel automation suite for SAR’s engineering and operations teams, eliminating fully manual workflows and reducing data entry errors to zero through custom VBA forms with validated dropdowns.</li>
+                        <li>Built an ECR management system with Gantt chart timeline, automated overdue alerts with color-coded rows, and one-click PDF daily dashboard — cutting management reporting time by an estimated 3+ hours/day and eliminating missed project deadlines.</li>
+                        <li>Designed RCA tracking, asset task management, and attendance systems — consolidating cross-functional operational data for 4 engineering teams into auditable, structured records that replaced fragmented manual logs.</li>
+                    </ul>
                 </div>
 
-                <!-- Right Column -->
-                <div class="r-col-side">
-                    <div class="r-section">
-                        <h2 class="r-section-title"><i class="fas fa-trophy"></i> Key Achievements</h2>
-                        <div class="r-highlights">
-                            <div class="r-highlight-item"><i class="fas fa-check"></i> 120+ Projects</div>
-                            <div class="r-highlight-item"><i class="fas fa-check"></i> 30+ Clients</div>
-                            <div class="r-highlight-item"><i class="fas fa-arrow-down"></i> 20% Cost cut</div>
-                            <div class="r-highlight-item"><i class="fas fa-clock"></i> 10d → 1d Reports</div>
-                            <div class="r-highlight-item"><i class="fas fa-bolt"></i> 50% Faster</div>
-                            <div class="r-highlight-item"><i class="fas fa-star"></i> 20+ 5-Star</div>
+                <div class="r-item">
+                    <div class="r-item-header">
+                        <div class="r-item-title-row">
+                            <span class="r-item-title">Data Analyst & BI Consultant</span>
+                            <span class="r-item-sep">·</span>
+                            <span class="r-item-company">SGS – Saudi Ground Services</span>
+                            <span class="r-item-sep">·</span>
+                            <span class="r-item-location">Saudi Arabia (Remote)</span>
                         </div>
+                        <div class="r-item-date">Mar 2022 – May 2023</div>
                     </div>
+                    <ul class="r-item-desc">
+                        <li>Analyzed passenger load, boarding, and delay data across 3 daily shifts during Hajj season — enabling strategic staff reallocation without new hiring costs.</li>
+                        <li>Identified operational bottlenecks through statistical modeling, reducing passenger wait times and cutting flight delay costs by 20%+ per shift.</li>
+                        <li>Built a multi-module Excel KPI dashboard and PowerPoint presentation for real-time ground operations monitoring; automated reporting pipeline from 10 days to 1 day.</li>
+                        <li>Facilitated stakeholder workshops to translate complex data into actionable process redesigns and sustainable operating models.</li>
+                    </ul>
+                </div>
 
-                    <div class="r-section">
-                        <h2 class="r-section-title"><i class="fas fa-laptop-code"></i> Technical Skills</h2>
-                        
-                        <div class="r-skill-group">
-                            <div class="r-skill-title">BI & Visualization</div>
-                            <div class="r-skill-list">Power BI, DAX, Excel (VBA, PivotTables), Tableau, Power Query</div>
+                <div class="r-item">
+                    <div class="r-item-header">
+                        <div class="r-item-title-row">
+                            <span class="r-item-title">Data Analyst – Freelance</span>
+                            <span class="r-item-sep">·</span>
+                            <span class="r-item-company">Khamsat & Mostaql</span>
+                            <span class="r-item-sep">·</span>
+                            <span class="r-item-location">Egypt / International</span>
                         </div>
-                        
-                        <div class="r-skill-group">
-                            <div class="r-skill-title">Data Engineering</div>
-                            <div class="r-skill-list">SQL Server, PostgreSQL, MySQL, ETL, Medallion Architecture, Star Schema, Data Modeling</div>
-                        </div>
-
-                        <div class="r-skill-group">
-                            <div class="r-skill-title">Analytics & Automation</div>
-                            <div class="r-skill-list">Python (Pandas, NumPy), Process Optimization, Root Cause Analysis, KPI Development, LLMs</div>
-                        </div>
-
-                        <div class="r-skill-group">
-                            <div class="r-skill-title">Languages</div>
-                            <div class="r-skill-list">Arabic (Native) · English (Fluent) · German (Fluent)</div>
-                        </div>
+                        <div class="r-item-date">Sep 2021 – Present</div>
                     </div>
+                    <ul class="r-item-desc">
+                        <li>Designed 120+ end-to-end analytics projects for 30+ clients: dashboards, ETL pipelines, KPI reporting, and process automation across multiple industries.</li>
+                        <li>Built 70+ Power BI & Excel dashboards; engineered VBA/Power Query automation that cut manual processing time by 50% across client workflows.</li>
+                        <li>Conducted root cause analysis on operational data, translating complex findings into clear recommendations and data-driven process redesigns.</li>
+                        <li>Achieved 20+ five-star ratings across 30+ clients by delivering dashboards ahead of deadline with zero revision cycles, driving repeat engagements and sustained platform ranking.</li>
+                    </ul>
+                </div>
+            </div>
 
-                    <div class="r-section">
-                        <h2 class="r-section-title"><i class="fas fa-graduation-cap"></i> Education</h2>
-                        <div class="r-edu-item">
-                            <div class="r-edu-degree">Bachelor of Management Information Systems</div>
-                            <div class="r-edu-school">Alexandria University</div>
-                            <div class="r-edu-date">2018 – 2022</div>
+            <!-- Education & Certifications -->
+            <div class="r-section">
+                <h2 class="r-section-title"><i class="fas fa-graduation-cap"></i> Education & Certifications</h2>
+                <div class="r-item" style="margin-bottom: 12px;">
+                    <div class="r-item-header">
+                        <div class="r-item-title-row">
+                            <span class="r-item-title">Bachelor of Management Information Systems</span>
+                            <span class="r-item-sep">·</span>
+                            <span class="r-item-school">Alexandria University</span>
                         </div>
-                    </div>
-
-                    <div class="r-section">
-                        <h2 class="r-section-title"><i class="fas fa-certificate"></i> Certifications</h2>
-                        <div class="r-certs">
-                            <strong>Udacity:</strong> Advanced Data Analysis, Machine Learning<br>
-                            <strong>McKinsey:</strong> Forward Program<br>
-                            <strong>365 Data Science:</strong> Advanced SQL & Excel, Power BI Reporting<br>
-                            <br>
-                            <em>Pursuing:</em> Google Advanced Data Analytics, Microsoft Power BI Data Analyst, Stanford ML Specialization
-                        </div>
+                        <div class="r-item-date">Sep 2018 – Jul 2022</div>
                     </div>
                 </div>
+                <div class="r-cert-group">
+                    <strong>Certifications:</strong> Advanced Data Analysis Nanodegree (Udacity) | Machine Learning Nanodegree (Udacity) | McKinsey Forward Program | Advanced SQL & Excel (365 Data Science) | Power BI Reporting (365 Data Science)
+                </div>
+                <div class="r-cert-group" style="margin-top: 8px;">
+                    <strong>Currently pursuing:</strong> Google Advanced Data Analytics | Power BI Data Analyst – Microsoft | ML Specialization – Stanford (Coursera)
+                </div>
+            </div>
+
+            <!-- Languages -->
+            <div class="r-section" style="margin-bottom: 15px;">
+                <h2 class="r-section-title"><i class="fas fa-language"></i> Languages</h2>
+                <div class="r-languages">
+                    <strong>Arabic</strong> (Native) &nbsp;&nbsp;&middot;&nbsp;&nbsp; <strong>English</strong> (Fluent — B2) &nbsp;&nbsp;&middot;&nbsp;&nbsp; <strong>German</strong> (Intermediate — B2)
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="r-footer">
+                Full project portfolio: <a href="https://mahmoud-elmahdy.vercel.app/" target="_blank">mahmoud-elmahdy.vercel.app</a> | Additional client projects available upon request
             </div>
         </div>
     </div>

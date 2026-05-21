@@ -3933,6 +3933,9 @@
                 grid-template-columns: 1fr !important;
                 gap: 0 !important;
             }
+            .projects-header .projects-btn {
+                margin-left: auto !important;
+            }
         }
 
         /* Desktop Layout and Element Alignment for Reconstructed Cards */

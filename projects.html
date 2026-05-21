@@ -1,35 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="Assets/Images/Logo/tap-icon.png">
     <title>All Projects - Mahmoud Elmahdy</title>
-    
+
     <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:title" content="All Projects - Mahmoud Elmahdy">
-    <meta property="og:description" content="Explore the portfolio projects of Mahmoud Elmahdy, Data Analyst & BI Developer.">
-    <meta property="og:image" content="https://raw.githubusercontent.com/MahmoudElMahdi/Mahmoud-Elmahdy/main/Assets/Images/Logo/1.png">
+    <meta property="og:description"
+        content="Explore the portfolio projects of Mahmoud Elmahdy, Data Analyst & BI Developer.">
+    <meta property="og:image"
+        content="https://raw.githubusercontent.com/MahmoudElMahdi/Mahmoud-Elmahdy/main/Assets/Images/Logo/1.png">
     <meta property="og:url" content="https://mahmoudelmahdi.github.io/Mahmoud-Elmahdy/projects.html">
     <meta property="og:type" content="website">
-    
+
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="All Projects - Mahmoud Elmahdy">
-    <meta name="twitter:description" content="Explore the portfolio projects of Mahmoud Elmahdy, Data Analyst & BI Developer.">
-    <meta name="twitter:image" content="https://raw.githubusercontent.com/MahmoudElMahdi/Mahmoud-Elmahdy/main/Assets/Images/Logo/1.png">
-    
+    <meta name="twitter:description"
+        content="Explore the portfolio projects of Mahmoud Elmahdy, Data Analyst & BI Developer.">
+    <meta name="twitter:image"
+        content="https://raw.githubusercontent.com/MahmoudElMahdi/Mahmoud-Elmahdy/main/Assets/Images/Logo/1.png">
+
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Q9YGJ4HZL"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-3Q9YGJ4HZL', {
             'anonymize_ip': true, // Privacy-friendly: anonymizes IP addresses
             'cookie_flags': 'SameSite=None;Secure'
         });
-        
+
         // Custom event tracking function
         function trackEvent(eventName, eventCategory, eventLabel, eventValue) {
             if (typeof gtag !== 'undefined') {
@@ -40,26 +45,28 @@
                 });
             }
         }
-        
+
         // Track page views
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             trackEvent('page_view', 'engagement', window.location.pathname);
         });
     </script>
     <!-- All styles are copied from the main page to ensure consistency -->
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <div class="bg-animation"></div>
 
     <nav id="navbar">
         <div class="nav-container">
             <a href="index.html#home" class="nav-logo" title="Home">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="3" y="16" width="3" height="5" rx="0.5" fill="currentColor" opacity="0.5"/>
-                    <rect x="8" y="12" width="3" height="9" rx="0.5" fill="currentColor" opacity="0.65"/>
-                    <rect x="13" y="8" width="3" height="13" rx="0.5" fill="currentColor" opacity="0.8"/>
-                    <rect x="18" y="4" width="3" height="17" rx="0.5" fill="currentColor" opacity="1"/>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <rect x="3" y="16" width="3" height="5" rx="0.5" fill="currentColor" opacity="0.5" />
+                    <rect x="8" y="12" width="3" height="9" rx="0.5" fill="currentColor" opacity="0.65" />
+                    <rect x="13" y="8" width="3" height="13" rx="0.5" fill="currentColor" opacity="0.8" />
+                    <rect x="18" y="4" width="3" height="17" rx="0.5" fill="currentColor" opacity="1" />
                 </svg>
             </a>
             <ul class="nav-links" id="navLinks">
@@ -72,32 +79,68 @@
                 <li><a href="index.html#education">Education</a></li>
                 <li><a href="index.html#books-languages">More</a></li>
             </ul>
-            <!-- Removed nav-actions -->
+            <div class="nav-actions">
+                <a href="index.html#contact" class="nav-contact-btn" title="Contact Me">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                        <polyline points="22,6 12,13 2,6" />
+                    </svg>
+                </a>
+                <button class="nav-theme-btn" onclick="toggleTheme()" title="Toggle Theme">
+                    <svg class="theme-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5" />
+                        <path
+                            d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                    </svg>
+                </button>
+            </div>
             <div class="menu-icon" id="menuIcon">&#9776;</div>
             <div id="navOverlay" class="nav-overlay"></div>
         </div>
     </nav>
     <div class="floating-action-buttons">
-        <a href="index.html#contact" class="floating-btn" style="background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary)); color: #fff; border: none;" title="Contact Me">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <a href="index.html#contact" class="floating-btn"
+            style="background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary)); color: #fff; border: none;"
+            title="Contact Me">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+            </svg>
         </a>
         <button class="floating-btn" onclick="toggleTheme()" title="Toggle Theme">
-            <svg id="theme-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+            <svg class="theme-svg-icon" id="theme-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5" />
+                <path
+                    d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+            </svg>
         </button>
         <button class="floating-btn" id="scrollTopBtn" title="Go to top">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 19V5M5 12l7-7 7 7" />
+            </svg>
         </button>
     </div>
 
     <section id="all-projects" class="section fade-in">
-        <div class="projects-header" style="display: flex; justify-content: space-between; align-items: center; width: 100%; text-align: left; margin-bottom: 35px; flex-wrap: wrap; gap: 15px;">
+        <div class="projects-header"
+            style="display: flex; justify-content: space-between; align-items: center; width: 100%; text-align: left; margin-bottom: 35px; flex-wrap: wrap; gap: 15px;">
             <h2 class="section-title" style="margin: 0; text-align: left;">All Projects</h2>
-            <a href="index.html" class="projects-btn" style="padding: 8px 18px; font-size: 0.85rem; font-weight: 600; border-radius: 30px; gap: 6px; margin: 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"></path><path d="M12 19l-7-7 7-7"></path></svg>
-                Back to Home
+            <a href="index.html" class="projects-btn"
+                style="padding: 8px 18px; font-size: 0.85rem; font-weight: 600; border-radius: 30px; gap: 6px; margin: 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 12H5"></path>
+                    <path d="M12 19l-7-7 7-7"></path>
+                </svg>
+                Home
             </a>
         </div>
-        
+
         <!-- Project Filters -->
         <div class="project-filters">
             <h3 class="section-intro" style="margin-bottom: 20px;">Filter by technology</h3>
@@ -111,18 +154,27 @@
                 <button class="filter-btn filter-btn-tech" data-filter="tableau">Tableau</button>
             </div>
         </div>
-        
+
         <div class="privacy-notice fade-in">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-            <span><strong>Data Privacy Note:</strong> More enterprise projects are available to be presented during a private meeting. Due to strict NDAs and data privacy, real client data is sanitized and masked to ensure complete confidentiality.</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <span><strong>Data Privacy Note:</strong> More enterprise projects are available to be presented during a
+                private meeting. Due to strict NDAs and data privacy, real client data is sanitized and masked to ensure
+                complete confidentiality.</span>
         </div>
 
         <div class="projects-grid all-projects-grid">
             <!-- Confidential Excel Client Projects -->
-            <div class="project-card confidential-card fade-in" onclick="handleProjectClick(this, event, 'confidential_excel')" data-project="confidential_excel" data-images="Assets/Images/Projects/confidential-excel.png" data-tech="excel">
+            <div class="project-card confidential-card fade-in"
+                onclick="handleProjectClick(this, event, 'confidential_excel')" data-project="confidential_excel"
+                data-images="Assets/Images/Projects/confidential-excel.png" data-tech="excel">
                 <h3>🔒 Confidential Client Excel Projects</h3>
                 <div class="project-arrow-mobile">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                 </div>
@@ -131,10 +183,13 @@
                         <img src="Assets/Images/Projects/confidential-excel.png" alt="Confidential Excel Projects">
                     </div>
                     <div class="project-content">
-                        <span class="project-impact-badge">Impact: Business process automation &amp; custom UI dashboarding</span>
+                        <span class="project-impact-badge">Impact: Business process automation &amp; custom UI
+                            dashboarding</span>
                         <ul class="project-case-study">
-                            <li><strong>Problem:</strong> Disorganized operational workflows and manual, error-prone spreadsheets caused significant delays.</li>
-                            <li><strong>Approach:</strong> Custom VBA automation, modular data models, dynamic pivot charts, and bespoke visual styling.</li>
+                            <li><strong>Problem:</strong> Disorganized operational workflows and manual, error-prone
+                                spreadsheets caused significant delays.</li>
+                            <li><strong>Approach:</strong> Custom VBA automation, modular data models, dynamic pivot
+                                charts, and bespoke visual styling.</li>
                             <li><strong>Stack:</strong> Advanced Excel, VBA, Power Query, Data Modeling.</li>
                         </ul>
                         <div class="project-tech">
@@ -150,10 +205,13 @@
             </div>
 
             <!-- Confidential Power BI Client Projects -->
-            <div class="project-card confidential-card fade-in" onclick="handleProjectClick(this, event, 'confidential_powerbi')" data-project="confidential_powerbi" data-images="Assets/Images/Projects/confidential-powerbi.png" data-tech="power bi">
+            <div class="project-card confidential-card fade-in"
+                onclick="handleProjectClick(this, event, 'confidential_powerbi')" data-project="confidential_powerbi"
+                data-images="Assets/Images/Projects/confidential-powerbi.png" data-tech="power bi">
                 <h3>🔒 Confidential Client Power BI Projects</h3>
                 <div class="project-arrow-mobile">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                 </div>
@@ -164,8 +222,10 @@
                     <div class="project-content">
                         <span class="project-impact-badge">Impact: Exec-level cross-department KPI visibility</span>
                         <ul class="project-case-study">
-                            <li><strong>Problem:</strong> Fragmented, siloed data from sales, HR, and finance prevented unified strategic decision-making.</li>
-                            <li><strong>Approach:</strong> Star-schema data modeling, robust DAX measures, and interactive cross-filtering reports.</li>
+                            <li><strong>Problem:</strong> Fragmented, siloed data from sales, HR, and finance prevented
+                                unified strategic decision-making.</li>
+                            <li><strong>Approach:</strong> Star-schema data modeling, robust DAX measures, and
+                                interactive cross-filtering reports.</li>
                             <li><strong>Stack:</strong> Power BI Desktop, DAX, Power Query, Data Modeling.</li>
                         </ul>
                         <div class="project-tech">
@@ -181,23 +241,32 @@
             </div>
 
             <!-- Mega-Event Operations & Hiring Automated Report (Hajj Season) -->
-            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project_hajj')" data-project="project_hajj" data-images="Assets/Images/Projects/Mega-Event Operations & Hiring Automated Report (Hajj Season)/1.png,Assets/Images/Projects/Mega-Event Operations & Hiring Automated Report (Hajj Season)/2.png,Assets/Images/Projects/Mega-Event Operations & Hiring Automated Report (Hajj Season)/3.png,Assets/Images/Projects/Mega-Event Operations & Hiring Automated Report (Hajj Season)/4.png" data-tech="excel">
+            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project_hajj')"
+                data-project="project_hajj"
+                data-images="Assets/Images/Projects/Mega-Event Operations & Hiring Automated Report (Hajj Season)/1.png,Assets/Images/Projects/Mega-Event Operations & Hiring Automated Report (Hajj Season)/2.png,Assets/Images/Projects/Mega-Event Operations & Hiring Automated Report (Hajj Season)/3.png,Assets/Images/Projects/Mega-Event Operations & Hiring Automated Report (Hajj Season)/4.png"
+                data-tech="excel">
                 <h3>SGS - Mega-Event Operations &amp; Hiring Automated Report (Client Project)</h3>
                 <div class="project-arrow-mobile">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                 </div>
                 <div class="project-details-mobile">
                     <div class="project-image" onclick="openGallery('project_hajj'); event.stopPropagation();">
-                        <img src="Assets/Images/Projects/Mega-Event Operations & Hiring Automated Report (Hajj Season)/1.png" alt="Mega-Event Operations & Hiring Automated Report" onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=Hajj+Operations+Report';">
+                        <img src="Assets/Images/Projects/Mega-Event Operations & Hiring Automated Report (Hajj Season)/1.png"
+                            alt="Mega-Event Operations & Hiring Automated Report"
+                            onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=Hajj+Operations+Report';">
                     </div>
                     <div class="project-content">
                         <span class="project-impact-badge">Impact: Reporting 10 days → 1 day</span>
                         <ul class="project-case-study">
-                            <li><strong>Problem:</strong> Hajj-season reporting took 10+ days per cycle across shifts and hiring data.</li>
-                            <li><strong>Approach:</strong> Central Excel model with automated PowerPoint executive packs and KPI dashboards.</li>
-                            <li><strong>Stack:</strong> Advanced Excel, Power Query, PowerPoint automation, dynamic linking.</li>
+                            <li><strong>Problem:</strong> Hajj-season reporting took 10+ days per cycle across shifts
+                                and hiring data.</li>
+                            <li><strong>Approach:</strong> Central Excel model with automated PowerPoint executive packs
+                                and KPI dashboards.</li>
+                            <li><strong>Stack:</strong> Advanced Excel, Power Query, PowerPoint automation, dynamic
+                                linking.</li>
                         </ul>
                         <div class="project-tech">
                             <span class="tech-tag">Advanced Excel</span>
@@ -206,8 +275,10 @@
                             <span class="tech-tag">Dynamic Linking</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link" onclick="openGallery('project_hajj'); event.stopPropagation(); event.preventDefault();">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <a href="#" class="project-link"
+                                onclick="openGallery('project_hajj'); event.stopPropagation(); event.preventDefault();">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
                                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
                                     <circle cx="12" cy="12" r="3" />
                                 </svg>
@@ -219,22 +290,29 @@
             </div>
 
             <!-- Project 4 - SAR -->
-            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project_sar')" data-project="project_sar" data-images="Assets/Images/Projects/SAR - Excel Automation Suite/SAR-Entry-Form-Censored.png,Assets/Images/Projects/SAR - Excel Automation Suite/SAR-Alert-Censored.png,Assets/Images/Projects/SAR - Excel Automation Suite/SAR-Gantt-Chart.png" data-tech="excel">
+            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project_sar')"
+                data-project="project_sar"
+                data-images="Assets/Images/Projects/SAR - Excel Automation Suite/SAR-Entry-Form-Censored.png,Assets/Images/Projects/SAR - Excel Automation Suite/SAR-Alert-Censored.png,Assets/Images/Projects/SAR - Excel Automation Suite/SAR-Gantt-Chart.png"
+                data-tech="excel">
                 <h3>SAR - Excel Automation Suite (Client Project)</h3>
                 <div class="project-arrow-mobile">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                 </div>
                 <div class="project-details-mobile">
                     <div class="project-image" onclick="openGallery('project_sar'); event.stopPropagation();">
-                        <img src="Assets/Images/Projects/SAR - Excel Automation Suite/SAR-Gantt-Chart.png" alt="SAR Excel Automation Suite">
+                        <img src="Assets/Images/Projects/SAR - Excel Automation Suite/SAR-Gantt-Chart.png"
+                            alt="SAR Excel Automation Suite">
                     </div>
                     <div class="project-content">
                         <span class="project-impact-badge">Impact: 4-system automation suite for rail operations</span>
                         <ul class="project-case-study">
-                            <li><strong>Problem:</strong> Manual ECR, RCA, and asset tracking caused delays and missed deadlines.</li>
-                            <li><strong>Approach:</strong> Four linked Excel systems with VBA forms, Gantt timelines, and automated alerts.</li>
+                            <li><strong>Problem:</strong> Manual ECR, RCA, and asset tracking caused delays and missed
+                                deadlines.</li>
+                            <li><strong>Approach:</strong> Four linked Excel systems with VBA forms, Gantt timelines,
+                                and automated alerts.</li>
                             <li><strong>Stack:</strong> Advanced Excel, VBA, Gantt charts, workflow automation.</li>
                         </ul>
                         <div class="project-tech">
@@ -244,8 +322,10 @@
                             <span class="tech-tag">Gantt Charts</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link" onclick="openGallery('project_sar'); event.stopPropagation(); event.preventDefault();">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <a href="#" class="project-link"
+                                onclick="openGallery('project_sar'); event.stopPropagation(); event.preventDefault();">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
                                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
                                     <circle cx="12" cy="12" r="3" />
                                 </svg>
@@ -257,22 +337,30 @@
             </div>
 
             <!-- Project 1 - Sales Analytics -->
-            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project1')" data-project="project1" data-images="Assets/Images/Projects/Sales Analytics Dashboard/1.jpg,Assets/Images/Projects/Sales Analytics Dashboard/2.png,Assets/Images/Projects/Sales Analytics Dashboard/3.png" data-tech="power bi">
+            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project1')"
+                data-project="project1"
+                data-images="Assets/Images/Projects/Sales Analytics Dashboard/1.jpg,Assets/Images/Projects/Sales Analytics Dashboard/2.png,Assets/Images/Projects/Sales Analytics Dashboard/3.png"
+                data-tech="power bi">
                 <h3>Sales Analytics Dashboard</h3>
                 <div class="project-arrow-mobile">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                 </div>
                 <div class="project-details-mobile">
                     <div class="project-image" onclick="openGallery('project1'); event.stopPropagation();">
-                        <img src="Assets/Images/Projects/Sales Analytics Dashboard/1.jpg" alt="Sales Analytics Dashboard" onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=Project+1';">
+                        <img src="Assets/Images/Projects/Sales Analytics Dashboard/1.jpg"
+                            alt="Sales Analytics Dashboard"
+                            onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=Project+1';">
                     </div>
                     <div class="project-content">
                         <span class="project-impact-badge">Impact: KPI visibility for sales &amp; profitability</span>
                         <ul class="project-case-study">
-                            <li><strong>Problem:</strong> Leadership lacked a single view of sales performance and product profitability.</li>
-                            <li><strong>Approach:</strong> Power BI dashboard with ETL, star-schema modeling, and DAX KPIs.</li>
+                            <li><strong>Problem:</strong> Leadership lacked a single view of sales performance and
+                                product profitability.</li>
+                            <li><strong>Approach:</strong> Power BI dashboard with ETL, star-schema modeling, and DAX
+                                KPIs.</li>
                             <li><strong>Stack:</strong> Power BI, DAX, ETL, data modeling.</li>
                         </ul>
                         <div class="project-tech">
@@ -282,8 +370,10 @@
                             <span class="tech-tag">Data Modeling</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link" onclick="openGallery('project1'); event.stopPropagation(); event.preventDefault();">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <a href="#" class="project-link"
+                                onclick="openGallery('project1'); event.stopPropagation(); event.preventDefault();">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
                                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
                                     <circle cx="12" cy="12" r="3" />
                                 </svg>
@@ -295,23 +385,32 @@
             </div>
 
             <!-- Enterprise HR Analytics & Workforce Planning Dashboard -->
-            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project_hr_analytics')" data-project="project_hr_analytics" data-images="Assets/Images/Projects/Enterprise HR Analytics & Workforce Planning Dashboard/1.png" data-tech="excel">
+            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project_hr_analytics')"
+                data-project="project_hr_analytics"
+                data-images="Assets/Images/Projects/Enterprise HR Analytics & Workforce Planning Dashboard/1.png"
+                data-tech="excel">
                 <h3>Enterprise HR Analytics &amp; Workforce Planning Dashboard</h3>
                 <div class="project-arrow-mobile">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                 </div>
                 <div class="project-details-mobile">
                     <div class="project-image" onclick="openGallery('project_hr_analytics'); event.stopPropagation();">
-                        <img src="Assets/Images/Projects/Enterprise HR Analytics & Workforce Planning Dashboard/1.png" alt="Enterprise HR Analytics & Workforce Planning Dashboard" onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=HR+Analytics+Dashboard';">
+                        <img src="Assets/Images/Projects/Enterprise HR Analytics & Workforce Planning Dashboard/1.png"
+                            alt="Enterprise HR Analytics & Workforce Planning Dashboard"
+                            onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=HR+Analytics+Dashboard';">
                     </div>
                     <div class="project-content">
                         <span class="project-impact-badge">Impact: Predictive retirement forecasting up to 2045</span>
                         <ul class="project-case-study">
-                            <li><strong>Problem:</strong> HR leaders struggled to visualize workforce age dominance and project localized retirement patterns.</li>
-                            <li><strong>Approach:</strong> Structured Excel data tables, dynamic slicers, key demographic charts, and historical projection models.</li>
-                            <li><strong>Stack:</strong> Advanced Excel, Pivot Tables, Workforce Analytics, Trend Projection.</li>
+                            <li><strong>Problem:</strong> HR leaders struggled to visualize workforce age dominance and
+                                project localized retirement patterns.</li>
+                            <li><strong>Approach:</strong> Structured Excel data tables, dynamic slicers, key
+                                demographic charts, and historical projection models.</li>
+                            <li><strong>Stack:</strong> Advanced Excel, Pivot Tables, Workforce Analytics, Trend
+                                Projection.</li>
                         </ul>
                         <div class="project-tech">
                             <span class="tech-tag">Advanced Excel</span>
@@ -326,23 +425,33 @@
             </div>
 
             <!-- Omnichannel Digital Marketing & Paid Ads Dashboard -->
-            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project_omnichannel')" data-project="project_omnichannel" data-images="Assets/Images/Projects/Omnichannel Digital Marketing & Paid Ads Dashboard (Travel & Tourism)/1.png,Assets/Images/Projects/Omnichannel Digital Marketing & Paid Ads Dashboard (Travel & Tourism)/2.png,Assets/Images/Projects/Omnichannel Digital Marketing & Paid Ads Dashboard (Travel & Tourism)/3.png,Assets/Images/Projects/Omnichannel Digital Marketing & Paid Ads Dashboard (Travel & Tourism)/4.png" data-tech="excel">
+            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project_omnichannel')"
+                data-project="project_omnichannel"
+                data-images="Assets/Images/Projects/Omnichannel Digital Marketing & Paid Ads Dashboard (Travel & Tourism)/1.png,Assets/Images/Projects/Omnichannel Digital Marketing & Paid Ads Dashboard (Travel & Tourism)/2.png,Assets/Images/Projects/Omnichannel Digital Marketing & Paid Ads Dashboard (Travel & Tourism)/3.png,Assets/Images/Projects/Omnichannel Digital Marketing & Paid Ads Dashboard (Travel & Tourism)/4.png"
+                data-tech="excel">
                 <h3>Omnichannel Digital Marketing Dashboard (Client Project)</h3>
                 <div class="project-arrow-mobile">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                 </div>
                 <div class="project-details-mobile">
                     <div class="project-image" onclick="openGallery('project_omnichannel'); event.stopPropagation();">
-                        <img src="Assets/Images/Projects/Omnichannel Digital Marketing & Paid Ads Dashboard (Travel & Tourism)/1.png" alt="Omnichannel Digital Marketing & Paid Ads Dashboard" onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=Marketing+Dashboard';">
+                        <img src="Assets/Images/Projects/Omnichannel Digital Marketing & Paid Ads Dashboard (Travel & Tourism)/1.png"
+                            alt="Omnichannel Digital Marketing & Paid Ads Dashboard"
+                            onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=Marketing+Dashboard';">
                     </div>
                     <div class="project-content">
-                        <span class="project-impact-badge">Impact: Unified ROI tracking across paid &amp; organic channels</span>
+                        <span class="project-impact-badge">Impact: Unified ROI tracking across paid &amp; organic
+                            channels</span>
                         <ul class="project-case-study">
-                            <li><strong>Problem:</strong> Scattered campaign metrics (Google Ads, Social, SEO) required hours to aggregate.</li>
-                            <li><strong>Approach:</strong> Multi-tab, dark-themed Excel reporting suite with automated data ingestion and unified KPIs.</li>
-                            <li><strong>Stack:</strong> Advanced Excel, Multi-source ETL, Data Consolidation, Dashboard Design.</li>
+                            <li><strong>Problem:</strong> Scattered campaign metrics (Google Ads, Social, SEO) required
+                                hours to aggregate.</li>
+                            <li><strong>Approach:</strong> Multi-tab, dark-themed Excel reporting suite with automated
+                                data ingestion and unified KPIs.</li>
+                            <li><strong>Stack:</strong> Advanced Excel, Multi-source ETL, Data Consolidation, Dashboard
+                                Design.</li>
                         </ul>
                         <div class="project-tech">
                             <span class="tech-tag">Advanced Excel</span>
@@ -357,22 +466,31 @@
             </div>
 
             <!-- Automated Executive HR Reporting System -->
-            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project_hr_reporting')" data-project="project_hr_reporting" data-images="Assets/Images/Projects/Automated Executive HR Reporting System (Excel to PowerPoint Integration)/1.png,Assets/Images/Projects/Automated Executive HR Reporting System (Excel to PowerPoint Integration)/2.png" data-tech="excel">
+            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project_hr_reporting')"
+                data-project="project_hr_reporting"
+                data-images="Assets/Images/Projects/Automated Executive HR Reporting System (Excel to PowerPoint Integration)/1.png,Assets/Images/Projects/Automated Executive HR Reporting System (Excel to PowerPoint Integration)/2.png"
+                data-tech="excel">
                 <h3>Automated Executive HR Reporting System (Excel to PowerPoint Integration)</h3>
                 <div class="project-arrow-mobile">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                 </div>
                 <div class="project-details-mobile">
                     <div class="project-image" onclick="openGallery('project_hr_reporting'); event.stopPropagation();">
-                        <img src="Assets/Images/Projects/Automated Executive HR Reporting System (Excel to PowerPoint Integration)/1.png" alt="Automated Executive HR Reporting System" onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=HR+Reporting+System';">
+                        <img src="Assets/Images/Projects/Automated Executive HR Reporting System (Excel to PowerPoint Integration)/1.png"
+                            alt="Automated Executive HR Reporting System"
+                            onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=HR+Reporting+System';">
                     </div>
                     <div class="project-content">
-                        <span class="project-impact-badge">Impact: Automated multi-division monthly slideshow generation</span>
+                        <span class="project-impact-badge">Impact: Automated multi-division monthly slideshow
+                            generation</span>
                         <ul class="project-case-study">
-                            <li><strong>Problem:</strong> Monthly executive HR reviews took days of manual copy-pasting across 15+ business divisions.</li>
-                            <li><strong>Approach:</strong> Backend Excel calculation engines linked via OLE/VBA to auto-update PowerPoint decks instantly.</li>
+                            <li><strong>Problem:</strong> Monthly executive HR reviews took days of manual copy-pasting
+                                across 15+ business divisions.</li>
+                            <li><strong>Approach:</strong> Backend Excel calculation engines linked via OLE/VBA to
+                                auto-update PowerPoint decks instantly.</li>
                             <li><strong>Stack:</strong> Advanced Excel, VBA, OLE Linking, PowerPoint Automation.</li>
                         </ul>
                         <div class="project-tech">
@@ -388,22 +506,29 @@
             </div>
 
             <!-- Project 2 - Big Mart Sales -->
-            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project2')" data-project="project2" data-images="Assets\Images\Projects\Big Mart Sales Dashboard\1.jpeg,Assets\Images\Projects\Big Mart Sales Dashboard\2.jpeg" data-tech="power bi">
+            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project2')"
+                data-project="project2"
+                data-images="Assets\Images\Projects\Big Mart Sales Dashboard\1.jpeg,Assets\Images\Projects\Big Mart Sales Dashboard\2.jpeg"
+                data-tech="power bi">
                 <h3>Big Mart Sales Dashboard</h3>
                 <div class="project-arrow-mobile">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                 </div>
                 <div class="project-details-mobile">
                     <div class="project-image" onclick="openGallery('project2'); event.stopPropagation();">
-                        <img src="Assets\Images\Projects\Big Mart Sales Dashboard\1.jpeg" alt="Customer Segmentation ML" onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=Project+2';">
+                        <img src="Assets\Images\Projects\Big Mart Sales Dashboard\1.jpeg" alt="Customer Segmentation ML"
+                            onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=Project+2';">
                     </div>
                     <div class="project-content">
                         <span class="project-impact-badge">Impact: Store-level sales performance optimization</span>
                         <ul class="project-case-study">
-                            <li><strong>Problem:</strong> Inability to pinpoint sales trends and revenue drivers across disparate retail outlets.</li>
-                            <li><strong>Approach:</strong> Power BI data cleansing, DAX calculations, and interactive outlet comparison matrix.</li>
+                            <li><strong>Problem:</strong> Inability to pinpoint sales trends and revenue drivers across
+                                disparate retail outlets.</li>
+                            <li><strong>Approach:</strong> Power BI data cleansing, DAX calculations, and interactive
+                                outlet comparison matrix.</li>
                             <li><strong>Stack:</strong> Power BI, Power Query, DAX, Retail Analytics.</li>
                         </ul>
                         <div class="project-tech">
@@ -413,8 +538,10 @@
                             <span class="tech-tag">Data Modeling</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://mavenanalytics.io/project/23470" class="project-link" onclick="event.stopPropagation()" target="_blank">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <a href="https://mavenanalytics.io/project/23470" class="project-link"
+                                onclick="event.stopPropagation()" target="_blank">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                                     <polyline points="14 2 14 8 20 8"></polyline>
                                     <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -423,9 +550,13 @@
                                 </svg>
                                 Report
                             </a>
-                            <a href="https://github.com/MahmoudElMahdi/CognoRise-InfoTech-Internship-Projects/tree/main/Project%203%20-%20BIGMART%20SALES%20DATA" class="project-link" onclick="event.stopPropagation()" target="_blank">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                            <a href="https://github.com/MahmoudElMahdi/CognoRise-InfoTech-Internship-Projects/tree/main/Project%203%20-%20BIGMART%20SALES%20DATA"
+                                class="project-link" onclick="event.stopPropagation()" target="_blank">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                    </path>
                                 </svg>
                                 GitHub
                             </a>
@@ -435,23 +566,33 @@
             </div>
 
             <!-- Project 3 - Finding Donors -->
-            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project3')" data-project="project3" data-images="Assets\Images\Projects\Finding Donors for Charity\1.png,Assets\Images\Projects\Finding Donors for Charity\2.PNG" data-tech="python">
+            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project3')"
+                data-project="project3"
+                data-images="Assets\Images\Projects\Finding Donors for Charity\1.png,Assets\Images\Projects\Finding Donors for Charity\2.PNG"
+                data-tech="python">
                 <h3>Finding Donors for Charity</h3>
                 <div class="project-arrow-mobile">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                 </div>
                 <div class="project-details-mobile">
                     <div class="project-image" onclick="openGallery('project3'); event.stopPropagation();">
-                        <img src="Assets\Images\Projects\Finding Donors for Charity\1.png" alt="Financial Report Automation" onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=Project+3';">
+                        <img src="Assets\Images\Projects\Finding Donors for Charity\1.png"
+                            alt="Financial Report Automation"
+                            onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=Project+3';">
                     </div>
                     <div class="project-content">
-                        <span class="project-impact-badge">Impact: Targeted fundraising through optimized classifier models</span>
+                        <span class="project-impact-badge">Impact: Targeted fundraising through optimized classifier
+                            models</span>
                         <ul class="project-case-study">
-                            <li><strong>Problem:</strong> High direct-mail marketing costs due to indiscriminate donor outreach campaigns.</li>
-                            <li><strong>Approach:</strong> Comparative testing of scikit-learn classifiers, hyperparameter tuning, and feature importance analysis.</li>
-                            <li><strong>Stack:</strong> Python, Scikit-learn, Pandas, Feature Engineering, Matplotlib.</li>
+                            <li><strong>Problem:</strong> High direct-mail marketing costs due to indiscriminate donor
+                                outreach campaigns.</li>
+                            <li><strong>Approach:</strong> Comparative testing of scikit-learn classifiers,
+                                hyperparameter tuning, and feature importance analysis.</li>
+                            <li><strong>Stack:</strong> Python, Scikit-learn, Pandas, Feature Engineering, Matplotlib.
+                            </li>
                         </ul>
                         <div class="project-tech">
                             <span class="tech-tag">Python</span>
@@ -462,9 +603,13 @@
                             <span class="tech-tag">Feature Engineering</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://github.com/MahmoudElMahdi/Finding-Donors-for-CharityML/tree/main" class="project-link" onclick="event.stopPropagation()" target="_blank">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                            <a href="https://github.com/MahmoudElMahdi/Finding-Donors-for-CharityML/tree/main"
+                                class="project-link" onclick="event.stopPropagation()" target="_blank">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                    </path>
                                 </svg>
                                 GitHub
                             </a>
@@ -472,24 +617,33 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Project 4 - Data Warehouse -->
-            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project4')" data-project="project4" data-images="Assets\Images\Projects\Data Warehouse\analytics_roadmap.png,Assets\Images\Projects\Data Warehouse\High Level Architecture.png,Assets\Images\Projects\Data Warehouse\data_model.drawio.png,Assets\Images\Projects\Data Warehouse\data_flow.drawio.png,Assets\Images\Projects\Data Warehouse\data_integration.drawio.png" data-tech="sql">
+            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project4')"
+                data-project="project4"
+                data-images="Assets\Images\Projects\Data Warehouse\analytics_roadmap.png,Assets\Images\Projects\Data Warehouse\High Level Architecture.png,Assets\Images\Projects\Data Warehouse\data_model.drawio.png,Assets\Images\Projects\Data Warehouse\data_flow.drawio.png,Assets\Images\Projects\Data Warehouse\data_integration.drawio.png"
+                data-tech="sql">
                 <h3>Data Warehouse and Analytics Project</h3>
                 <div class="project-arrow-mobile">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                 </div>
                 <div class="project-details-mobile">
                     <div class="project-image" onclick="openGallery('project4'); event.stopPropagation();">
-                        <img src="Assets\Images\Projects\Data Warehouse\analytics_roadmap.png" alt="SQL Data Warehouse Project" onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=Data+Warehouse+Project';">
+                        <img src="Assets\Images\Projects\Data Warehouse\analytics_roadmap.png"
+                            alt="SQL Data Warehouse Project"
+                            onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=Data+Warehouse+Project';">
                     </div>
                     <div class="project-content">
-                        <span class="project-impact-badge">Impact: Scalable analytics foundation (Medallion architecture)</span>
+                        <span class="project-impact-badge">Impact: Scalable analytics foundation (Medallion
+                            architecture)</span>
                         <ul class="project-case-study">
-                            <li><strong>Problem:</strong> Disconnected sales and customer data blocked reliable KPI reporting.</li>
-                            <li><strong>Approach:</strong> SQL Server warehouse with Bronze/Silver/Gold layers, ETL, and dimensional models.</li>
+                            <li><strong>Problem:</strong> Disconnected sales and customer data blocked reliable KPI
+                                reporting.</li>
+                            <li><strong>Approach:</strong> SQL Server warehouse with Bronze/Silver/Gold layers, ETL, and
+                                dimensional models.</li>
                             <li><strong>Stack:</strong> SQL Server, ETL, data modeling, analytics roadmap.</li>
                         </ul>
                         <div class="project-tech">
@@ -500,34 +654,45 @@
                             <span class="tech-tag">Data Warehouse</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://github.com/MahmoudElMahdi/sql-data-warehouse-project" class="project-link" onclick="event.stopPropagation()" target="_blank">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                            <a href="https://github.com/MahmoudElMahdi/sql-data-warehouse-project" class="project-link"
+                                onclick="event.stopPropagation()" target="_blank">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                    </path>
                                 </svg>
                                 GitHub
                             </a>
                         </div>
                     </div>
                 </div>
-            </div>            
+            </div>
 
             <!-- Project 6 - Database Management -->
-            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project6')" data-project="project6" data-images="Assets\Images\Projects\Database Management for Retail Chain\1.png" data-tech="sql">
+            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project6')"
+                data-project="project6" data-images="Assets\Images\Projects\Database Management for Retail Chain\1.png"
+                data-tech="sql">
                 <h3>Database Management for Retail Chain</h3>
                 <div class="project-arrow-mobile">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                 </div>
                 <div class="project-details-mobile">
                     <div class="project-image" onclick="openGallery('project6'); event.stopPropagation();">
-                        <img src="Assets\Images\Projects\Database Management for Retail Chain\1.png" alt="Database Management for Retail Chain">
+                        <img src="Assets\Images\Projects\Database Management for Retail Chain\1.png"
+                            alt="Database Management for Retail Chain">
                     </div>
                     <div class="project-content">
-                        <span class="project-impact-badge">Impact: Fully relational employee lifecycle and operational schema</span>
+                        <span class="project-impact-badge">Impact: Fully relational employee lifecycle and operational
+                            schema</span>
                         <ul class="project-case-study">
-                            <li><strong>Problem:</strong> Legacy flat-file attendance and retail records caused data anomalies and slow queries.</li>
-                            <li><strong>Approach:</strong> Structured ERD modeling, database normalization (3NF), and optimized transactional SQL queries.</li>
+                            <li><strong>Problem:</strong> Legacy flat-file attendance and retail records caused data
+                                anomalies and slow queries.</li>
+                            <li><strong>Approach:</strong> Structured ERD modeling, database normalization (3NF), and
+                                optimized transactional SQL queries.</li>
                             <li><strong>Stack:</strong> SQL Server, relational modeling, normalization, ERD design.</li>
                         </ul>
                         <div class="project-tech">
@@ -537,8 +702,10 @@
                             <span class="tech-tag">Data Modeling</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://drive.google.com/file/d/1US4g05ezFYxUl_E78qC-cIEd4PPSp1rn/view?usp=sharing" class="project-link" onclick="event.stopPropagation()" target="_blank">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <a href="https://drive.google.com/file/d/1US4g05ezFYxUl_E78qC-cIEd4PPSp1rn/view?usp=sharing"
+                                class="project-link" onclick="event.stopPropagation()" target="_blank">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                                     <polyline points="14 2 14 8 20 8"></polyline>
                                     <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -547,9 +714,13 @@
                                 </svg>
                                 Report
                             </a>
-                            <a href="https://github.com/MahmoudElMahdi/HR-Database-by-SQL" class="project-link" onclick="event.stopPropagation()" target="_blank">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                            <a href="https://github.com/MahmoudElMahdi/HR-Database-by-SQL" class="project-link"
+                                onclick="event.stopPropagation()" target="_blank">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                    </path>
                                 </svg>
                                 GitHub
                             </a>
@@ -559,22 +730,28 @@
             </div>
 
             <!-- Project 7 - SQL Mastery -->
-            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project7')" data-project="project7" data-images="Assets/Images/Projects/Advanced SQL Practice/cover.png" data-tech="sql">
+            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project7')"
+                data-project="project7" data-images="Assets/Images/Projects/Advanced SQL Practice/cover.png"
+                data-tech="sql">
                 <h3>Advanced SQL Mastery</h3>
                 <div class="project-arrow-mobile">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                 </div>
                 <div class="project-details-mobile">
                     <div class="project-image" onclick="openGallery('project7'); event.stopPropagation();">
-                        <img src="Assets/Images/Projects/Advanced SQL Practice/cover.png" alt="Advanced SQL Mastery" onerror="this.onerror=null;this.src='https://placehold.co/400x280/336791/FFFFFF?text=SQL+Mastery';">
+                        <img src="Assets/Images/Projects/Advanced SQL Practice/cover.png" alt="Advanced SQL Mastery"
+                            onerror="this.onerror=null;this.src='https://placehold.co/400x280/336791/FFFFFF?text=SQL+Mastery';">
                     </div>
                     <div class="project-content">
                         <span class="project-impact-badge">Impact: High-performance complex analytical querying</span>
                         <ul class="project-case-study">
-                            <li><strong>Problem:</strong> Standard SQL queries failed to scale or handle complex multi-step user-retention questions.</li>
-                            <li><strong>Approach:</strong> Query optimizations using advanced window functions, recursive CTEs, and correlated subqueries.</li>
+                            <li><strong>Problem:</strong> Standard SQL queries failed to scale or handle complex
+                                multi-step user-retention questions.</li>
+                            <li><strong>Approach:</strong> Query optimizations using advanced window functions,
+                                recursive CTEs, and correlated subqueries.</li>
                             <li><strong>Stack:</strong> T-SQL, Window Functions, CTEs, Query Optimization.</li>
                         </ul>
                         <div class="project-tech">
@@ -584,9 +761,13 @@
                             <span class="tech-tag">Subqueries</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://github.com/MahmoudElMahdi/Advanced-SQL-practice" class="project-link" onclick="event.stopPropagation()" target="_blank">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                            <a href="https://github.com/MahmoudElMahdi/Advanced-SQL-practice" class="project-link"
+                                onclick="event.stopPropagation()" target="_blank">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                    </path>
                                 </svg>
                                 GitHub
                             </a>
@@ -596,22 +777,30 @@
             </div>
 
             <!-- Project 8 - Bike-Share Engine -->
-            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project8')" data-project="project8" data-images="Assets/Images/Projects/Bike Share Python Project/cover.png" data-tech="python">
+            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project8')"
+                data-project="project8" data-images="Assets/Images/Projects/Bike Share Python Project/cover.png"
+                data-tech="python">
                 <h3>Bike-Share Statistical Analysis Engine</h3>
                 <div class="project-arrow-mobile">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                 </div>
                 <div class="project-details-mobile">
                     <div class="project-image" onclick="openGallery('project8'); event.stopPropagation();">
-                        <img src="Assets/Images/Projects/Bike Share Python Project/cover.png" alt="Bike-Share Statistical Analysis Engine" onerror="this.onerror=null;this.src='https://placehold.co/400x280/1565C0/FFFFFF?text=Bike-Share+Analytics';">
+                        <img src="Assets/Images/Projects/Bike Share Python Project/cover.png"
+                            alt="Bike-Share Statistical Analysis Engine"
+                            onerror="this.onerror=null;this.src='https://placehold.co/400x280/1565C0/FFFFFF?text=Bike-Share+Analytics';">
                     </div>
                     <div class="project-content">
-                        <span class="project-impact-badge">Impact: Command-line operational analytics for urban mobility</span>
+                        <span class="project-impact-badge">Impact: Command-line operational analytics for urban
+                            mobility</span>
                         <ul class="project-case-study">
-                            <li><strong>Problem:</strong> Raw JSON/CSV ridership files were too large and unstructured for non-technical managers to query.</li>
-                            <li><strong>Approach:</strong> Interactive OOP Python CLI tool with dynamic filtering by city, month, and day of week.</li>
+                            <li><strong>Problem:</strong> Raw JSON/CSV ridership files were too large and unstructured
+                                for non-technical managers to query.</li>
+                            <li><strong>Approach:</strong> Interactive OOP Python CLI tool with dynamic filtering by
+                                city, month, and day of week.</li>
                             <li><strong>Stack:</strong> Python, OOP, Pandas, Interactive CLI.</li>
                         </ul>
                         <div class="project-tech">
@@ -621,9 +810,13 @@
                             <span class="tech-tag">Data Analysis</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://github.com/MahmoudElMahdi/Bike-Share-Python-Project-OOP-" class="project-link" onclick="event.stopPropagation()" target="_blank">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                            <a href="https://github.com/MahmoudElMahdi/Bike-Share-Python-Project-OOP-"
+                                class="project-link" onclick="event.stopPropagation()" target="_blank">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                    </path>
                                 </svg>
                                 GitHub
                             </a>
@@ -633,22 +826,29 @@
             </div>
 
             <!-- Project 9 - US Rental Market -->
-            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project9')" data-project="project9" data-images="Assets/Images/Projects/Apartment for Rent Analysis/cover.png" data-tech="python">
+            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project9')"
+                data-project="project9" data-images="Assets/Images/Projects/Apartment for Rent Analysis/cover.png"
+                data-tech="python">
                 <h3>US Rental Market Intelligence</h3>
                 <div class="project-arrow-mobile">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                 </div>
                 <div class="project-details-mobile">
                     <div class="project-image" onclick="openGallery('project9'); event.stopPropagation();">
-                        <img src="Assets/Images/Projects/Apartment for Rent Analysis/cover.png" alt="US Rental Market Intelligence" onerror="this.onerror=null;this.src='https://placehold.co/400x280/E65100/FFFFFF?text=Rental+Market';">
+                        <img src="Assets/Images/Projects/Apartment for Rent Analysis/cover.png"
+                            alt="US Rental Market Intelligence"
+                            onerror="this.onerror=null;this.src='https://placehold.co/400x280/E65100/FFFFFF?text=Rental+Market';">
                     </div>
                     <div class="project-content">
                         <span class="project-impact-badge">Impact: Predictive geographic market analytics</span>
                         <ul class="project-case-study">
-                            <li><strong>Problem:</strong> Real estate investors lacked a structured framework to compare rental yield vs property features.</li>
-                            <li><strong>Approach:</strong> Exploratory data analysis in Jupyter Notebook, identifying pricing distributions and cluster trends.</li>
+                            <li><strong>Problem:</strong> Real estate investors lacked a structured framework to compare
+                                rental yield vs property features.</li>
+                            <li><strong>Approach:</strong> Exploratory data analysis in Jupyter Notebook, identifying
+                                pricing distributions and cluster trends.</li>
                             <li><strong>Stack:</strong> Python, Pandas, Seaborn, Exploratory Data Analysis.</li>
                         </ul>
                         <div class="project-tech">
@@ -658,9 +858,13 @@
                             <span class="tech-tag">Pandas</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://github.com/MahmoudElMahdi/Apartment-for-Rent" class="project-link" onclick="event.stopPropagation()" target="_blank">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                            <a href="https://github.com/MahmoudElMahdi/Apartment-for-Rent" class="project-link"
+                                onclick="event.stopPropagation()" target="_blank">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                    </path>
                                 </svg>
                                 GitHub
                             </a>
@@ -670,23 +874,32 @@
             </div>
 
             <!-- Project 10 - COVID-19 -->
-            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project10')" data-project="project10" data-images="Assets/Images/Projects/Covid-19 SQL Project/cover.png" data-tech="sql">
+            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project10')"
+                data-project="project10" data-images="Assets/Images/Projects/Covid-19 SQL Project/cover.png"
+                data-tech="sql">
                 <h3>COVID-19 Global Impact Data Exploration</h3>
                 <div class="project-arrow-mobile">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                 </div>
                 <div class="project-details-mobile">
                     <div class="project-image" onclick="openGallery('project10'); event.stopPropagation();">
-                        <img src="Assets/Images/Projects/Covid-19 SQL Project/cover.png" alt="COVID-19 Global Impact Data Exploration" onerror="this.onerror=null;this.src='https://placehold.co/400x280/4A148C/FFFFFF?text=COVID-19+Analysis';">
+                        <img src="Assets/Images/Projects/Covid-19 SQL Project/cover.png"
+                            alt="COVID-19 Global Impact Data Exploration"
+                            onerror="this.onerror=null;this.src='https://placehold.co/400x280/4A148C/FFFFFF?text=COVID-19+Analysis';">
                     </div>
                     <div class="project-content">
-                        <span class="project-impact-badge">Impact: Global vaccination and mortality mapping indicators</span>
+                        <span class="project-impact-badge">Impact: Global vaccination and mortality mapping
+                            indicators</span>
                         <ul class="project-case-study">
-                            <li><strong>Problem:</strong> Disparate, massive datasets made it hard to calculate country-specific vaccination-to-mortality ratios.</li>
-                            <li><strong>Approach:</strong> Extensive SQL aggregations, window functions, and views structured for BI import.</li>
-                            <li><strong>Stack:</strong> SQL Server, Data Aggregation, Views, Global Health Analytics.</li>
+                            <li><strong>Problem:</strong> Disparate, massive datasets made it hard to calculate
+                                country-specific vaccination-to-mortality ratios.</li>
+                            <li><strong>Approach:</strong> Extensive SQL aggregations, window functions, and views
+                                structured for BI import.</li>
+                            <li><strong>Stack:</strong> SQL Server, Data Aggregation, Views, Global Health Analytics.
+                            </li>
                         </ul>
                         <div class="project-tech">
                             <span class="tech-tag">SQL</span>
@@ -695,9 +908,13 @@
                             <span class="tech-tag">SQL Server</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://github.com/MahmoudElMahdi/Covid-19-SQL-Project" class="project-link" onclick="event.stopPropagation()" target="_blank">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                            <a href="https://github.com/MahmoudElMahdi/Covid-19-SQL-Project" class="project-link"
+                                onclick="event.stopPropagation()" target="_blank">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                    </path>
                                 </svg>
                                 GitHub
                             </a>
@@ -707,22 +924,29 @@
             </div>
 
             <!-- Project 11 - Encryption/Decryption -->
-            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project11')" data-project="project11" data-images="Assets\Images\Projects\Encryption and Decryption Project\1.jpg" data-tech="python">
+            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project11')"
+                data-project="project11" data-images="Assets\Images\Projects\Encryption and Decryption Project\1.jpg"
+                data-tech="python">
                 <h3>Encryption and Decryption Python Project</h3>
                 <div class="project-arrow-mobile">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                 </div>
                 <div class="project-details-mobile">
                     <div class="project-image" onclick="openGallery('project11'); event.stopPropagation();">
-                        <img src="Assets\Images\Projects\Encryption and Decryption Project\1.jpg" alt="Encryption and Decryption Project">
+                        <img src="Assets\Images\Projects\Encryption and Decryption Project\1.jpg"
+                            alt="Encryption and Decryption Project">
                     </div>
                     <div class="project-content">
-                        <span class="project-impact-badge">Impact: Secure message cipher suite with CLI interaction</span>
+                        <span class="project-impact-badge">Impact: Secure message cipher suite with CLI
+                            interaction</span>
                         <ul class="project-case-study">
-                            <li><strong>Problem:</strong> Need for a secure educational, lightweight tool to demonstrate fundamental cryptosystem concepts.</li>
-                            <li><strong>Approach:</strong> Implementation of modular transposition cipher algorithms with a user-friendly CLI.</li>
+                            <li><strong>Problem:</strong> Need for a secure educational, lightweight tool to demonstrate
+                                fundamental cryptosystem concepts.</li>
+                            <li><strong>Approach:</strong> Implementation of modular transposition cipher algorithms
+                                with a user-friendly CLI.</li>
                             <li><strong>Stack:</strong> Python, Cryptography, Algorithms, CLI.</li>
                         </ul>
                         <div class="project-tech">
@@ -732,9 +956,13 @@
                             <span class="tech-tag">Algorithms</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://github.com/MahmoudElMahdi/Encryption-and-Decryption-Python-Project" class="project-link" onclick="event.stopPropagation()" target="_blank">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                            <a href="https://github.com/MahmoudElMahdi/Encryption-and-Decryption-Python-Project"
+                                class="project-link" onclick="event.stopPropagation()" target="_blank">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                    </path>
                                 </svg>
                                 GitHub
                             </a>
@@ -744,22 +972,29 @@
             </div>
 
             <!-- Project 12 - Ford GoBike EDA -->
-            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project12')" data-project="project12" data-images="Assets/Images/Projects/Ford GoBike EDA/cover.png" data-tech="python">
+            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project12')"
+                data-project="project12" data-images="Assets/Images/Projects/Ford GoBike EDA/cover.png"
+                data-tech="python">
                 <h3>Bay Area Bike-Share Ridership Insights</h3>
                 <div class="project-arrow-mobile">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                 </div>
                 <div class="project-details-mobile">
                     <div class="project-image" onclick="openGallery('project12'); event.stopPropagation();">
-                        <img src="Assets/Images/Projects/Ford GoBike EDA/cover.png" alt="Bay Area Bike-Share Ridership Insights" onerror="this.onerror=null;this.src='https://placehold.co/400x280/0D47A1/FFFFFF?text=Bike-Share+EDA';">
+                        <img src="Assets/Images/Projects/Ford GoBike EDA/cover.png"
+                            alt="Bay Area Bike-Share Ridership Insights"
+                            onerror="this.onerror=null;this.src='https://placehold.co/400x280/0D47A1/FFFFFF?text=Bike-Share+EDA';">
                     </div>
                     <div class="project-content">
                         <span class="project-impact-badge">Impact: Public transit integration ridership patterns</span>
                         <ul class="project-case-study">
-                            <li><strong>Problem:</strong> SF Ford GoBike operational teams needed to understand peak rental hours for bicycle rebalancing.</li>
-                            <li><strong>Approach:</strong> Comprehensive EDA mapping demographics, customer vs subscriber behaviors, and trip durations.</li>
+                            <li><strong>Problem:</strong> SF Ford GoBike operational teams needed to understand peak
+                                rental hours for bicycle rebalancing.</li>
+                            <li><strong>Approach:</strong> Comprehensive EDA mapping demographics, customer vs
+                                subscriber behaviors, and trip durations.</li>
                             <li><strong>Stack:</strong> Python, EDA, Pandas, Matplotlib, Seaborn.</li>
                         </ul>
                         <div class="project-tech">
@@ -770,9 +1005,13 @@
                             <span class="tech-tag">Matplotlib</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://github.com/MahmoudElMahdi/Ford-GoBike-Exploratory-Data-Analysis" class="project-link" onclick="event.stopPropagation()" target="_blank">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                            <a href="https://github.com/MahmoudElMahdi/Ford-GoBike-Exploratory-Data-Analysis"
+                                class="project-link" onclick="event.stopPropagation()" target="_blank">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                    </path>
                                 </svg>
                                 GitHub
                             </a>
@@ -782,10 +1021,13 @@
             </div>
 
             <!-- Project 13 - IMDB -->
-            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project13')" data-project="project13" data-images="Assets\Images\Projects\IMDB Data Analysis\12.jpg" data-tech="python">
+            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project13')"
+                data-project="project13" data-images="Assets\Images\Projects\IMDB Data Analysis\12.jpg"
+                data-tech="python">
                 <h3>IMDB Data Analysis</h3>
                 <div class="project-arrow-mobile">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                 </div>
@@ -794,10 +1036,13 @@
                         <img src="Assets\Images\Projects\IMDB Data Analysis\12.jpg" alt="IMDB Data Analysis">
                     </div>
                     <div class="project-content">
-                        <span class="project-impact-badge">Impact: Movie production trend insights and predictive attributes</span>
+                        <span class="project-impact-badge">Impact: Movie production trend insights and predictive
+                            attributes</span>
                         <ul class="project-case-study">
-                            <li><strong>Problem:</strong> Studio analysts needed historical data to identify factors driving high IMDb ratings.</li>
-                            <li><strong>Approach:</strong> Cleansed 5000+ film records in Python, performing multi-variable correlation on budget, genre, and ratings.</li>
+                            <li><strong>Problem:</strong> Studio analysts needed historical data to identify factors
+                                driving high IMDb ratings.</li>
+                            <li><strong>Approach:</strong> Cleansed 5000+ film records in Python, performing
+                                multi-variable correlation on budget, genre, and ratings.</li>
                             <li><strong>Stack:</strong> Python, Pandas, Numpy, Matplotlib, Seaborn.</li>
                         </ul>
                         <div class="project-tech">
@@ -809,9 +1054,13 @@
                             <span class="tech-tag">Data Visualization</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://github.com/MahmoudElMahdi/IMDB-DA" class="project-link" onclick="event.stopPropagation()" target="_blank">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                            <a href="https://github.com/MahmoudElMahdi/IMDB-DA" class="project-link"
+                                onclick="event.stopPropagation()" target="_blank">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                    </path>
                                 </svg>
                                 GitHub
                             </a>
@@ -821,22 +1070,29 @@
             </div>
 
             <!-- Project 14 - Stock Game -->
-            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project14')" data-project="project14" data-images="Assets/Images/Projects/Stock Exchange Game/1776704578434.jpg" data-tech="csharp">
+            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project14')"
+                data-project="project14" data-images="Assets/Images/Projects/Stock Exchange Game/1776704578434.jpg"
+                data-tech="csharp">
                 <h3>Stock Market Trading Simulator</h3>
                 <div class="project-arrow-mobile">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                 </div>
                 <div class="project-details-mobile">
                     <div class="project-image" onclick="openGallery('project14'); event.stopPropagation();">
-                        <img src="Assets/Images/Projects/Stock Exchange Game/1776704578434.jpg" alt="Stock Market Trading Simulator" onerror="this.onerror=null;this.src='https://placehold.co/400x280/1B5E20/FFFFFF?text=Stock+Simulator';">
+                        <img src="Assets/Images/Projects/Stock Exchange Game/1776704578434.jpg"
+                            alt="Stock Market Trading Simulator"
+                            onerror="this.onerror=null;this.src='https://placehold.co/400x280/1B5E20/FFFFFF?text=Stock+Simulator';">
                     </div>
                     <div class="project-content">
                         <span class="project-impact-badge">Impact: Gamified financial literacy learning tool</span>
                         <ul class="project-case-study">
-                            <li><strong>Problem:</strong> Traditional investment education is dry and fails to engage high school students.</li>
-                            <li><strong>Approach:</strong> Immersive Unity C# game engine simulating real-time market fluctuations and portfolio updates.</li>
+                            <li><strong>Problem:</strong> Traditional investment education is dry and fails to engage
+                                high school students.</li>
+                            <li><strong>Approach:</strong> Immersive Unity C# game engine simulating real-time market
+                                fluctuations and portfolio updates.</li>
                             <li><strong>Stack:</strong> C#, Unity 2D, Game Design, Financial Algorithms.</li>
                         </ul>
                         <div class="project-tech">
@@ -846,9 +1102,13 @@
                             <span class="tech-tag">Stock Trading</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://github.com/MahmoudElMahdi/StockExchange-Game" class="project-link" onclick="event.stopPropagation()" target="_blank">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                            <a href="https://github.com/MahmoudElMahdi/StockExchange-Game" class="project-link"
+                                onclick="event.stopPropagation()" target="_blank">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                    </path>
                                 </svg>
                                 GitHub
                             </a>
@@ -858,22 +1118,30 @@
             </div>
 
             <!-- Project 15 - SQL User Journey -->
-            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project15')" data-project="project15" data-images="Assets/Images/Projects/SQL-User-Journey-Analysis/SQL-User-Journey-Analysis.png" data-tech="sql">
+            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project15')"
+                data-project="project15"
+                data-images="Assets/Images/Projects/SQL-User-Journey-Analysis/SQL-User-Journey-Analysis.png"
+                data-tech="sql">
                 <h3>SQL User Journey Analysis</h3>
                 <div class="project-arrow-mobile">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                 </div>
                 <div class="project-details-mobile">
                     <div class="project-image" onclick="openGallery('project15'); event.stopPropagation();">
-                        <img src="Assets/Images/Projects/SQL-User-Journey-Analysis/SQL-User-Journey-Analysis.png" alt="SQL User Journey Analysis">
+                        <img src="Assets/Images/Projects/SQL-User-Journey-Analysis/SQL-User-Journey-Analysis.png"
+                            alt="SQL User Journey Analysis">
                     </div>
                     <div class="project-content">
-                        <span class="project-impact-badge">Impact: Clear funnel visualization of web customer conversions</span>
+                        <span class="project-impact-badge">Impact: Clear funnel visualization of web customer
+                            conversions</span>
                         <ul class="project-case-study">
-                            <li><strong>Problem:</strong> Marketing teams couldn't trace the sequential pages a user visited prior to purchasing.</li>
-                            <li><strong>Approach:</strong> Web log sequence concatenation using MySQL GROUP_CONCAT, window functions, and multi-stage CTEs.</li>
+                            <li><strong>Problem:</strong> Marketing teams couldn't trace the sequential pages a user
+                                visited prior to purchasing.</li>
+                            <li><strong>Approach:</strong> Web log sequence concatenation using MySQL GROUP_CONCAT,
+                                window functions, and multi-stage CTEs.</li>
                             <li><strong>Stack:</strong> MySQL, CTEs, Window Functions, Funnel Analysis.</li>
                         </ul>
                         <div class="project-tech">
@@ -883,9 +1151,13 @@
                             <span class="tech-tag">Data Analysis</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://github.com/MahmoudElMahdi/SQL-User-Journey-Analysis" class="project-link" onclick="event.stopPropagation()" target="_blank">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                            <a href="https://github.com/MahmoudElMahdi/SQL-User-Journey-Analysis" class="project-link"
+                                onclick="event.stopPropagation()" target="_blank">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                    </path>
                                 </svg>
                                 GitHub
                             </a>
@@ -895,22 +1167,31 @@
             </div>
 
             <!-- Comprehensive Sales & Profitability Tracker -->
-            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project_sales_tracker')" data-project="project_sales_tracker" data-images="Assets/Images/Projects/Comprehensive Sales & Profitability Tracker/1.PNG" data-tech="excel">
+            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project_sales_tracker')"
+                data-project="project_sales_tracker"
+                data-images="Assets/Images/Projects/Comprehensive Sales & Profitability Tracker/1.PNG"
+                data-tech="excel">
                 <h3>Comprehensive Sales &amp; Profitability Tracker</h3>
                 <div class="project-arrow-mobile">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                 </div>
                 <div class="project-details-mobile">
                     <div class="project-image" onclick="openGallery('project_sales_tracker'); event.stopPropagation();">
-                        <img src="Assets/Images/Projects/Comprehensive Sales & Profitability Tracker/1.PNG" alt="Comprehensive Sales & Profitability Tracker" onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=Sales+Tracker';">
+                        <img src="Assets/Images/Projects/Comprehensive Sales & Profitability Tracker/1.PNG"
+                            alt="Comprehensive Sales & Profitability Tracker"
+                            onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=Sales+Tracker';">
                     </div>
                     <div class="project-content">
-                        <span class="project-impact-badge">Impact: Real-time visual tracking of $1M sales pipeline</span>
+                        <span class="project-impact-badge">Impact: Real-time visual tracking of $1M sales
+                            pipeline</span>
                         <ul class="project-case-study">
-                            <li><strong>Problem:</strong> Regional sales managers struggled to spot underperforming product lines across the US.</li>
-                            <li><strong>Approach:</strong> Interactive high-fidelity dashboard using dynamic Excel Map charts, pivot tables, and modern UI.</li>
+                            <li><strong>Problem:</strong> Regional sales managers struggled to spot underperforming
+                                product lines across the US.</li>
+                            <li><strong>Approach:</strong> Interactive high-fidelity dashboard using dynamic Excel Map
+                                charts, pivot tables, and modern UI.</li>
                             <li><strong>Stack:</strong> Advanced Excel, Map Charts, Pivot Tables, UI/UX Design.</li>
                         </ul>
                         <div class="project-tech">
@@ -926,22 +1207,31 @@
             </div>
 
             <!-- Interactive Personal Finance & Budget Tracker (Bilingual) -->
-            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project_finance_tracker')" data-project="project_finance_tracker" data-images="Assets/Images/Projects/Interactive Personal Finance & Budget Tracker (Bilingual)/1.png" data-tech="excel">
+            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project_finance_tracker')"
+                data-project="project_finance_tracker"
+                data-images="Assets/Images/Projects/Interactive Personal Finance & Budget Tracker (Bilingual)/1.png"
+                data-tech="excel">
                 <h3>Interactive Personal Finance &amp; Budget Tracker (Bilingual)</h3>
                 <div class="project-arrow-mobile">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                 </div>
                 <div class="project-details-mobile">
-                    <div class="project-image" onclick="openGallery('project_finance_tracker'); event.stopPropagation();">
-                        <img src="Assets/Images/Projects/Interactive Personal Finance & Budget Tracker (Bilingual)/1.png" alt="Interactive Personal Finance & Budget Tracker" onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=Finance+Tracker';">
+                    <div class="project-image"
+                        onclick="openGallery('project_finance_tracker'); event.stopPropagation();">
+                        <img src="Assets/Images/Projects/Interactive Personal Finance & Budget Tracker (Bilingual)/1.png"
+                            alt="Interactive Personal Finance & Budget Tracker"
+                            onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=Finance+Tracker';">
                     </div>
                     <div class="project-content">
                         <span class="project-impact-badge">Impact: Automatic multi-currency budget alerts</span>
                         <ul class="project-case-study">
-                            <li><strong>Problem:</strong> Algerian client needed an easy, bilingual tool to manage family spending across multiple currencies.</li>
-                            <li><strong>Approach:</strong> Dynamic dashboard with localized data validation, custom expense graphs, and conditional alerts.</li>
+                            <li><strong>Problem:</strong> Algerian client needed an easy, bilingual tool to manage
+                                family spending across multiple currencies.</li>
+                            <li><strong>Approach:</strong> Dynamic dashboard with localized data validation, custom
+                                expense graphs, and conditional alerts.</li>
                             <li><strong>Stack:</strong> Advanced Excel, Data Validation, Budgeting, UX Styling.</li>
                         </ul>
                         <div class="project-tech">
@@ -957,22 +1247,31 @@
             </div>
 
             <!-- FordGoBikes Bike-Share Usage Analytics (Tableau) -->
-            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project_fordgobikes_tableau')" data-project="project_fordgobikes_tableau" data-images="Assets/Images/Projects/FordGoBikes Tableau Project/dashboard-1.png,Assets/Images/Projects/FordGoBikes Tableau Project/dashboard-2.png" data-tech="tableau">
+            <div class="project-card fade-in" onclick="handleProjectClick(this, event, 'project_fordgobikes_tableau')"
+                data-project="project_fordgobikes_tableau"
+                data-images="Assets/Images/Projects/FordGoBikes Tableau Project/dashboard-1.png,Assets/Images/Projects/FordGoBikes Tableau Project/dashboard-2.png"
+                data-tech="tableau">
                 <h3>FordGoBikes Bike-Share Usage Analytics</h3>
                 <div class="project-arrow-mobile">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                 </div>
                 <div class="project-details-mobile">
-                    <div class="project-image" onclick="openGallery('project_fordgobikes_tableau'); event.stopPropagation();">
-                        <img src="Assets/Images/Projects/FordGoBikes Tableau Project/dashboard-1.png" alt="FordGoBikes Bike-Share Usage Analytics Dashboard" onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=FordGoBikes+Tableau';">
+                    <div class="project-image"
+                        onclick="openGallery('project_fordgobikes_tableau'); event.stopPropagation();">
+                        <img src="Assets/Images/Projects/FordGoBikes Tableau Project/dashboard-1.png"
+                            alt="FordGoBikes Bike-Share Usage Analytics Dashboard"
+                            onerror="this.onerror=null;this.src='https://placehold.co/400x280/00bcd4/FFFFFF?text=FordGoBikes+Tableau';">
                     </div>
                     <div class="project-content">
                         <span class="project-impact-badge">Impact: Geospatial trip flow mapping dashboard</span>
                         <ul class="project-case-study">
-                            <li><strong>Problem:</strong> City planners needed visual maps of high-demand routes to construct bike lanes.</li>
-                            <li><strong>Approach:</strong> Cleaned datasets merged in Tableau, featuring geographic flow maps and interactive station rankings.</li>
+                            <li><strong>Problem:</strong> City planners needed visual maps of high-demand routes to
+                                construct bike lanes.</li>
+                            <li><strong>Approach:</strong> Cleaned datasets merged in Tableau, featuring geographic flow
+                                maps and interactive station rankings.</li>
                             <li><strong>Stack:</strong> Tableau, Geospatial Analysis, Interactive Dashboards.</li>
                         </ul>
                         <div class="project-tech">
@@ -982,16 +1281,20 @@
                             <span class="tech-tag">Exploratory Analysis</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://github.com/MahmoudElMahdi/Ford-GoBike-Exploratory-Data-Analysis/tree/main/Tableau_Version" class="project-link" onclick="event.stopPropagation()" target="_blank">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <a href="https://github.com/MahmoudElMahdi/Ford-GoBike-Exploratory-Data-Analysis/tree/main/Tableau_Version"
+                                class="project-link" onclick="event.stopPropagation()" target="_blank">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                                     <polyline points="7 10 12 15 17 10" />
                                     <line x1="12" y1="15" x2="12" y2="3" />
                                 </svg>
                                 Dashboard
                             </a>
-                            <a href="https://github.com/MahmoudElMahdi/Ford-GoBike-Exploratory-Data-Analysis/blob/main/201902-fordgobike-tripdata.rar" class="project-link" onclick="event.stopPropagation()" target="_blank">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <a href="https://github.com/MahmoudElMahdi/Ford-GoBike-Exploratory-Data-Analysis/blob/main/201902-fordgobike-tripdata.rar"
+                                class="project-link" onclick="event.stopPropagation()" target="_blank">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                                     <polyline points="7 10 12 15 17 10" />
                                     <line x1="12" y1="15" x2="12" y2="3" />
@@ -1027,5 +1330,5 @@
     <script src="projects.js" defer></script>
 
 </body>
-</html>
 
+</html>

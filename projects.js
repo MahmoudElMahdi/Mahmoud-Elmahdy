@@ -22,17 +22,17 @@ for (let i = 0; i < 25; i++) {
 // ===== Theme Toggle =====
 function toggleTheme() {
     const body = document.body;
-    const themeSvg = document.getElementById('theme-svg');
+    const themeSvgs = document.querySelectorAll('.theme-svg-icon');
     const currentTheme = body.getAttribute('data-theme');
     if (currentTheme === 'dark') {
         body.removeAttribute('data-theme');
         // Sun icon
-        themeSvg.innerHTML = '<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>';
+        themeSvgs.forEach(svg => svg.innerHTML = '<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>');
         localStorage.setItem('theme', 'light');
     } else {
         body.setAttribute('data-theme', 'dark');
         // Moon icon
-        themeSvg.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/>';
+        themeSvgs.forEach(svg => svg.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/>');
         localStorage.setItem('theme', 'dark');
     }
 }
@@ -40,16 +40,12 @@ function toggleTheme() {
 // Set correct icon on load
 document.addEventListener('DOMContentLoaded', function() {
     const savedTheme = localStorage.getItem('theme');
-    const themeSvg = document.getElementById('theme-svg');
+    const themeSvgs = document.querySelectorAll('.theme-svg-icon');
     if (savedTheme === 'dark') {
         document.body.setAttribute('data-theme', 'dark');
-        if (themeSvg) {
-            themeSvg.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/>';
-        }
+        themeSvgs.forEach(svg => svg.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/>');
     } else {
-        if (themeSvg) {
-            themeSvg.innerHTML = '<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>';
-        }
+        themeSvgs.forEach(svg => svg.innerHTML = '<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>');
     }
 });
 
